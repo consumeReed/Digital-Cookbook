@@ -4,7 +4,7 @@ package cookbook;
  * Ideas are welcome, and getString method is a thought-experiment.
  */
 public enum Course {
-	BREAKFAST, LUNCH, DINNER, DESSERT, APPETIZER, SNACK;
+	BREAKFAST, LUNCH, DINNER, DESSERT, APPETIZER, SNACK, SIDE;
 
 public String getCourse() {
 		//Returns a string of the Enum, just to save some lines of code
@@ -26,6 +26,9 @@ public String getCourse() {
 		
 		case SNACK: 
 			return "Snack";
+			
+		case SIDE:
+			return "Side";
 			
 		default:
 			return null;
