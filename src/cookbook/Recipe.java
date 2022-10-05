@@ -3,13 +3,13 @@ package cookbook;
 public class Recipe {
 	private String recipe_name;
 	private int people_feeds;
-	Text text_recipe;														// Creates a new Text object
+	TextRecipe text_recipe;														// Creates a new Text object
 	private String formatted_recipe;										// Stores formatted version of the recipe
 	
 	public Recipe(String recipe_name, int people_feeds) {
 		this.recipe_name = recipe_name;
 		this.people_feeds = people_feeds;
-		text_recipe = new Text(get_recipe_name(), get_people_feeds());
+		text_recipe = new TextRecipe(get_recipe_name(), get_people_feeds());
 	}
 	
 	/**

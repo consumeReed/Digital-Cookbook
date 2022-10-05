@@ -1,7 +1,7 @@
 package cookbook;
 
-public class Text extends Recipe {
-	public Text(String recipe_name, int people_feeds) {
+public class TextRecipe extends Recipe {
+	public TextRecipe(String recipe_name, int people_feeds) {
 		super(recipe_name, people_feeds);
 	}
 
