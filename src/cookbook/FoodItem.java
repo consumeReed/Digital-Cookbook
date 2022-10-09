@@ -24,11 +24,12 @@ public class FoodItem {
 	 */
 	public FoodItem(String textInstructions, String name)
 	{
-		if(textInstructions == null && imageInstructions == null)
+		if(imageInstructions == null)
 		{
 			this.textInstructions = textInstructions;
 			this.name = name;
 		}
+		ingredients = new ArrayList<String>();
 	}
 	
 	/**
@@ -37,15 +38,20 @@ public class FoodItem {
 	 */
 	public FoodItem(Image imageInstructions, String name)
 	{
-		if(textInstructions == null && imageInstructions == null)
+		if(textInstructions == null)
 		{
 			this.imageInstructions = imageInstructions;
 			this.name = name;
 		}
+		ingredients = new ArrayList<String>();
 	}
 	
 	
 	
+	public String getName()
+	{
+		return name;
+	}
 	
 	/**
 	 * 
@@ -113,5 +119,12 @@ public class FoodItem {
 		return ingredients.contains(ing);
 	}
 	
+	/**
+	 * toString for testing purposes
+	 */
+	public String toString()
+	{
+		return "Name: " + name + "\n Text Instructions: " + textInstructions + "\n Ingredients: " + ingredients;
+	}
 
 }
