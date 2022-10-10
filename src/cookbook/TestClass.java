@@ -45,6 +45,31 @@ public class TestClass {
 		k.addIngredient("sugar");
 		System.out.println(k);
 		System.out.println(k.containsIngredient("water"));
+		
+		System.out.println("\n\n\n\n\n");
+		System.out.println(f.getRandom());
+		
+		System.out.println("\n\n\n\n\n");
+		System.out.println(f.searchName("hotdog"));
+		
+		System.out.println("\n\n\n\n\n");
+		f.removeAll();
+		f.addFood("chicken parm", "text");
+		f.addFood("Chicken nuggets", "text2");
+		f.addFood("pizza", "text3");
+		f.addFood("chicKens", "text4");
+		f.addFood("potato salad", "text5");
+		System.out.println(f.searchName("chicken"));
+		System.out.println("\n\n");
+		System.out.println(f.searchName("chiCken par"));
+		System.out.println("\n\n");
+		System.out.println(f.searchName("hotdog"));
+		System.out.println("\n\n");
+		System.out.println(f.searchName("piz"));
+		
+		System.out.println("\n\n\n\n\n");
+		f.deleteName("chicKen parm");
+		System.out.println(f.displayAll());
 	}
 
 }
