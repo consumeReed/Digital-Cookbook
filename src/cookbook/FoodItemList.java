@@ -14,6 +14,7 @@ public class FoodItemList {
 	public void addFood(String name, String textInstructions)
 	{
 		FoodItem newFood = new FoodItem(textInstructions, name);
+		newFood.id = foodlist.size()+1;
 		foodlist.add(newFood);
 	}
 	
@@ -29,7 +30,9 @@ public class FoodItemList {
 		return p;
 	}
 	
-	
+	/*
+	 * Only if we go with 1 recipe per food name, otherwise we use id to delete
+	 */
 	public void deleteName(String name)
 	{
 		for(int i = 0; i< foodlist.size(); i++)

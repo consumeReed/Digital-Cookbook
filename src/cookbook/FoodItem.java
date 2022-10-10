@@ -17,6 +17,9 @@ public class FoodItem {
 	private String textInstructions;
 	private Image imageInstructions; // may want to create our own class to store as image location???
 	
+	public int id;
+
+	
 	
 	/**
 	 * Constructor for when creating a text instruction based recipe
@@ -78,8 +81,8 @@ public class FoodItem {
 	{
 		if(i == null)
 			return;
-		if(!ingredients.contains(i))
-			ingredients.add(i);
+		if(!ingredients.contains(i.toLowerCase()))
+			ingredients.add(i.toLowerCase());
 	}
 	
 	/**
@@ -116,7 +119,7 @@ public class FoodItem {
 	{
 		if(ing == null)
 			return false;
-		return ingredients.contains(ing);
+		return ingredients.contains(ing.toLowerCase());
 	}
 	
 	/**
