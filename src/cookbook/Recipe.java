@@ -3,12 +3,14 @@ package cookbook;
 public class Recipe {
 	private String recipe_name;
 	private int people_feeds;
+	private Course course;
 	TextRecipe text_recipe;														// Creates a new Text object
 	private String formatted_recipe;										// Stores formatted version of the recipe
 	
-	public Recipe(String recipe_name, int people_feeds) {
+	public Recipe(String recipe_name, int people_feeds, Course course) {
 		this.recipe_name = recipe_name;
 		this.people_feeds = people_feeds;
+		this.course = course;
 		text_recipe = new TextRecipe(get_recipe_name(), get_people_feeds());
 	}
 	
@@ -46,6 +48,14 @@ public class Recipe {
 	}
 	
 	/**
+	 * Course type Setter.
+	 * @param new_Course
+	 */
+	void set_course(Course course) {
+		this.course = course;
+	}
+	
+	/**
 	 * Formatted recipe Getter.
 	 * @return formatted_recipe
 	 */
@@ -59,6 +69,14 @@ public class Recipe {
 	 */
 	String get_recipe_name() {
 		return recipe_name;
+	}
+	
+	/**
+	 * Recipe Course type Getter
+	 * @return course
+	 */
+	String get_course() {
+		course.getCourse();
 	}
 	
 	/**
