@@ -10,6 +10,7 @@ public class FoodItem {
 	private ArrayList<String> ingredients;
 	private ArrayList<String> allergens;
 	private ArrayList<String> foodType;
+	private ArrayList<Course> courses;
 	
 	private String culture;
 	private String notes;
@@ -83,6 +84,48 @@ public class FoodItem {
 			return;
 		if(!ingredients.contains(i.toLowerCase()))
 			ingredients.add(i.toLowerCase());
+	}
+	
+	/**
+	 * Add course types to the course list, not allowing duplicates
+	 */
+	public void addCourse(Course courseAdd) {
+		if(courses.isEmpty()) {
+			courses.add(courseAdd);
+		} else {
+			for(Course courseCheck : courses) {
+				if(courseCheck.equals(courseAdd)) {
+					return;
+				}
+			}
+			courses.add(courseAdd);
+		}
+	}
+	
+	/**
+	 * Lists all the courses in this fooditem.
+	 */
+	public void listCourse() {
+		if(courses.isEmpty()) {
+			System.out.println("No Courses Selected.");
+		} else {
+			for(Course course_print : courses) {
+				System.out.println(course_print.getCourse());
+			}
+		}
+	}
+	
+	/**
+	 * Checks if the item is apart of a course;
+	 * @return true if fooditem is apart of search_course
+	 */
+	public boolean courseTime(Course search_course) {
+		if(courses.isEmpty()) {
+			return false;
+		} else {
+			return courses.contains(search_course);
+		}
+			
 	}
 	
 	/**
