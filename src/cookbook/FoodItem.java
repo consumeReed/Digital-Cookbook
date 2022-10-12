@@ -5,26 +5,28 @@ import java.util.*;
 
 public class FoodItem {
 	
-	private String name;
+	private String name;							// Name of the food
 	
-	private ArrayList<String> ingredients;
-	private ArrayList<String> allergens;
-	private ArrayList<String> foodType;
-	private ArrayList<Course> courses;
+	private ArrayList<String> ingredients;			// Ingredients contained in the food
+	private ArrayList<String> allergens;			// Allergens contained in the food
+	private ArrayList<String> foodType;				// The type list of foods
+	private ArrayList<Course> courses;				// The course list of foods
 	
-	private String culture;
-	private String notes;
+	private String culture;							// Culture the food is associated with
+	private String notes;							// Notes about the food
 	
-	private String textInstructions;
-	private Image imageInstructions; // may want to create our own class to store as image location???
+	private String textInstructions;				// Instructions on how to prepare the food
+	private Image imageInstructions; 				// may want to create our own class to store as image location???
 	
-	public int id;
+	public int id;									// Unique ID for the food item
 
 	
 	
 	/**
 	 * Constructor for when creating a text instruction based recipe
-	 * 
+	 *
+	 * @param textInstructions The instructions for a food item
+	 * @param name The name of the food item
 	 */
 	public FoodItem(String textInstructions, String name)
 	{
@@ -38,7 +40,9 @@ public class FoodItem {
 	
 	/**
 	 * Constructor for when creating an image instruction based recipe
-	 * 
+	 *
+	 * @param textInstructions The instructions for a food item
+	 * @param name The name of the food item
 	 */
 	public FoodItem(Image imageInstructions, String name)
 	{
@@ -51,15 +55,18 @@ public class FoodItem {
 	}
 	
 	
-	
+	/**
+	 * Getter for the name of the food
+	 */
 	public String getName()
 	{
 		return name;
 	}
 	
 	/**
-	 * 
-	 * Change culture tag ////no null check in case they want to delete this way (removing text)
+	 * Change culture tag //// no null check in case they want to delete this way (removing text)
+	 *
+	 * @param a The culture that we want to change the food item to
 	 */
 	public void changeCulture(String a)
 	{
@@ -77,6 +84,7 @@ public class FoodItem {
 	/**
 	 * Adds an ingredient if it doesn't exist already in the ingredients list and is not null
 	 * 
+	 * @param i The ingredient we want to add the to the ingredients list
 	 */
 	public void addIngredient(String i)
 	{
@@ -88,6 +96,8 @@ public class FoodItem {
 	
 	/**
 	 * Add course types to the course list, not allowing duplicates
+	 *
+	 * @param courseAdd The course to be added to the course list
 	 */
 	public void addCourse(Course courseAdd) {
 		if(courses.isEmpty()) {
@@ -103,7 +113,7 @@ public class FoodItem {
 	}
 	
 	/**
-	 * Lists all the courses in this fooditem.
+	 * Lists all the courses in this fooditem
 	 */
 	public void listCourse() {
 		if(courses.isEmpty()) {
@@ -117,6 +127,8 @@ public class FoodItem {
 	
 	/**
 	 * Checks if the item is apart of a course;
+	 *
+	 * @param search_course The course we want to search for
 	 * @return true if fooditem is apart of search_course
 	 */
 	public boolean courseTime(Course search_course) {
@@ -130,7 +142,8 @@ public class FoodItem {
 	
 	/**
 	 * Adds a list of ingredients to the ingredients list
-	 * 
+	 *
+	 * @param ing A list of ingredients to add to the ingredients list
 	 */
 	public void addIngredients(ArrayList<String> ing)
 	{
@@ -157,6 +170,8 @@ public class FoodItem {
 	
 	/**
 	 * Check to see if the food contains an ingredient
+	 *
+	 * @param ing The ingredient we are searching for in a food item
 	 */
 	public boolean containsIngredient(String ing)
 	{
