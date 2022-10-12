@@ -18,6 +18,15 @@ public class FoodItemList {
 		foodlist.add(newFood);
 	}
 	
+	/**
+	 * Test method
+	 * @param adder
+	 */
+	public void addFood(FoodItem adder) {
+		adder.id = foodlist.size()+1;
+		foodlist.add(adder);
+	}
+	
 	
 	public ArrayList<FoodItem> searchName(String name)
 	{
@@ -28,6 +37,21 @@ public class FoodItemList {
 				p.add(foodlist.get(i));
 		}
 		return p;
+	}
+	
+	public ArrayList<FoodItem> searchCourse(Course c) {
+		ArrayList<FoodItem> cs = new ArrayList<FoodItem>();
+		if(foodlist.isEmpty()) {
+			System.err.println("Error: List Empty");
+			return null;
+		} else {
+			for(FoodItem item : foodlist) {
+				if(item.courseTime(c)) {
+					cs.add(item);
+				}
+			}
+		}
+		return cs;
 	}
 	
 	/*

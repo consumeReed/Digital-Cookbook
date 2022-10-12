@@ -88,6 +88,7 @@ public class FoodItem {
 	
 	/**
 	 * Add course types to the course list, not allowing duplicates
+	 * fix later
 	 */
 	public void addCourse(Course courseAdd) {
 		if(courses.isEmpty()) {

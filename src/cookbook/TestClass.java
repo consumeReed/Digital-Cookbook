@@ -24,7 +24,7 @@ public class TestClass {
 				+ "Bake in the preheated oven until cheese is browned and bubbly and chicken breasts are no longer pink in the center, 15 to 20 minutes. An instant-read thermometer inserted into the center should read at least 165 degrees F (74 degrees C).");
 		
 		
-		f.addFood("Filet Mignon", "Preheat oven to 400°. In a large skillet over medium-high heat, heat oil. Season steak with salt and pepper on both sides. When oil is just about to smoke, add steak. Cook until very seared, about 5 minutes, then flip and add butter and rosemary. Baste with butter and cook another 3 to 5 minutes. \r\n"
+		f.addFood("Filet Mignon", "Preheat oven to 400ï¿½. In a large skillet over medium-high heat, heat oil. Season steak with salt and pepper on both sides. When oil is just about to smoke, add steak. Cook until very seared, about 5 minutes, then flip and add butter and rosemary. Baste with butter and cook another 3 to 5 minutes. \r\n"
 				+ "Transfer skillet to oven and cook until cooked to your liking, about 5 minutes for medium. Pro tip: Check the temperature of your meat before transferring to the oven to see how far you are from the desired temperature. If you are within 10 degrees, you may need even less time. If your steak isn't done after 5 minutes, check every couple of minutes so you don't risk over cooking. \r\n"
 				+ "Remove from pan and let rest 5 minutes before slicing.");
 		
@@ -70,6 +70,7 @@ public class TestClass {
 		System.out.println("\n\n\n\n\n");
 		f.deleteName("chicKen parm");
 		System.out.println(f.displayAll());
+		System.out.println("\n\n");
 	}
 
 }
