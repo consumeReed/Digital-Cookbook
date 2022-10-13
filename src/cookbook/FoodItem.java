@@ -180,7 +180,7 @@ public class FoodItem {
 	 */
 	public String toString()
 	{
-		return "Name: " + name + "\n Text Instructions: " + textInstructions + "\n Ingredients: " + ingredients;
+		return "Name: " + name + "\n Text Instructions: " + textInstructions + "\n Ingredients: " + ingredients + "\nCourses: "+ courses;
 	}
 
 }
