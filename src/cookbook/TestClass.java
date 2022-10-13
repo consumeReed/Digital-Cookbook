@@ -72,34 +72,6 @@ public class TestClass {
 		System.out.println(f.displayAll());
 		System.out.println("\n\n");
 		
-		f.removeAll();
-		
-		FoodItem item1 = new FoodItem("Freezer","Ice Cream");
-		FoodItem item2 = new FoodItem("Fridge","Chicken");
-		FoodItem item3 = new FoodItem("Stove","Breakfast Sausages");
-		FoodItem item4 = new FoodItem("Oven", "Cookies");
-		
-		item1.addCourse(Course.DESSERT);
-		item2.addCourse(Course.DINNER);
-		item2.addCourse(Course.MAIN);
-		item3.addCourse(Course.BREAKFAST);
-		item3.addCourse(Course.SIDE);
-		item4.addCourse(Course.DESSERT);
-		
-		f.addFood(item1);
-		f.addFood(item2);
-		f.addFood(item3);
-		f.addFood(item4);
-		
-		System.out.println(f.displayAll());
-		System.out.println("\n\n");
-		
-		System.out.println(f.searchCourse(null));
-		System.out.println(f.searchCourse(Course.LUNCH));
-		System.out.println(f.searchCourse(Course.BREAKFAST));
-		System.out.println(f.searchCourse(Course.MAIN));
-		System.out.println("\n\n");
-		
 	}
 
 }
