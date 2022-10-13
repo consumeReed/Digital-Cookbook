@@ -10,7 +10,7 @@ public class FoodItem {
 	private ArrayList<String> ingredients;			// Ingredients contained in the food
 	private ArrayList<String> allergens;			// Allergens contained in the food
 	private ArrayList<String> foodType;				// The type list of foods
-	private ArrayList<Course> courses;				// The course list of foods
+	private int courses;								// An integer to count bits for each course
 	
 	private String culture;							// Culture the food is associated with
 	private String notes;							// Notes about the food
@@ -100,29 +100,20 @@ public class FoodItem {
 	 * @param courseAdd The course to be added to the course list
 	 */
 	public void addCourse(Course courseAdd) {
-		if(courses.isEmpty()) {
-			courses.add(courseAdd);
+		if((courseAdd == null)||(courseAdd.getCourse() == 0)) {
+			return;
 		} else {
-			for(Course courseCheck : courses) {
-				if(courseCheck.equals(courseAdd)) {
-					return;
-				}
-			}
-			courses.add(courseAdd);
+			int c = courseAdd.getCourse();
+			courses = courses|c;
 		}
 	}
 	
 	/**
 	 * Lists all the courses in this fooditem
+	 *aThis one is a little finicky, trying to think of a solution.
 	 */
 	public void listCourse() {
-		if(courses.isEmpty()) {
-			System.out.println("No Courses Selected.");
-		} else {
-			for(Course course_print : courses) {
-				System.out.println(course_print.getCourse());
-			}
-		}
+		return;
 	}
 	
 	/**
@@ -131,14 +122,18 @@ public class FoodItem {
 	 * @param search_course The course we want to search for
 	 * @return true if fooditem is apart of search_course
 	 */
-	public boolean courseTime(Course search_course) {
-		if(courses.isEmpty()) {
-			return false;
-		} else {
-			return courses.contains(search_course);
+	public boolean hasCourse(Course courseCheck) {
+			boolean found = false;
+			if((courseCheck == null)||(courseCheck.getCourse() == 0)) {
+				System.err.println("Input Incorrect");
+			} else {
+				int check = courses&courseCheck.getCourse();
+				if (check != 0) {
+					found = true;
+				}
+			}
+			return found;
 		}
-			
-	}
 	
 	/**
 	 * Adds a list of ingredients to the ingredients list

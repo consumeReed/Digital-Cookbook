@@ -23,8 +23,9 @@ public class FoodItemList {
 	 * @param adder
 	 */
 	public void addFood(FoodItem adder) {
-		adder.id = foodlist.size()+1;
-		foodlist.add(adder);
+		FoodItem newFood = adder;
+		newFood.id = foodlist.size()+1;
+		foodlist.add(newFood);
 	}
 	
 	
@@ -41,12 +42,11 @@ public class FoodItemList {
 	
 	public ArrayList<FoodItem> searchCourse(Course c) {
 		ArrayList<FoodItem> cs = new ArrayList<FoodItem>();
-		if(foodlist.isEmpty()) {
-			System.err.println("Error: List Empty");
-			return null;
+		if((c == null)||(c.getCourse()==0)) {
+			System.err.println("Input Incorrect");
 		} else {
 			for(FoodItem item : foodlist) {
-				if(item.courseTime(c)) {
+				if(item.hasCourse(c)) {
 					cs.add(item);
 				}
 			}

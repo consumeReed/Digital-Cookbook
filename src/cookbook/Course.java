@@ -4,34 +4,37 @@ package cookbook;
  * Ideas are welcome, and getString method is a thought-experiment.
  */
 public enum Course {
-	BREAKFAST, LUNCH, DINNER, DESSERT, APPETIZER, SNACK, SIDE;
+	BREAKFAST, LUNCH, DINNER, DESSERT, APPETIZER, SNACK, SIDE, MAIN;
 
-public String getCourse() {
+public int getCourse() {
 		//Returns a string of the Enum, just to save some lines of code
 		switch(this) {
 		case BREAKFAST:
-			return "Breakfast";
+			return 1;
 	
 		case LUNCH:
-			return "Lunch";
+			return 2;
 	
 		case DINNER: 
-			return "Dinner";
+			return 4;
 	
 		case DESSERT:
-			return "Dessert";
+			return 8;
 		
 		case APPETIZER: 
-			return "Appetizer";
+			return 16;
 		
 		case SNACK: 
-			return "Snack";
+			return 32;
 			
 		case SIDE:
-			return "Side";
+			return 64;
+			
+		case MAIN:
+			return 128;
 			
 		default:
-			return null;
+			return 0;
 		}
 	}
 }
