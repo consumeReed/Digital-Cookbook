@@ -11,6 +11,7 @@ public class FoodItem {
 	private ArrayList<String> allergens;			// Allergens contained in the food
 	private ArrayList<String> foodType;				// The type list of foods
 	private int courses;								// An integer to count bits for each course
+	public Attributes attributes;
 	
 	private String culture;							// Culture the food is associated with
 	private String notes;							// Notes about the food
@@ -36,6 +37,7 @@ public class FoodItem {
 			this.name = name;
 		}
 		ingredients = new ArrayList<String>();
+		attributes = new Attributes();
 	}
 	
 	/**
@@ -135,6 +137,23 @@ public class FoodItem {
 			return found;
 		}
 	
+
+	public boolean hasAttributes(Attributes a)
+	{
+		boolean found = false;
+		if(a == null || a.getAttributes() == 0)
+		{
+			System.err.println("Input Incorrect");
+		}
+		else
+		{
+			int check = attributes.getAttributes() & a.getAttributes();
+			if(check!=0)
+				found = true;
+		}
+		return found;
+	}
+	
 	/**
 	 * Adds a list of ingredients to the ingredients list
 	 *
@@ -180,7 +199,7 @@ public class FoodItem {
 	 */
 	public String toString()
 	{
-		return "Name: " + name + "\n Text Instructions: " + textInstructions + "\n Ingredients: " + ingredients + "\nCourses: "+ courses;
+		return "Name: " + name + "\n Text Instructions: " + textInstructions + "\n Ingredients: " + ingredients + "\nAttributes: " + attributes;
 	}
 
 }

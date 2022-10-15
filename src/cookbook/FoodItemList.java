@@ -3,7 +3,7 @@ import java.util.*;
 
 public class FoodItemList {
 	
-	private ArrayList<FoodItem> foodlist;
+	public ArrayList<FoodItem> foodlist;
 	
 	public FoodItemList()
 	{
@@ -32,6 +32,47 @@ public class FoodItemList {
 		newFood.id = foodlist.size()+1;
 		foodlist.add(newFood);
 	}
+	
+	public ArrayList<FoodItem> search(String name, Attributes a)
+	{
+		ArrayList<FoodItem> lastSearchName = new ArrayList<FoodItem>();
+		ArrayList<FoodItem> lastSearchAttributes = new ArrayList<FoodItem>();
+		if(name != null)
+		{
+			for(int i = 0; i < foodlist.size(); i++)
+			{
+				if(foodlist.get(i).getName().toLowerCase().contains(name.toLowerCase()))
+					lastSearchName.add(foodlist.get(i));
+			}
+		}
+		
+		if(a != null)
+		{
+				
+				if(lastSearchName.size() > 0) 
+				{
+					
+				for(FoodItem item : lastSearchName) 
+				{
+					if(item.hasAttributes(a)) 
+						lastSearchAttributes.add(item);
+				}
+				}
+				else
+				{
+					for(FoodItem item : foodlist) 
+					{
+						if(item.hasAttributes(a))
+							lastSearchAttributes.add(item);
+					}
+				}
+
+		
+			}
+		return lastSearchAttributes;
+		
+		}
+		
 	
 	/**
 	 * 

@@ -54,10 +54,10 @@ public class TestClass {
 		
 		System.out.println("\n\n\n\n\n");
 		f.removeAll();
-		f.addFood("chicken parm", "text");
-		f.addFood("Chicken nuggets", "text2");
-		f.addFood("pizza", "text3");
-		f.addFood("chicKens", "text4");
+		f.addFood("chicken parm", "text");       //0
+		f.addFood("Chicken nuggets", "text2");   //1
+		f.addFood("pizza", "text3");             //2
+		f.addFood("chicKens", "text4");          //3
 		f.addFood("potato salad", "text5");
 		System.out.println(f.searchName("chicken"));
 		System.out.println("\n\n");
@@ -71,6 +71,20 @@ public class TestClass {
 		f.deleteName("chicKen parm");
 		System.out.println(f.displayAll());
 		System.out.println("\n\n");
+		f.foodlist.get(0).attributes.changeDessert();
+		f.foodlist.get(1).attributes.changeDessert();
+		f.foodlist.get(2).attributes.changeDinner();
+		f.addFood("pizza steak", "text 6");    //4
+		System.out.println("\n\n\n" + f.displayAll());
+		Attributes a = new Attributes();
+		a.changeDessert();
+		System.out.println("\n\n\n" + f.search("pizza", null));
+		System.out.println("\n\n\n" + f.search(null, a));
+		System.out.println("\n\n\n" + f.search("pizza", a));
+		
+		
+		
+		
 		
 	}
 

@@ -12,52 +12,61 @@ public class Attributes {
 	 * 6 Side
 	 * 7 Main
 	 */
-	public static int attr = 0b00000000;
+	public int attr = 0b00000000;
 	
 	public Attributes(){}
 	
-	public static void changeBreakfast()
+	public void changeBreakfast()
 	{
 		attr ^= 0b10000000;
 	}
 	
-	public static void changeLunch()
+	public void changeLunch()
 	{
 		attr ^= 0b01000000;
 	}
 	
-	public static void changeDinner()
+	public void changeDinner()
 	{
 		attr ^= 0b00100000;
 	}
 	
-	public static void changeDessert()
+	public void changeDessert()
 	{
 		attr ^= 0b00010000;
 	}
 	
-	public static void changeAppetizer()
+	public void changeAppetizer()
 	{
 		attr ^= 0b00001000;
 	}
 	
-	public static void changeSnack()
+	public void changeSnack()
 	{
 		attr ^= 0b00000100;
 	}
 	
-	public static void changeSide()
+	public void changeSide()
 	{
 		attr ^= 0b00000010;
 	}
 	
-	public static void changeMain()
+	public void changeMain()
 	{
 		attr ^= 0b00000001;
 	}
 	
+	public int getAttributes()
+	{
+		return attr;
+	}
 	
-	public static void main(String[] args)
+	public String toString()
+	{
+		return attr + "";
+	}
+	
+	/**public static void main(String[] args)
 	{
 		//Test with single attribute active
 		System.out.println(attr);
@@ -71,6 +80,6 @@ public class Attributes {
 		System.out.println("\n" + attr);
 		changeBreakfast();
 		System.out.println(attr);
-	}
+	}**/
 
 }
