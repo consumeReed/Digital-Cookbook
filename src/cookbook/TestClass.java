@@ -32,7 +32,7 @@ public class TestClass {
 		
 		f.addFood("Chicken Nuggets", "With Ketchup");
 		
-		System.out.println(f.searchName("Chicken Nuggets"));
+		//System.out.println(f.searchName("Chicken Nuggets"));
 		
 		System.out.println(f.displayAll());
 		
@@ -50,7 +50,7 @@ public class TestClass {
 		System.out.println(f.getRandom());
 		
 		System.out.println("\n\n\n\n\n");
-		System.out.println(f.searchName("hotdog"));
+		//System.out.println(f.searchName("hotdog"));
 		
 		System.out.println("\n\n\n\n\n");
 		f.removeAll();
@@ -59,13 +59,13 @@ public class TestClass {
 		f.addFood("pizza", "text3");             //2
 		f.addFood("chicKens", "text4");          //3
 		f.addFood("potato salad", "text5");
-		System.out.println(f.searchName("chicken"));
+		//System.out.println(f.searchName("chicken"));
 		System.out.println("\n\n");
-		System.out.println(f.searchName("chiCken par"));
+		//System.out.println(f.searchName("chiCken par"));
 		System.out.println("\n\n");
-		System.out.println(f.searchName("hotdog"));
+		//System.out.println(f.searchName("hotdog"));
 		System.out.println("\n\n");
-		System.out.println(f.searchName("piz"));
+		//System.out.println(f.searchName("piz"));
 		
 		System.out.println("\n\n\n\n\n");
 		f.deleteName("chicKen parm");

@@ -100,7 +100,7 @@ public class FoodItem {
 	 * Add course types to the course list, not allowing duplicates
 	 *
 	 * @param courseAdd The course to be added to the course list
-	 */
+	 
 	public void addCourse(Course courseAdd) {
 		if((courseAdd == null)||(courseAdd.getCourse() == 0)) {
 			return;
@@ -113,7 +113,7 @@ public class FoodItem {
 	/**
 	 * Lists all the courses in this fooditem
 	 *aThis one is a little finicky, trying to think of a solution.
-	 */
+	 
 	public void listCourse() {
 		return;
 	}
@@ -123,7 +123,7 @@ public class FoodItem {
 	 *
 	 * @param search_course The course we want to search for
 	 * @return true if fooditem is apart of search_course
-	 */
+	 
 	public boolean hasCourse(Course courseCheck) {
 			boolean found = false;
 			if((courseCheck == null)||(courseCheck.getCourse() == 0)) {
@@ -136,7 +136,7 @@ public class FoodItem {
 			}
 			return found;
 		}
-	
+*/	
 
 	public boolean hasAttributes(Attributes a)
 	{

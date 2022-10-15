@@ -33,6 +33,11 @@ public class FoodItemList {
 		foodlist.add(newFood);
 	}
 	
+	
+	/**
+	 * IF YOU WANT TO ADD MORE THINGS TO SEARCH BY TALK TO REED ABOUT THIS FIRST
+	 * 
+	 */
 	public ArrayList<FoodItem> search(String name, Attributes a)
 	{
 		ArrayList<FoodItem> lastSearchName = new ArrayList<FoodItem>();
@@ -73,12 +78,12 @@ public class FoodItemList {
 		
 		}
 		
-	
+/**	
 	/**
 	 * 
 	 * @param name query to search by
 	 * @return list containing all matches of search query in name
-	 */
+	 
 	public ArrayList<FoodItem> searchName(String name)
 	{
 		ArrayList<FoodItem> p = new ArrayList<FoodItem>();
@@ -94,7 +99,7 @@ public class FoodItemList {
 	 * 
 	 * @param c attributes to search by
 	 * @return list containing all items with matching attributes
-	 */
+	 
 	public ArrayList<FoodItem> searchCourse(Course c) {
 		ArrayList<FoodItem> cs = new ArrayList<FoodItem>();
 		if((c == null)||(c.getCourse()==0)) {
@@ -114,7 +119,7 @@ public class FoodItemList {
 	 * @param name query to search by
 	 * @param c attributes to search by
 	 * @return list containing all matches of name AND matching attributes
-	 */
+	 
 	public ArrayList<FoodItem> searchName(String name, Course c)
 	{
 		ArrayList<FoodItem> p = new ArrayList<FoodItem>();
@@ -135,7 +140,7 @@ public class FoodItemList {
 		}
 		return p;
 	}
-	
+**/
 	/*
 	 * Only if we go with 1 recipe per food name, otherwise we use id to delete
 	 */
