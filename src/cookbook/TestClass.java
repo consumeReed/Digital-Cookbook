@@ -71,13 +71,13 @@ public class TestClass {
 		f.deleteName("chicKen parm");
 		System.out.println(f.displayAll());
 		System.out.println("\n\n");
-		f.foodlist.get(0).attributes.changeDessert();
-		f.foodlist.get(1).attributes.changeDessert();
-		f.foodlist.get(2).attributes.changeDinner();
+		f.foodlist.get(0).attributes.changePos3();
+		f.foodlist.get(1).attributes.changePos3();
+		f.foodlist.get(2).attributes.changePos2();
 		f.addFood("pizza steak", "text 6");    //4
 		System.out.println("\n\n\n" + f.displayAll());
 		Attributes a = new Attributes();
-		a.changeDessert();
+		a.changePos3();
 		System.out.println("\n\n\n" + f.search("pizza", null));
 		System.out.println("\n\n\n" + f.search(null, a));
 		System.out.println("\n\n\n" + f.search("pizza", a));

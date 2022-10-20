@@ -40,41 +40,35 @@ public class FoodItemList {
 	 */
 	public ArrayList<FoodItem> search(String name, Attributes a)
 	{
-		ArrayList<FoodItem> lastSearchName = new ArrayList<FoodItem>();
-		ArrayList<FoodItem> lastSearchAttributes = new ArrayList<FoodItem>();
+		ArrayList<FoodItem> searchedList = foodlist;
+		ArrayList<FoodItem> tmp = new ArrayList<FoodItem>();
 		if(name != null)
 		{
-			for(int i = 0; i < foodlist.size(); i++)
+			for(int i = 0; i < searchedList.size(); i++)
 			{
-				if(foodlist.get(i).getName().toLowerCase().contains(name.toLowerCase()))
-					lastSearchName.add(foodlist.get(i));
+				if(searchedList.get(i).getName().toLowerCase().contains(name.toLowerCase()))
+					tmp.add(searchedList.get(i));
 			}
+			searchedList = tmp;
+			
 		}
+	
+		
 		
 		if(a != null)
 		{
+			ArrayList<FoodItem> tmp2 = new ArrayList<FoodItem>();
 				
-				if(lastSearchName.size() > 0) 
-				{
-					
-				for(FoodItem item : lastSearchName) 
-				{
-					if(item.hasAttributes(a)) 
-						lastSearchAttributes.add(item);
-				}
-				}
-				else
-				{
-					for(FoodItem item : foodlist) 
+					for(FoodItem item : searchedList) 
 					{
 						if(item.hasAttributes(a))
-							lastSearchAttributes.add(item);
+							tmp2.add(item);
 					}
+					searchedList = tmp2;
 				}
 
 		
-			}
-		return lastSearchAttributes;
+		return searchedList;
 		
 		}
 		
