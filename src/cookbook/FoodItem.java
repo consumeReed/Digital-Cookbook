@@ -10,7 +10,7 @@ public class FoodItem {
 	private ArrayList<String> ingredients;			// Ingredients contained in the food
 	private ArrayList<String> allergens;			// Allergens contained in the food
 	private ArrayList<String> foodType;				// The type list of foods
-	private int courses;								// An integer to count bits for each course
+	//public Attributes courses;								// An integer to count bits for each course
 	public Attributes attributes;
 	
 	private String culture;							// Culture the food is associated with
@@ -95,48 +95,6 @@ public class FoodItem {
 		if(!ingredients.contains(i.toLowerCase()))
 			ingredients.add(i.toLowerCase());
 	}
-	
-	/**
-	 * Add course types to the course list, not allowing duplicates
-	 *
-	 * @param courseAdd The course to be added to the course list
-	 
-	public void addCourse(Course courseAdd) {
-		if((courseAdd == null)||(courseAdd.getCourse() == 0)) {
-			return;
-		} else {
-			int c = courseAdd.getCourse();
-			courses = courses|c;
-		}
-	}
-	
-	/**
-	 * Lists all the courses in this fooditem
-	 *aThis one is a little finicky, trying to think of a solution.
-	 
-	public void listCourse() {
-		return;
-	}
-	
-	/**
-	 * Checks if the item is apart of a course;
-	 *
-	 * @param search_course The course we want to search for
-	 * @return true if fooditem is apart of search_course
-	 
-	public boolean hasCourse(Course courseCheck) {
-			boolean found = false;
-			if((courseCheck == null)||(courseCheck.getCourse() == 0)) {
-				System.err.println("Input Incorrect");
-			} else {
-				int check = courses&courseCheck.getCourse();
-				if (check != 0) {
-					found = true;
-				}
-			}
-			return found;
-		}
-*/	
 
 	public boolean hasAttributes(Attributes a)
 	{
