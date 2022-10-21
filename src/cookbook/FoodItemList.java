@@ -38,7 +38,7 @@ public class FoodItemList {
 	 * IF YOU WANT TO ADD MORE THINGS TO SEARCH BY TALK TO REED ABOUT THIS FIRST
 	 * 
 	 */
-	public ArrayList<FoodItem> search(String name, Attributes a)
+	public ArrayList<FoodItem> search(String name, Attributes allergy, Attributes course)
 	{
 		ArrayList<FoodItem> searchedList = foodlist;
 		ArrayList<FoodItem> tmp = new ArrayList<FoodItem>();
@@ -55,17 +55,27 @@ public class FoodItemList {
 	
 		
 		
-		if(a != null)
+		if(allergy != null)
 		{
 			ArrayList<FoodItem> tmp2 = new ArrayList<FoodItem>();
 				
 					for(FoodItem item : searchedList) 
 					{
-						if(item.hasAttributes(a))
+						if(item.hasAllergens(allergy))
 							tmp2.add(item);
 					}
 					searchedList = tmp2;
 				}
+		
+		if(course != null) {
+			ArrayList<FoodItem> tmp3 = new ArrayList<>();
+			for(FoodItem item : searchedList) {
+				if(item.inCourse(course)) {
+					tmp3.add(item);
+				}
+			}
+			searchedList = tmp3; 
+		}
 
 		
 		return searchedList;

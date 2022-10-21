@@ -78,9 +78,9 @@ public class TestClass {
 		System.out.println("\n\n\n" + f.displayAll());
 		Attributes a = new Attributes();
 		a.changePos3();
-		System.out.println("\n\n\n" + f.search("pizza", null));
-		System.out.println("\n\n\n" + f.search(null, a));
-		System.out.println("\n\n\n" + f.search("pizza", a));
+		System.out.println("\n\n\n" + f.search("pizza", null, null));
+		System.out.println("\n\n\n" + f.search(null, a, null));
+		System.out.println("\n\n\n" + f.search("pizza", a, null));
 		
 		//Danny
 		//Reed

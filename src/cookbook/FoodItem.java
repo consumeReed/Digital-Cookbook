@@ -8,10 +8,9 @@ public class FoodItem {
 	private String name;							// Name of the food
 	
 	private ArrayList<String> ingredients;			// Ingredients contained in the food
-	private ArrayList<String> allergens;			// Allergens contained in the food
 	private ArrayList<String> foodType;				// The type list of foods
-	//public Attributes courses;								// An integer to count bits for each course
-	public Attributes attributes;
+	public Attributes courses;								// An integer to count bits for each course
+	public Attributes allergens;
 	
 	private String culture;							// Culture the food is associated with
 	private String notes;							// Notes about the food
@@ -37,7 +36,8 @@ public class FoodItem {
 			this.name = name;
 		}
 		ingredients = new ArrayList<String>();
-		attributes = new Attributes();
+		allergens = new Attributes();
+		courses = new Attributes();
 	}
 	
 	/**
@@ -95,8 +95,8 @@ public class FoodItem {
 		if(!ingredients.contains(i.toLowerCase()))
 			ingredients.add(i.toLowerCase());
 	}
-
-	public boolean hasAttributes(Attributes a)
+	
+	public boolean hasAllergens(Attributes a)
 	{
 		boolean found = false;
 		if(a == null || a.getAttributes() == 0)
@@ -105,7 +105,23 @@ public class FoodItem {
 		}
 		else
 		{
-			int check = attributes.getAttributes() & a.getAttributes();
+			int check = allergens.getAttributes() & a.getAttributes();
+			if(check!=0)
+				found = true;
+		}
+		return found;
+	}
+	
+	public boolean inCourse(Attributes a)
+	{
+		boolean found = false;
+		if(a == null || a.getAttributes() == 0)
+		{
+			System.err.println("Input Incorrect");
+		}
+		else
+		{
+			int check = courses.getAttributes() & a.getAttributes();
 			if(check!=0)
 				found = true;
 		}
@@ -157,7 +173,8 @@ public class FoodItem {
 	 */
 	public String toString()
 	{
-		return "Name: " + name + "\n Text Instructions: " + textInstructions + "\n Ingredients: " + ingredients + "\nAttributes: " + attributes;
+		return "Name: " + name + "\n Text Instructions: " + textInstructions + "\n Ingredients: " + ingredients + "\nAttributes: " + allergens +
+				"\nCourses: " + courses;
 	}
 
 }
