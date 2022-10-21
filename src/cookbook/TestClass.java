@@ -74,13 +74,12 @@ public class TestClass {
 		f.foodlist.get(0).allergens.changePos3();
 		f.foodlist.get(1).allergens.changePos3();
 		f.foodlist.get(2).allergens.changePos2();
-<<<<<<< HEAD
-		
+
 		f.foodlist.get(0).courses.changePos3();
 		f.foodlist.get(1).courses.changePos3();
 		f.foodlist.get(2).courses.changePos2();
-=======
->>>>>>> e479caa58753410099831c03b739e41a7b571978
+		f.foodlist.get(3).courses.changePos0();
+
 		f.addFood("pizza steak", "text 6");    //4
 		System.out.println("\n\n\n" + f.displayAll());
 		Attributes a = new Attributes(true);
@@ -92,7 +91,7 @@ public class TestClass {
 		System.out.println("\n\n\n" + f.search("pizza", a, null));
 		System.out.println("\n\n\n" + f.search("pizza", null, b));
 		System.out.println("\n\n\n" + f.search(null, a, b));
-		//System.out.println("\n\n\n" + f.search(null, null, null));
+		System.out.println("\n\n\n" + f.search(null, null, null));
 		
 		//Danny
 		//Reed
