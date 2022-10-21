@@ -36,8 +36,8 @@ public class FoodItem {
 			this.name = name;
 		}
 		ingredients = new ArrayList<String>();
-		allergens = new Attributes();
-		courses = new Attributes();
+		allergens = new Attributes(true);
+		courses = new Attributes(false);
 	}
 	
 	/**

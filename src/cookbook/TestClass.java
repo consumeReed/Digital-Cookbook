@@ -71,16 +71,25 @@ public class TestClass {
 		f.deleteName("chicKen parm");
 		System.out.println(f.displayAll());
 		System.out.println("\n\n");
-		f.foodlist.get(0).attributes.changePos3();
-		f.foodlist.get(1).attributes.changePos3();
-		f.foodlist.get(2).attributes.changePos2();
+		f.foodlist.get(0).allergens.changePos3();
+		f.foodlist.get(1).allergens.changePos3();
+		f.foodlist.get(2).allergens.changePos2();
+		
+		f.foodlist.get(0).courses.changePos3();
+		f.foodlist.get(1).courses.changePos3();
+		f.foodlist.get(2).courses.changePos2();
 		f.addFood("pizza steak", "text 6");    //4
 		System.out.println("\n\n\n" + f.displayAll());
-		Attributes a = new Attributes();
+		Attributes a = new Attributes(true);
+		Attributes b = new Attributes(false);
+		b.changePos3();
 		a.changePos3();
 		System.out.println("\n\n\n" + f.search("pizza", null, null));
 		System.out.println("\n\n\n" + f.search(null, a, null));
 		System.out.println("\n\n\n" + f.search("pizza", a, null));
+		System.out.println("\n\n\n" + f.search("pizza", null, b));
+		System.out.println("\n\n\n" + f.search(null, a, b));
+		//System.out.println("\n\n\n" + f.search(null, null, null));
 		
 		//Danny
 		//Reed
