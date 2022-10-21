@@ -71,9 +71,9 @@ public class TestClass {
 		f.deleteName("chicKen parm");
 		System.out.println(f.displayAll());
 		System.out.println("\n\n");
-		f.foodlist.get(0).attributes.changePos3();
-		f.foodlist.get(1).attributes.changePos3();
-		f.foodlist.get(2).attributes.changePos2();
+		f.foodlist.get(0).allergens.changePos3();
+		f.foodlist.get(1).allergens.changePos3();
+		f.foodlist.get(2).allergens.changePos2();
 		f.addFood("pizza steak", "text 6");    //4
 		System.out.println("\n\n\n" + f.displayAll());
 		Attributes a = new Attributes();
