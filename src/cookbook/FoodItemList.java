@@ -163,9 +163,14 @@ public class FoodItemList {
 	 * 
 	 * @return every fooditem currently in the storage system
 	 */
-	public Collection<FoodItem> displayAll()
+	public String displayAll()
 	{
-		return foodlist;
+		String tmp = "";
+		for(int i = 0; i < foodlist.size(); i++)
+		{
+			tmp+=foodlist.get(i)+"\n\n";
+		}
+		return tmp;
 	}
 	
 	

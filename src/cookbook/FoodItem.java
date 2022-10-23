@@ -173,7 +173,7 @@ public class FoodItem {
 	 */
 	public String toString()
 	{
-		return "Name: " + name + "\n Text Instructions: " + textInstructions + "\n Ingredients: " + ingredients + "\nAttributes: " + allergens +
+		return "Name: " + name + "\n Text Instructions: " + textInstructions + "\n Ingredients: " + ingredients + "\nAllergens: " + allergens +
 				"\nCourses: " + courses;
 	}
 
