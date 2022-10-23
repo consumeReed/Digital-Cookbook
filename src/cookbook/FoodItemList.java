@@ -1,7 +1,5 @@
 package cookbook;
 import java.util.*;
-import com.google.gson.*;
-import java.io.*;
 
 public class FoodItemList {
 	
@@ -23,15 +21,6 @@ public class FoodItemList {
 		FoodItem newFood = new FoodItem(textInstructions, name);
 		newFood.id = foodlist.size()+1;
 		foodlist.add(newFood);
-		Gson gson = new Gson();
-		String json = gson.toJson(this);
-		try
-		{
-			FileWriter fw = new FileWriter("lib\\data.json");
-			fw.write(json);
-			fw.close();
-		} catch(Exception e)
-		{}
 	}
 	
 	/**

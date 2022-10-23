@@ -8,8 +8,8 @@ public class TestClass {
 		 * Uncomment/comment out test methods you want to have shown in console.
 		 */
 		
-		testAddRecipe();
-		//testSearch();
+		//testAddRecipe();
+		testSearch();
 		//testAddIngredientsToFood();
 		//testRandomRecipe();
 	}
