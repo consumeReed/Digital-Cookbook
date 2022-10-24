@@ -2,8 +2,9 @@ package cookbook;
 
 import java.awt.Image;
 import java.util.*;
+import java.io.*;
 
-public class FoodItem {
+public class FoodItem implements Serializable{
 	
 	private String name;							// Name of the food
 	

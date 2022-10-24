@@ -1,8 +1,9 @@
 package cookbook;
 
 import java.util.ArrayList;
+import java.io.*;
 
-public class Attributes {
+public class Attributes implements Serializable{
 	
 	private boolean type; //Determines if course or allergy
 	/**

@@ -1,4 +1,6 @@
 package cookbook;
+import java.io.*;
+import java.util.ArrayList;
 
 public class TestClass {
 	
@@ -8,10 +10,32 @@ public class TestClass {
 		 * Uncomment/comment out test methods you want to have shown in console.
 		 */
 		
+		testRetrieval();
 		//testAddRecipe();
-		testSearch();
+		//testSearch();
 		//testAddIngredientsToFood();
 		//testRandomRecipe();
+	}
+	
+	public static void testRetrieval()
+	{
+		FoodItemList f = new FoodItemList();
+		
+		f.addFood("Chicken Parmesan", " oven");
+		f.addFood("Filet Mignon", "Preheat oven");
+		f.addFood("Chicken Nuggets", "Frozen chicken nuggets into oven");
+		f.addFood("Chicken Nuggets", "With Ketchup");
+		
+		try{
+		    FileInputStream readData = new FileInputStream("lib\\data.txt");
+		    ObjectInputStream readStream = new ObjectInputStream(readData);
+
+		    ArrayList<FoodItem> foo = (ArrayList<FoodItem>) readStream.readObject();
+		    readStream.close();
+		    System.out.println(foo.toString());
+		    }catch (Exception e) {
+		    e.printStackTrace();
+		}
 	}
 	
 	public static void testSearch()

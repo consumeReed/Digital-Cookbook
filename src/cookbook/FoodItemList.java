@@ -1,7 +1,8 @@
 package cookbook;
 import java.util.*;
+import java.io.*;
 
-public class FoodItemList {
+public class FoodItemList implements Serializable{
 	
 	public ArrayList<FoodItem> foodlist;
 	
@@ -21,6 +22,18 @@ public class FoodItemList {
 		FoodItem newFood = new FoodItem(textInstructions, name);
 		newFood.id = foodlist.size()+1;
 		foodlist.add(newFood);
+		
+		try{
+		    FileOutputStream writeData = new FileOutputStream("lib\\data.txt");
+		    ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
+
+		    writeStream.writeObject(foodlist);
+		    writeStream.flush();
+		    writeStream.close();
+
+		}catch (IOException e) {
+		    e.printStackTrace();
+		}
 	}
 	
 	/**
