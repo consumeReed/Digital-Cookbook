@@ -1,14 +1,11 @@
 package cookbook;
 
-
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
-
 /** 
- * Timer for when user want to set time while cooking 
+ * Timer 
  */
 
 public class Clock
@@ -20,13 +17,12 @@ public class Clock
 	
 	TimerTask task = new TimerTask() {
 		
-		public void run() {
-			timePassed++;
-			//System.out.println(new Date ());
-			System.out.println("Time started: " + timePassed);
+	public void run() {
+		// time passed
+		timePassed++;
+		System.out.println("Time started: " + timePassed);
 		}
 	};
-	
 	
 	public static void main(String[] args) {
 		Clock clock = new Clock();
