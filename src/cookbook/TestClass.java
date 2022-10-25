@@ -25,6 +25,12 @@ public class TestClass {
 		f.addFood("Filet Mignon", "Preheat oven");
 		f.addFood("Chicken Nuggets", "Frozen chicken nuggets into oven");
 		f.addFood("Chicken Nuggets", "With Ketchup");
+		f.addFood("Chilean Sea Bass", "pan sear the fish");
+		f.foodlist.get(4).allergens.changePos2();
+		f.foodlist.get(4).courses.changePos2();
+		f.foodlist.get(4).courses.changePos1();
+		f.updateFile();
+		
 		
 		try{
 		    FileInputStream readData = new FileInputStream("lib\\data.txt");

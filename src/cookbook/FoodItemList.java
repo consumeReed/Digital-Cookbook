@@ -11,6 +11,20 @@ public class FoodItemList implements Serializable{
 		foodlist = new ArrayList<FoodItem>(); //will become an if statment later that will auto check if the user has existing data
 	}
 	
+	public void updateFile()
+	{
+		try{
+		    FileOutputStream writeData = new FileOutputStream("lib\\data.txt");
+		    ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
+
+		    writeStream.writeObject(foodlist);
+		    writeStream.flush();
+		    writeStream.close();
+
+		}catch (IOException e) {
+		    e.printStackTrace();
+		}
+	}
 	
 	/**
 	 * 
@@ -23,17 +37,7 @@ public class FoodItemList implements Serializable{
 		newFood.id = foodlist.size()+1;
 		foodlist.add(newFood);
 		
-		try{
-		    FileOutputStream writeData = new FileOutputStream("lib\\data.txt");
-		    ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
-
-		    writeStream.writeObject(foodlist);
-		    writeStream.flush();
-		    writeStream.close();
-
-		}catch (IOException e) {
-		    e.printStackTrace();
-		}
+		updateFile();
 	}
 	
 	/**
