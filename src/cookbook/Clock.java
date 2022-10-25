@@ -5,7 +5,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /** 
- * Timer 
+ * Timer and Date 
  */
 
 public class Clock
@@ -15,21 +15,24 @@ public class Clock
 	
 	Timer timer = new Timer();
 	
-	TimerTask task = new TimerTask() {
-		
-	public void run() {
+	TimerTask task = new TimerTask() 
+	{
+		public void run() 
+		{
 		// time passed
 		timePassed++;
 		System.out.println("Time started: " + timePassed);
 		}
 	};
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		Clock clock = new Clock();
 		clock.start();
 	}
 	
-	public void start() {
+	public void start() 
+	{
 		System.out.println(new Date ());
 		timer.scheduleAtFixedRate(task, 1000, 1000);
 		completeTask();
@@ -55,7 +58,7 @@ public class Clock
 			catch(InterruptedException ex)
 		{
 				ex.printStackTrace();
-			}
+		}
 	}
 	
 	/**public void start()
