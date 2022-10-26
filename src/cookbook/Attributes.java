@@ -13,14 +13,14 @@ public class Attributes implements Serializable{
 	
 	
 	/** Positions to meaning: # Courses / Allergens
-	 * 0 Breakfast / Milk
-	 * 1 Lunch / Eggs
-	 * 2 Dinner / Fish
-	 * 3 Dessert / Crustacean Shellfish
-	 * 4 Appetizer / Tree Nuts
-	 * 5 Snack / Peanuts
-	 * 6 Side / Wheat
-	 * 7 Main / Soya
+	 * 0 Breakfast / Milk                      1
+	 * 1 Lunch / Eggs						   2
+	 * 2 Dinner / Fish						   4
+	 * 3 Dessert / Crustacean Shellfish		   8
+	 * 4 Appetizer / Tree Nuts				   16
+	 * 5 Snack / Peanuts					   32
+	 * 6 Side / Wheat						   64
+	 * 7 Main / Soya						   128
 	 */
 	
 	private ArrayList<String> attrText = new ArrayList<String>();
@@ -29,6 +29,15 @@ public class Attributes implements Serializable{
 	
 	public Attributes(boolean type){
 		this.type = type;
+	}
+	
+	/**
+	 * Test method to easily set attributes
+	 * 
+	 */
+	public void setAttr(int input)
+	{
+		attr = input;
 	}
 	
 	public void changePos0()
