@@ -50,7 +50,23 @@ public class FoodItemList implements Serializable{
 		foodlist.add(newFood);
 	}
 	
+	  /**
+	   * Delete fooditem by ID
+	   * @param ids
+	   */
+	  public void deleteFood(int ids) {
+	  		if((ids > 0) && (ids <= foodlist.size())) {
+	  			foodlist.remove(ids-1);
+	  		}
+	 }
+
 	
+	public FoodItem getById(int ids) {
+		if((ids > 0)&&(ids <= foodlist.size())) {
+			return foodlist.get(ids-1);
+		}
+		return null;
+	}
 	/**
 	 * IF YOU WANT TO ADD MORE THINGS TO SEARCH BY TALK TO REED ABOUT THIS FIRST
 	 * 
@@ -97,7 +113,7 @@ public class FoodItemList implements Serializable{
 		
 		return searchedList;
 		
-		}
+	}
 		
 /**	
 	/**
