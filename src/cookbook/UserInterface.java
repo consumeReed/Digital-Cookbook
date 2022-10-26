@@ -3,23 +3,25 @@ package cookbook;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.*;
 
 
-public class UserInterface {
+public class UserInterface implements KeyListener{
 
 	private JFrame initial_frame;
 	private JButton open_recipe_add;
 	private JTextField recipe_search_bar;
-	private JButton recipe_search;
+	private JButton recipe_search; 
 	private JButton search_bar_clear;
 	private JLabel test_label;
 	
 	private JFrame add_recipe_frame;
 	
 	private ActionListener open_recipe_frame;
-	private ActionListener search_recipe_book;
+	private ActionListener search_recipe_book; 
 	private ActionListener clear_search_bar;
 	
 	public static void main(String[] args) {
@@ -110,7 +112,31 @@ public class UserInterface {
 				recipe_search_bar.setText("");
 			}
 		};
+	
 	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		 }
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		if (e.getKeyCode()==KeyEvent.VK_ENTER)// clicking enter button for search
+		 { 
+				if(test_label.getText() == "") {
+					test_label.setText(recipe_search_bar.getText());			// recipe_search_bar.getText() is used to get text thats stored in recipe_search_bar at time of button click
+				}
+				else {
+					test_label.setText(recipe_search_bar.getText());
+				
 	
-	
+	}}}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 }
