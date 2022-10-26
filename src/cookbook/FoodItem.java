@@ -145,6 +145,14 @@ public class FoodItem implements Serializable{
 	}
 	
 	/**
+	 * Get method for ID
+	 * @return int id.
+	 */
+	public int getId() {
+		return id;
+	}
+	
+	/**
 	 * Outputs all ingredients
 	 */
 	public void listIngredients()
@@ -175,7 +183,7 @@ public class FoodItem implements Serializable{
 	public String toString()
 	{
 		return "Name: " + name + "\n Text Instructions: " + textInstructions + "\n Ingredients: " + ingredients + "\nAllergens: " + allergens +
-				"\nCourses: " + courses;
+				"\nCourses: " + courses + "\nID: " + id;
 	}
 
 }

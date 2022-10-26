@@ -12,7 +12,7 @@ public class Attributes implements Serializable{
 	 */
 	
 	
-	/** Positions to meaning
+	/** Positions to meaning: # Courses / Allergens
 	 * 0 Breakfast / Milk
 	 * 1 Lunch / Eggs
 	 * 2 Dinner / Fish
