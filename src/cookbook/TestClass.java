@@ -10,11 +10,44 @@ public class TestClass {
 		 * Uncomment/comment out test methods you want to have shown in console.
 		 */
 		
-		testRetrieval();
+		getID();
+		//testDelete();
+		//testRetrieval();
 		//testAddRecipe();
 		//testSearch();
 		//testAddIngredientsToFood();
 		//testRandomRecipe();
+	}
+	
+	
+	public static void getID()
+	{
+		FoodItemList f = new FoodItemList();
+		f.addFood("Chicken Parmesan", " oven");
+		f.addFood("Filet Mignon", "Preheat oven");
+		f.addFood("Chicken Nuggets", "Frozen chicken nuggets into oven");
+		f.addFood("Chicken Nuggets", "With Ketchup");
+		f.addFood("Chilean Sea Bass", "pan sear the fish");
+		f.deleteFood(4);
+		f.addFood("chicken soup", "pot with food");
+		System.out.println(f.displayAll());
+		System.out.println("\n\n\n"+f.getById(3));
+	}
+	
+	public static void testDelete()
+	{
+		
+		FoodItemList f = new FoodItemList();
+		f.addFood("Chicken Parmesan", " oven");
+		f.addFood("Filet Mignon", "Preheat oven");
+		f.addFood("Chicken Nuggets", "Frozen chicken nuggets into oven");
+		f.addFood("Chicken Nuggets", "With Ketchup");
+		f.addFood("Chilean Sea Bass", "pan sear the fish");
+		System.out.println(f.displayAll());
+		f.deleteFood(4);
+		System.out.println(f.displayAll());
+		f.addFood("chicken soup", "pot with food");
+		System.out.println(f.displayAll());
 	}
 	
 	public static void testRetrieval()
@@ -30,7 +63,6 @@ public class TestClass {
 		f.foodlist.get(4).courses.changePos2();
 		f.foodlist.get(4).courses.changePos1();
 		f.updateFile();
-		
 		
 		try{
 		    FileInputStream readData = new FileInputStream("lib\\data.txt");

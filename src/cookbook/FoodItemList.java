@@ -2,13 +2,15 @@ package cookbook;
 import java.util.*;
 import java.io.*;
 
-public class FoodItemList implements Serializable{
+public class FoodItemList implements Serializable {
 	
 	public ArrayList<FoodItem> foodlist;
+	public int globalid;
 	
 	public FoodItemList()
 	{
 		foodlist = new ArrayList<FoodItem>(); //will become an if statment later that will auto check if the user has existing data
+		int globalid = 0;
 	}
 	
 	public void updateFile()
@@ -34,7 +36,8 @@ public class FoodItemList implements Serializable{
 	public void addFood(String name, String textInstructions)
 	{
 		FoodItem newFood = new FoodItem(textInstructions, name);
-		newFood.id = foodlist.size()+1;
+		newFood.id = globalid+1;
+		globalid++;
 		foodlist.add(newFood);
 		
 		updateFile();
@@ -46,7 +49,7 @@ public class FoodItemList implements Serializable{
 	 */
 	public void addFood(FoodItem adder) {
 		FoodItem newFood = adder;
-		newFood.id = foodlist.size()+1;
+		newFood.id = globalid+1;
 		foodlist.add(newFood);
 	}
 	
@@ -55,15 +58,18 @@ public class FoodItemList implements Serializable{
 	   * @param ids
 	   */
 	  public void deleteFood(int ids) {
-	  		if((ids > 0) && (ids <= foodlist.size())) {
-	  			foodlist.remove(ids-1);
-	  		}
+	  		RemoveFoodItem rfi = new RemoveFoodItem(foodlist);
+	  		foodlist = rfi.remove(ids);	
+	  		updateFile();
 	 }
 
 	
-	public FoodItem getById(int ids) {
-		if((ids > 0)&&(ids <= foodlist.size())) {
-			return foodlist.get(ids-1);
+	public FoodItem getById(int ids) 
+	{
+		for(FoodItem f : foodlist)
+		{
+			if(f.getId()==ids)
+				return f;
 		}
 		return null;
 	}
@@ -178,19 +184,7 @@ public class FoodItemList implements Serializable{
 		return p;
 	}
 **/
-	/*
-	 * Only if we go with 1 recipe per food name, otherwise we use id to delete
-	 */
-	public void deleteName(String name)
-	{
-		for(int i = 0; i< foodlist.size(); i++)
-		{
-			if(foodlist.get(i).getName().toLowerCase().equals(name.toLowerCase()))
-				foodlist.remove(i);
-		}
-			
-	}
-	
+
 	
 	/**
 	 * 
