@@ -10,7 +10,8 @@ public class TestClass {
 		 * Uncomment/comment out test methods you want to have shown in console.
 		 */
 		
-		getID();
+		testRetrievalID();
+		//getID();
 		//testDelete();
 		//testRetrieval();
 		//testAddRecipe();
@@ -19,6 +20,19 @@ public class TestClass {
 		//testRandomRecipe();
 	}
 	
+	public static void testRetrievalID()
+	{
+		FoodItemList f = new FoodItemList();
+		//System.out.println(f.displayAll());
+		//System.out.println(f.displayAll());
+		f.addFood("chocolate","cocoa powder");
+		//System.out.println(f.displayAll());
+		f.removeAll();
+		System.out.println(f.displayAll());
+		f.addFood("test", "text");
+		System.out.println(f.displayAll());
+		
+	}
 	
 	public static void getID()
 	{

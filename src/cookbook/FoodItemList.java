@@ -5,17 +5,34 @@ import java.io.*;
 public class FoodItemList implements Serializable {
 	
 	public ArrayList<FoodItem> foodlist;
-	public int globalid;
+	public int globalid = 0;
 	
 	public FoodItemList()
 	{
-		foodlist = new ArrayList<FoodItem>(); //will become an if statment later that will auto check if the user has existing data
-		int globalid = 0;
+		foodlist = new ArrayList<FoodItem>();
+		
+		try{
+			
+		    FileInputStream readData = new FileInputStream("lib\\data.txt");
+		    ObjectInputStream readStream = new ObjectInputStream(readData);
+
+		    ArrayList<FoodItem> foo = (ArrayList<FoodItem>) readStream.readObject();
+		    readStream.close();
+		    foodlist = foo;
+		    globalid = foodlist.get(foodlist.size()-1).getId();
+		    }catch (Exception e) {
+		    	foodlist = new ArrayList<FoodItem>();
+		}
+		
 	}
 	
 	public void updateFile()
 	{
 		try{
+			PrintWriter writer = new PrintWriter("lib\\data.txt");
+			writer.print("");
+			writer.close();
+			
 		    FileOutputStream writeData = new FileOutputStream("lib\\data.txt");
 		    ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
 
@@ -218,6 +235,7 @@ public class FoodItemList implements Serializable {
 	public void removeAll()
 	{
 		foodlist.clear();
+		updateFile();
 	}
 	
 
