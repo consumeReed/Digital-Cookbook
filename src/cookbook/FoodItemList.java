@@ -90,8 +90,10 @@ public class FoodItemList implements Serializable {
 		}
 		return null;
 	}
+	
+
 	/**
-	 * IF YOU WANT TO ADD MORE THINGS TO SEARCH BY TALK TO REED ABOUT THIS FIRST
+	 * Search method
 	 * 
 	 */
 	public ArrayList<FoodItem> search(String name, Attributes allergy, Attributes course)
@@ -127,6 +129,54 @@ public class FoodItemList implements Serializable {
 			ArrayList<FoodItem> tmp3 = new ArrayList<>();
 			for(FoodItem item : searchedList) {
 				if(item.inCourse(course)) {
+					tmp3.add(item);
+				}
+			}
+			searchedList = tmp3; 
+		}
+
+		
+		return searchedList;
+		
+	}
+	
+	/**
+	 * Search method with inclusion/exclusion
+	 * 
+	 */
+	public ArrayList<FoodItem> search(String name, Attributes allergy, Attributes course, boolean includeAllergy, boolean includeCourse)
+	{
+		ArrayList<FoodItem> searchedList = foodlist;
+		ArrayList<FoodItem> tmp = new ArrayList<FoodItem>();
+		if(name != null)
+		{
+			for(int i = 0; i < searchedList.size(); i++)
+			{
+				if(searchedList.get(i).getName().toLowerCase().contains(name.toLowerCase()))
+					tmp.add(searchedList.get(i));
+			}
+			searchedList = tmp;
+			
+		}
+	
+		
+		
+		if(allergy != null)
+		{
+			ArrayList<FoodItem> tmp2 = new ArrayList<FoodItem>();
+				
+					for(FoodItem item : searchedList) 
+					{
+						if(item.hasAllergens(allergy)&&includeAllergy)
+							tmp2.add(item);
+					}
+					searchedList = tmp2;
+				}
+		
+		if(course != null) {
+			ArrayList<FoodItem> tmp3 = new ArrayList<>();
+			for(FoodItem item : searchedList) {
+				if(item.inCourse(course)&&includeCourse) {
 					tmp3.add(item);
 				}
 			}

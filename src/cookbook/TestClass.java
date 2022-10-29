@@ -10,7 +10,8 @@ public class TestClass {
 		 * Uncomment/comment out test methods you want to have shown in console.
 		 */
 		
-		testRetrievalID();
+		testSearchInclusionExclusion();
+		//testRetrievalID();
 		//getID();
 		//testDelete();
 		//testRetrieval();
@@ -18,6 +19,18 @@ public class TestClass {
 		//testSearch();
 		//testAddIngredientsToFood();
 		//testRandomRecipe();
+	}
+	
+	public static void testSearchInclusionExclusion()
+	{
+		FoodItemList f = new FoodItemList();
+		//System.out.println(f.displayAll());
+		Attributes a = new Attributes(true);
+		Attributes b = new Attributes(false);
+		b.changePos3();
+		a.changePos3();
+		f.getById(2).allergens.changePos3();
+		System.out.println("\n\nSEARCHING RECIPES WITH NAME CONTAINING PIZZA\n-----------------------------\n" + f.search(null, a, null, true, false));
 	}
 	
 	public static void testRetrievalID()
