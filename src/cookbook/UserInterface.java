@@ -137,7 +137,7 @@ public class UserInterface {
 		
 		// Sets layout for the add_recipe_frame
 		BorderLayout border = new BorderLayout();
-		FlowLayout flow = new FlowLayout(FlowLayout.CENTER, 5, 20);
+		FlowLayout flow = new FlowLayout(FlowLayout.CENTER, 35, 5);
 		BoxLayout box = new BoxLayout(instruc_and_culture_panel, BoxLayout.PAGE_AXIS);
 		BorderLayout grid_border = new BorderLayout();
 		GridLayout grid = new GridLayout(20, 20);
@@ -148,8 +148,8 @@ public class UserInterface {
 		ingredient_handler_panel.setLayout(grid);
 		holder.setLayout(grid_border);
 		
-		add_recipe_frame.add(choose_add_recipe_type, BorderLayout.CENTER);
-		add_recipe_frame.add(instruc_and_culture_panel, BorderLayout.WEST);
+		add_recipe_frame.add(choose_add_recipe_type, BorderLayout.NORTH);
+		add_recipe_frame.add(instruc_and_culture_panel, BorderLayout.CENTER);
 		add_recipe_frame.add(holder, BorderLayout.EAST);
 		holder.add(ingredient_handler_panel, BorderLayout.EAST);
 		
@@ -176,7 +176,9 @@ public class UserInterface {
 		instruc_and_culture_panel.setBorder(BorderFactory.createEmptyBorder(0, 25, 0, 0));
 		
 		add_ingredient.setPreferredSize(new Dimension(250, 20));;
-		ingredient_handler_panel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		add_ingredient.setMaximumSize(new Dimension(250, 20));
+		
+		ingredient_handler_panel.setBorder(BorderFactory.createEmptyBorder(200, 100, 0, 25));
 		
 		
 		// Listeners
@@ -197,6 +199,7 @@ public class UserInterface {
 		instruc_and_culture_panel.add(add_culture);
 		instruc_and_culture_panel.add(Box.createRigidArea(new Dimension(450, 200)));
 		ingredient_handler_panel.add(add_ingredient);
+		ingredient_handler_panel.add(add_ingredient_button);
 	}
 	
 	
