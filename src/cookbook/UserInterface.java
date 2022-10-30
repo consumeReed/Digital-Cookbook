@@ -13,6 +13,9 @@ import javax.swing.*;
 
 public class UserInterface {
 
+	// Implementation
+	
+	//----------------------------------------
 	// Main Panel w/ Buttons & Text Fields
 	private JPanel search_panel;	
 	private JFrame initial_frame;
@@ -26,7 +29,7 @@ public class UserInterface {
 	private ActionListener open_recipe_frame;
 	private ActionListener search_recipe_book;
 	private ActionListener clear_search_bar;
-	private KeyListener enter;
+	private KeyListener enter_for_search;
 	private FocusListener text_prompt;
 	//-----------------------------------------
 	// Panel for Adding a Recipe w/ Buttons & Text Fields
@@ -40,6 +43,7 @@ public class UserInterface {
 	private JTextField add_ingredient;
 	private JButton add_ingredient_button;
 	private JTextArea add_instructions;
+	private JScrollPane instructions_scroll;
 	private JTextField add_culture;
 	private JLabel added_ingredients;
 	private JButton remove_ingredient_button;
@@ -80,7 +84,7 @@ public class UserInterface {
 		initial_frame.setLocation(100, 100);
 		
 		// Component initializations
-		recipe_search_bar = new JTextField("Search Recipe");
+		recipe_search_bar = new JTextField();
 		recipe_search = new JButton("Search");
 		search_bar_clear = new JButton("X");
 		open_recipe_add = new JButton("Add Recipe");
@@ -88,11 +92,12 @@ public class UserInterface {
 		
 		// Component setups
 		recipe_search_bar.setPreferredSize(new Dimension(300, 20));
+		recipe_search_bar.setText("Search Recipe");
 		
 		// Listeners
 		open_recipe_add.addActionListener(open_recipe_frame);
 		recipe_search.addActionListener(search_recipe_book);
-		recipe_search_bar.addKeyListener(enter);
+		recipe_search_bar.addKeyListener(enter_for_search);
 		recipe_search_bar.addFocusListener(text_prompt);
 		search_bar_clear.addActionListener(clear_search_bar);		
 		
@@ -122,6 +127,7 @@ public class UserInterface {
 		choose_add_recipe_type = new JPanel();
 		instruc_and_culture_panel = new JPanel();
 		ingredient_handler_panel = new JPanel();
+		JPanel holder = new JPanel();
 		add_recipe_frame = new JFrame("New Recipe");
 		add_recipe_frame.setVisible(true);
 		add_recipe_frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -133,21 +139,25 @@ public class UserInterface {
 		BorderLayout border = new BorderLayout();
 		FlowLayout flow = new FlowLayout(FlowLayout.CENTER, 5, 20);
 		BoxLayout box = new BoxLayout(instruc_and_culture_panel, BoxLayout.PAGE_AXIS);
-		GridLayout grid = new GridLayout();
+		BorderLayout grid_border = new BorderLayout();
+		GridLayout grid = new GridLayout(20, 20);
 		
 		add_recipe_frame.setLayout(border);
 		choose_add_recipe_type.setLayout(flow);
 		instruc_and_culture_panel.setLayout(box);
 		ingredient_handler_panel.setLayout(grid);
+		holder.setLayout(grid_border);
 		
-		add_recipe_frame.add(choose_add_recipe_type);
-		add_recipe_frame.add(instruc_and_culture_panel, BorderLayout.LINE_START);
-		add_recipe_frame.add(ingredient_handler_panel, BorderLayout.LINE_END);
+		add_recipe_frame.add(choose_add_recipe_type, BorderLayout.CENTER);
+		add_recipe_frame.add(instruc_and_culture_panel, BorderLayout.WEST);
+		add_recipe_frame.add(holder, BorderLayout.EAST);
+		holder.add(ingredient_handler_panel, BorderLayout.EAST);
 		
 		// Component initializations
 		choose_text_add = new JButton("Text");
 		choose_image_add = new JButton("Image");
 		add_instructions = new JTextArea();
+		instructions_scroll = new JScrollPane(add_instructions);
 		add_culture = new JTextField();
 		add_ingredient = new JTextField();
 		add_ingredient_button = new JButton("+");
@@ -155,20 +165,18 @@ public class UserInterface {
 		remove_ingredient_button = new JButton();
 		remove_ingredient = new JComboBox<String>();
 		
-		JLabel filler1 = new JLabel();
-		JLabel filler2 = new JLabel();
-		JLabel filler3 = new JLabel();
 		
 		// Component setups
 		choose_text_add.setPreferredSize(new Dimension(170, 25));
 		choose_image_add.setPreferredSize(new Dimension(170, 25));
 		
-		filler3.setPreferredSize(new Dimension(350, 200));
-		add_instructions.setPreferredSize(new Dimension(350, 40));
-		filler2.setPreferredSize(new Dimension(350, 50));
-		add_culture.setPreferredSize(new Dimension(350, 20));
-		filler1.setPreferredSize(new Dimension(350, 200));
+		instructions_scroll.setPreferredSize(new Dimension(20, 40));
+		instructions_scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		add_culture.setMaximumSize(new Dimension(450, 30));
+		instruc_and_culture_panel.setBorder(BorderFactory.createEmptyBorder(0, 25, 0, 0));
 		
+		add_ingredient.setPreferredSize(new Dimension(250, 20));;
+		ingredient_handler_panel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
 		
 		
 		// Listeners
@@ -176,19 +184,19 @@ public class UserInterface {
 		
 		// Color setup
 		choose_add_recipe_type.setBackground(Color.DARK_GRAY);
-		filler1.setBackground(Color.DARK_GRAY);
-		filler2.setBackground(Color.DARK_GRAY);
-		filler3.setBackground(Color.DARK_GRAY);
+		instruc_and_culture_panel.setBackground(Color.DARK_GRAY);
+		ingredient_handler_panel.setBackground(Color.DARK_GRAY);
+		add_recipe_frame.setBackground(Color.DARK_GRAY);
 		
 		// Layout creation
 		choose_add_recipe_type.add(choose_text_add);
 		choose_add_recipe_type.add(choose_image_add);
-		instruc_and_culture_panel.add(filler3);
-		instruc_and_culture_panel.add(add_instructions);
-		instruc_and_culture_panel.add(filler2);
+		instruc_and_culture_panel.add(Box.createRigidArea(new Dimension(450, 200)));
+		instruc_and_culture_panel.add(instructions_scroll);
+		instruc_and_culture_panel.add(Box.createRigidArea(new Dimension(450, 100)));
 		instruc_and_culture_panel.add(add_culture);
-		instruc_and_culture_panel.add(filler1);
-		
+		instruc_and_culture_panel.add(Box.createRigidArea(new Dimension(450, 200)));
+		ingredient_handler_panel.add(add_ingredient);
 	}
 	
 	
@@ -205,8 +213,8 @@ public class UserInterface {
 		search_recipe_book = new ActionListener() {								// When recipe_search is clicked, the text will be printed onto recipe_search_output
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (recipe_search_output.getText() == "") {
-					recipe_search_output.setText(recipe_search_bar.getText());	// Current issue where if button is pressed with nothing enters, "Search Recipe" is sent to recipe_search_output
+				if (recipe_search_bar.getText().equals("Search Recipe")) {
+					recipe_search_output.setText("x");
 				}
 				else {
 					recipe_search_output.setText(recipe_search_bar.getText());
@@ -217,15 +225,15 @@ public class UserInterface {
 		clear_search_bar = new ActionListener() {								// When search_bar_clear is clicked, the text in recipe_search_bar and recipe_search_output will be cleared (set to "")
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				recipe_search_bar.setText("");
+				recipe_search_bar.setText("Search Recipe");
 				recipe_search_output.setText("");
 			}
 		};
 		
-		enter = new KeyListener() {
+		enter_for_search = new KeyListener() {									// Clicking enter button will search
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode()==KeyEvent.VK_ENTER) {						// Clicking enter button for search
+				if (e.getKeyCode()==KeyEvent.VK_ENTER) {
 					if(recipe_search_output.getText() == "") {
 						recipe_search_output.setText(recipe_search_bar.getText());
 					}
