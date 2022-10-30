@@ -30,7 +30,8 @@ public class TestClass {
 		b.changePos3();
 		a.changePos3();
 		f.getById(2).allergens.changePos3();
-		System.out.println("\n\nSEARCHING RECIPES WITH NAME CONTAINING PIZZA\n-----------------------------\n" + f.search(null, a, null, true, false));
+		//search name, allergy, course, includeallergy, includecourse
+		System.out.println("\n\nSEARCHING RECIPES WITH NAME CONTAINING PIZZA\n-----------------------------\n" + f.search(null, a, null, false, false));
 	}
 	
 	public static void testRetrievalID()

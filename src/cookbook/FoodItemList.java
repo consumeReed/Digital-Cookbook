@@ -169,6 +169,8 @@ public class FoodItemList implements Serializable {
 					{
 						if(item.hasAllergens(allergy)&&includeAllergy)
 							tmp2.add(item);
+						if(!item.hasAllergens(allergy)&&!includeAllergy)
+							tmp2.add(item);
 					}
 					searchedList = tmp2;
 				}
@@ -177,6 +179,8 @@ public class FoodItemList implements Serializable {
 			ArrayList<FoodItem> tmp3 = new ArrayList<>();
 			for(FoodItem item : searchedList) {
 				if(item.inCourse(course)&&includeCourse) {
+					tmp3.add(item);
+				if(!item.inCourse(course)&&!includeCourse)
 					tmp3.add(item);
 				}
 			}
