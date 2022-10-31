@@ -11,7 +11,6 @@ import java.nio.file.StandardCopyOption;
 
 import javax.swing.*;
 
-import org.apache.commons.io.FileUtils;
 
 public class MyFrame extends JFrame implements ActionListener{
 
