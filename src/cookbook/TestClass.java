@@ -10,13 +10,13 @@ public class TestClass {
 		 * Uncomment/comment out test methods you want to have shown in console.
 		 */
 		
-		testSearchInclusionExclusion();
+		//testSearchInclusionExclusion();
 		//testRetrievalID();
 		//getID();
 		//testDelete();
 		//testRetrieval();
 		//testAddRecipe();
-		//testSearch();
+		testSearch();
 		//testAddIngredientsToFood();
 		//testRandomRecipe();
 	}
