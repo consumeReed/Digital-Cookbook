@@ -59,12 +59,28 @@ public class FoodItem implements Serializable{
 	public void parseIngredients(String input)
 	{
 		Scanner scanner = new Scanner(input);
+		ingredients.clear();
 		while (scanner.hasNextLine()) {
 		  String line = scanner.nextLine();
 		  if(!ingredients.contains(line.toLowerCase()))
 				ingredients.add(line.toLowerCase());
 		}
 		scanner.close();
+	}
+	
+	public String getIngredients()
+	{
+		String txt = "";
+		for(int i = 0; i < ingredients.size(); i++)
+		{
+			txt+=ingredients.get(i)+"\n";
+		}
+		return txt;
+	}
+	
+	public void deleteIngredient(int input)
+	{
+		ingredients.remove(input);
 	}
 	
 	/**
