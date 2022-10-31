@@ -13,7 +13,7 @@ public class FoodItemList implements Serializable {
 		
 		try{
 			
-		    FileInputStream readData = new FileInputStream("lib\\data.txt");
+		    FileInputStream readData = new FileInputStream("userdata\\data.txt");
 		    ObjectInputStream readStream = new ObjectInputStream(readData);
 
 		    ArrayList<FoodItem> foo = (ArrayList<FoodItem>) readStream.readObject();
@@ -29,11 +29,11 @@ public class FoodItemList implements Serializable {
 	public void updateFile()
 	{
 		try{
-			PrintWriter writer = new PrintWriter("lib\\data.txt");
+			PrintWriter writer = new PrintWriter("userdata\\data.txt");
 			writer.print("");
 			writer.close();
 			
-		    FileOutputStream writeData = new FileOutputStream("lib\\data.txt");
+		    FileOutputStream writeData = new FileOutputStream("userdata\\data.txt");
 		    ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
 
 		    writeStream.writeObject(foodlist);

@@ -9,7 +9,6 @@ public class FoodItem implements Serializable{
 	private String name;							// Name of the food
 	
 	private ArrayList<String> ingredients;			// Ingredients contained in the food
-	private ArrayList<String> foodType;				// The type list of foods
 	public Attributes courses;								// An integer to count bits for each course
 	public Attributes allergens;
 	
@@ -57,6 +56,16 @@ public class FoodItem implements Serializable{
 		ingredients = new ArrayList<String>();
 	}
 	
+	public void parseIngredients(String input)
+	{
+		Scanner scanner = new Scanner(input);
+		while (scanner.hasNextLine()) {
+		  String line = scanner.nextLine();
+		  if(!ingredients.contains(line.toLowerCase()))
+				ingredients.add(line.toLowerCase());
+		}
+		scanner.close();
+	}
 	
 	/**
 	 * Getter for the name of the food
@@ -64,6 +73,16 @@ public class FoodItem implements Serializable{
 	public String getName()
 	{
 		return name;
+	}
+	
+	public void setNote(String notes)
+	{
+		this.notes = notes;
+	}
+	
+	public String getNotes()
+	{
+		return notes;
 	}
 	
 	/**
@@ -131,21 +150,6 @@ public class FoodItem implements Serializable{
 	
 	
 	/**
-	 * Adds a list of ingredients to the ingredients list
-	 *
-	 * @param ing A list of ingredients to add to the ingredients list
-	 */
-	public void addIngredients(ArrayList<String> ing)
-	{
-		if(ing.isEmpty())
-			return;
-		for(int i = 0; i < ing.size(); i++)
-		{
-			addIngredient(ing.get(i));
-		}
-	}
-	
-	/**
 	 * Get method for ID
 	 * @return int id.
 	 */
@@ -175,7 +179,12 @@ public class FoodItem implements Serializable{
 	{
 		if(ing == null)
 			return false;
-		return ingredients.contains(ing.toLowerCase());
+		for(int i = 0; i< ingredients.size(); i++)
+		{
+			if(ingredients.get(i).contains(ing.toLowerCase()))
+				return true;
+		}
+		return false;
 	}
 	
 	/**
