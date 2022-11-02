@@ -34,6 +34,8 @@ public class MyFrame extends JFrame implements ActionListener{
 		if(e.getSource()==button) {
 			
 			JFileChooser fileChooser = new JFileChooser();
+			fileChooser.addChoosableFileFilter(new ImageFilter());
+            fileChooser.setAcceptAllFileFilterUsed(false);
 			
 			fileChooser.setCurrentDirectory(new File(".")); //sets current directory
 			
