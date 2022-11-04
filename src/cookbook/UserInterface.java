@@ -14,79 +14,44 @@ import javax.swing.*;
 
 public class UserInterface {
 
+	// Sizing
+	final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
+	final int SCREEN_WIDTH = (int)SCREEN_SIZE.getWidth();
+	final int SCREEN_HEIGHT = (int)SCREEN_SIZE.getHeight();
+	//----------------------------------------
 	// Implementation
 	private FoodItemList food_item_list = new FoodItemList();
 	private ArrayList<String> ingredients_list;
 	//----------------------------------------
 	// Main Panel w/ Buttons & Text Fields
-	private JPanel search_panel;	
-	private JPanel buttons_panel;
-	private JPanel filter_panel;
-	private JPanel filter_panel_2;
-	private JPanel search_and_filter_panel;
-	private JPanel results_panel;
+	private JPanel search_panel, buttons_panel,	filter_panel, filter_panel_2, search_and_filter_panel, results_panel;
 	private JFrame initial_frame;
-	private JButton open_recipe_add;
-	private JButton open_recipe_remove;
+	private JButton open_recipe_add, open_recipe_remove, recipe_search, search_bar_clear;
 	private JTextField recipe_search_bar;
-	private JButton recipe_search;
-	private JButton search_bar_clear;
 	private JTextArea recipe_search_output;
-	private JCheckBox exclude_course_filter;
-	private JCheckBox breakfast_filter;
-	private JCheckBox lunch_filter;
-	private JCheckBox dinner_filter;
-	private JCheckBox dessert_filter;
-	private JCheckBox appetizer_filter;
-	private JCheckBox snack_filter;
-	private JCheckBox side_filter;
-	private JCheckBox main_filter;
-	private JCheckBox exclude_ingredient_filter;
-	private JCheckBox milk_filter;
-	private JCheckBox eggs_filter;
-	private JCheckBox fish_filter;
-	private JCheckBox crustacean_shellfish_filter;
-	private JCheckBox tree_nut_filter;
-	private JCheckBox peanut_filter;
-	private JCheckBox wheat_filter;
-	private JCheckBox soya_filter;
+	private JCheckBox exclude_course_filter, breakfast_filter, lunch_filter, dinner_filter, dessert_filter, appetizer_filter, snack_filter,
+	side_filter, main_filter, exclude_ingredient_filter, milk_filter, eggs_filter, fish_filter, crustacean_shellfish_filter, tree_nut_filter,
+	peanut_filter, wheat_filter, soya_filter;
 	//-----------------------------------------
 	// Listeners for Main Panel
-	private ActionListener open_recipe_frame;
-	private ActionListener search_recipe_book;
-	private ActionListener clear_search_bar;
+	private ActionListener open_recipe_frame, search_recipe_book, clear_search_bar, filter_search;
 	private KeyListener enter_for_search;
 	private FocusListener text_prompt;
-	private ActionListener filter_search;
 	//-----------------------------------------
 	// Panel for Adding a Recipe w/ Buttons & Text Fields
-	private JPanel ingredient_handler_panel;
-	private JPanel add_ingredient_handler_panel;
-	private JPanel list_ingredient_handler_panel;
-	private JPanel instruc_and_culture_panel;
-	private JPanel save_panel;
-	private JPanel choose_add_recipe_type;
+	private JPanel ingredient_handler_panel, add_ingredient_handler_panel, list_ingredient_handler_panel, instruc_and_culture_panel,
+	save_panel, choose_add_recipe_type;
 	private JFrame add_recipe_frame;
-	private JButton choose_text_add;
-	private JButton choose_image_add;
-	private JTextField add_ingredient;
-	private JButton add_ingredient_button;
+	private JButton choose_text_add, choose_image_add, add_ingredient_button, remove_ingredient_button, save_new_recipe_button;
+	private JTextField add_ingredient, add_culture;
 	private JTextArea add_instructions;
 	private JScrollPane instructions_scroll;
-	private JTextField add_culture;
 	private JLabel added_ingredients;
-	private JButton remove_ingredient_button;
-	private JButton save_new_recipe_button;
 	//-----------------------------------------
 	// Listeners for Adding a Recipe
-	private ActionListener text_recipe_type;
-	private ActionListener image_recipe_type;
-	private ActionListener ingredient_add;
-	private ActionListener ingredient_remove;
+	private ActionListener text_recipe_type, image_recipe_type, ingredient_add, ingredient_remove, save_new_recipe;
 	private KeyListener ingredient_add_enter;
-	private FocusListener text_prompt_culture;
-	private FocusListener text_prompt_ingredient;
-	private ActionListener save_new_recipe;
+	private FocusListener text_prompt_culture, text_prompt_ingredient;
 	//-----------------------------------------
 	
 	
@@ -121,8 +86,8 @@ public class UserInterface {
 		initial_frame.add(search_panel);										// Sets the size of the frame (currently 1080 x 720 pixels) (100, 100 represents where on the device the frame will be created ie at pos (100, 100))
 		initial_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);			// When "X" in top right corner is click, this makes it so the frame closes
 		initial_frame.pack();
-		initial_frame.setSize(1080, 720);
-		initial_frame.setLocation(100, 100);
+		initial_frame.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+		initial_frame.setLocation(0, 0);
 		
 		// Sets layouts for initial_frame
 		BorderLayout main_border = new BorderLayout();
@@ -173,11 +138,14 @@ public class UserInterface {
 		wheat_filter = new JCheckBox("Wheat");
 		soya_filter = new JCheckBox("Soya");
 		
+		// Sizing setup
+		
 		// Component setups
-//		results_panel.setBorder(BorderFactory.createEmptyBorder(60, 0, 30, 0));
-		recipe_search_bar.setPreferredSize(new Dimension(300, 20));
+		results_panel.setBorder(BorderFactory.createMatteBorder(20, 40, 60, 40, Color.DARK_GRAY));
+		recipe_search_bar.setPreferredSize(new Dimension(800, 20));
 		recipe_search_bar.setText("Search Recipe");
-		recipe_search_output.setPreferredSize(new Dimension(initial_frame.getWidth() - buttons_panel.getWidth() - 30, initial_frame.getHeight() - search_and_filter_panel.getHeight()));
+		recipe_search_output.setPreferredSize(new Dimension(1702, 852));
+		recipe_search_output.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
 		recipe_search_output.setLineWrap(true);
 		recipe_search_output.setWrapStyleWord(true);
 		recipe_search_output.setEditable(false);
@@ -191,8 +159,7 @@ public class UserInterface {
 		
 		// Color setup															// *Just put this for testing purposes, feel free to edit*
 		search_panel.setBackground(Color.DARK_GRAY);
-		results_panel.setBackground(Color.WHITE);
-		results_panel.setBounds(0, 0, initial_frame.getWidth() - buttons_panel.getWidth() - 30, initial_frame.getHeight() - search_and_filter_panel.getHeight() - 30);
+		results_panel.setBackground(Color.DARK_GRAY);
 		buttons_panel.setBackground(Color.DARK_GRAY);
 		search_and_filter_panel.setBackground(Color.DARK_GRAY);
 		search_panel.setBackground(Color.DARK_GRAY);
@@ -243,6 +210,8 @@ public class UserInterface {
 		search_bar_clear.setBackground(Color.DARK_GRAY);
 		search_bar_clear.setForeground(Color.WHITE);
 		recipe_search_output.setForeground(Color.BLACK);
+		recipe_search_output.setBackground(Color.LIGHT_GRAY);
+		recipe_search_output.setFont(new Font("Serif", Font.PLAIN, 24));
 		
 		
 		// Layout creation
@@ -286,8 +255,8 @@ public class UserInterface {
 		add_recipe_frame.setVisible(true);
 		add_recipe_frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		add_recipe_frame.pack();
-		add_recipe_frame.setSize(1080, 720);
-		add_recipe_frame.setLocation(125, 125);
+		add_recipe_frame.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+		add_recipe_frame.setLocation(20, 20);
 		
 		// Sets layout for the add_recipe_frame
 		BorderLayout border = new BorderLayout();
