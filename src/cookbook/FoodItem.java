@@ -16,7 +16,7 @@ public class FoodItem implements Serializable{
 	private String notes;							// Notes about the food
 	
 	private String textInstructions;				// Instructions on how to prepare the food
-	private Image imageInstructions; 				// may want to create our own class to store as image location???
+	private String imageInstructions; 				// may want to create our own class to store as image location???
 	
 	public int id;									// Unique ID for the food item
 
@@ -38,6 +38,29 @@ public class FoodItem implements Serializable{
 		ingredients = new ArrayList<String>();
 		allergens = new Attributes(true);
 		courses = new Attributes(false);
+	}
+	
+	/**
+	 * Constructor with only name param for UI
+	 */
+	public FoodItem(String name)
+	{
+		this.name = name;
+		ingredients = new ArrayList<String>();
+		allergens = new Attributes(true);
+		courses = new Attributes(false);
+	}
+	
+	public void addText(String textInstructions)
+	{
+		this.textInstructions = textInstructions;
+		imageInstructions = null;
+	}
+	
+	public void addImage(String imageInstructions)
+	{
+		this.imageInstructions = imageInstructions;
+		textInstructions = null;
 	}
 	
 	/**
