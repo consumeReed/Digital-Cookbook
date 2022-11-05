@@ -63,22 +63,7 @@ public class FoodItem implements Serializable{
 		textInstructions = null;
 	}
 	
-	/**
-	 * Constructor for when creating an image instruction based recipe
-	 *
-	 * @param textInstructions The instructions for a food item
-	 * @param name The name of the food item
-	 */
-	public FoodItem(Image imageInstructions, String name)
-	{
-		if(textInstructions == null)
-		{
-			this.imageInstructions = imageInstructions;
-			this.name = name;
-		}
-		ingredients = new ArrayList<String>();
-	}
-	
+
 	public void parseIngredients(String input)
 	{
 		Scanner scanner = new Scanner(input);
