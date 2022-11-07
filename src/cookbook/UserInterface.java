@@ -10,7 +10,10 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
-
+import javax.swing.plaf.metal.MetalLookAndFeel;
+import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.metal.DefaultMetalTheme;
+import java.awt.geom.*;
 
 public class UserInterface {
 
@@ -82,7 +85,26 @@ public class UserInterface {
 		filter_panel_2 = new JPanel();
 		search_and_filter_panel = new JPanel();
 		results_panel = new JPanel();
-		initial_frame = new JFrame("Digital Recipe Book");						// Creates the frame that will be shown when code is ran
+		initial_frame = new JFrame("Digital Recipe Book");		// Creates the frame that will be shown when code is ran
+		
+		
+		/**
+		 * Changes title bar colors (on initial frame)
+		 */
+		initial_frame.setUndecorated(true);
+		initial_frame.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
+		 MetalLookAndFeel.setCurrentTheme(new MyDefaultMetalTheme());
+		 try {
+		      UIManager.setLookAndFeel(new MetalLookAndFeel());
+		    } catch (Exception e1) {
+		      e1.printStackTrace();
+		    }
+		 SwingUtilities.updateComponentTreeUI(initial_frame);
+		 /**
+		  * End of title bar color changes
+		  */
+		 
+		 
 		initial_frame.add(search_panel);										// Sets the size of the frame (currently 1080 x 720 pixels) (100, 100 represents where on the device the frame will be created ie at pos (100, 100))
 		initial_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);			// When "X" in top right corner is click, this makes it so the frame closes
 		initial_frame.pack();
@@ -139,6 +161,8 @@ public class UserInterface {
 		soya_filter = new JCheckBox("Soya");
 		
 		// Sizing setup
+		
+		
 		
 		// Component setups
 		results_panel.setBorder(BorderFactory.createMatteBorder(20, 40, 60, 40, Color.DARK_GRAY));
