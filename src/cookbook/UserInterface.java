@@ -135,30 +135,52 @@ public class UserInterface {
 		// Component initializations
 		recipe_search_bar = new JTextField();
 		recipe_search = new JButton("Search");
+		recipe_search.setFocusable(false);
 		search_bar_clear = new JButton("X");
+		search_bar_clear.setFocusable(false);
 		open_recipe_add = new JButton("Add Recipe");
+		open_recipe_add.setFocusable(false);
 		open_recipe_remove = new JButton("Remove Recipe");
+		open_recipe_remove.setFocusable(false);
 		recipe_search_output = new JTextArea();
 		
 		exclude_course_filter = new JCheckBox("Exclude Course");
+		exclude_course_filter.setFocusable(false);
 		breakfast_filter = new JCheckBox("Breakfast");
+		breakfast_filter.setFocusable(false);
 		lunch_filter = new JCheckBox("Lunch");
+		lunch_filter.setFocusable(false);
 		dinner_filter = new JCheckBox("Dinner");
+		dinner_filter.setFocusable(false);
 		dessert_filter = new JCheckBox("Dessert");
+		dessert_filter.setFocusable(false);
 		appetizer_filter = new JCheckBox("Appetizer");
+		appetizer_filter.setFocusable(false);
 		snack_filter = new JCheckBox("Snack");
+		snack_filter.setFocusable(false);
 		side_filter = new JCheckBox("Side");
+		side_filter.setFocusable(false);
 		main_filter = new JCheckBox("Main");
+		main_filter.setFocusable(false);
 		
 		exclude_ingredient_filter = new JCheckBox("Exclude Ingredient");
+		exclude_ingredient_filter.setFocusable(false);
 		milk_filter = new JCheckBox("Milk");
+		milk_filter.setFocusable(false);
 		eggs_filter = new JCheckBox("Eggs");
+		eggs_filter.setFocusable(false);
 		fish_filter = new JCheckBox("Fish");
+		fish_filter.setFocusable(false);
 		crustacean_shellfish_filter = new JCheckBox("Crustacean Shellfish");
+		crustacean_shellfish_filter.setFocusable(false);
 		tree_nut_filter = new JCheckBox("Tree Nut");
+		tree_nut_filter.setFocusable(false);
 		peanut_filter = new JCheckBox("Peanut");
+		peanut_filter.setFocusable(false);
 		wheat_filter = new JCheckBox("Wheat");
+		wheat_filter.setFocusable(false);
 		soya_filter = new JCheckBox("Soya");
+		soya_filter.setFocusable(false);
 		
 		// Sizing setup
 		
