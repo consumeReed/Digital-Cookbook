@@ -46,13 +46,31 @@ public class FoodItemList implements Serializable {
 	}
 	
 	/**
+	 * TEST METHOD
+	 */
+	public void addFood(String name, String instructions)
+	{
+		FoodItem newFood = new FoodItem(instructions);
+		newFood.id = globalid+1;
+		globalid++;
+		foodlist.add(newFood);
+		
+		updateFile();
+	}
+	
+	/**
 	 * 
 	 * @param name name of new recipe
-	 * @param textInstructions text instruction
+	 * @param Instructions
+	 * @param type   true/image    false/text
 	 */
-	public void addFood(String name, String textInstructions)
+	public void addFood(String name, String instructions, boolean type)
 	{
-		FoodItem newFood = new FoodItem(textInstructions, name);
+		FoodItem newFood = new FoodItem(name);
+		if(type)
+			newFood.addImage(instructions);
+		else
+			newFood.addText(instructions);
 		newFood.id = globalid+1;
 		globalid++;
 		foodlist.add(newFood);
@@ -67,7 +85,9 @@ public class FoodItemList implements Serializable {
 	public void addFood(FoodItem adder) {
 		FoodItem newFood = adder;
 		newFood.id = globalid+1;
+		globalid++;
 		foodlist.add(newFood);
+		updateFile();
 	}
 	
 	  /**
@@ -128,7 +148,7 @@ public class FoodItemList implements Serializable {
 		if(course != null) {
 			ArrayList<FoodItem> tmp3 = new ArrayList<>();
 			for(FoodItem item : searchedList) {
-				if(item.inCourse(course)) {
+				if(item.hasCourses(course)) {
 					tmp3.add(item);
 				}
 			}
@@ -175,17 +195,20 @@ public class FoodItemList implements Serializable {
 					searchedList = tmp2;
 				}
 		
-		if(course != null) {
-			ArrayList<FoodItem> tmp3 = new ArrayList<>();
-			for(FoodItem item : searchedList) {
-				if(item.inCourse(course)&&includeCourse) {
-					tmp3.add(item);
-				if(!item.inCourse(course)&&!includeCourse)
-					tmp3.add(item);
+		if(course != null)
+		{
+			ArrayList<FoodItem> tmp3 = new ArrayList<FoodItem>();
+				
+					for(FoodItem item : searchedList) 
+					{
+						if(item.hasCourses(course)&&includeCourse)
+							tmp3.add(item);
+						if(!item.hasCourses(course)&&!includeCourse)
+							tmp3.add(item);
+					}
+					searchedList = tmp3;
 				}
-			}
-			searchedList = tmp3; 
-		}
+		
 
 		
 		return searchedList;

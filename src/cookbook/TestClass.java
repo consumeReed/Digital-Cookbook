@@ -9,16 +9,112 @@ public class TestClass {
 		/*
 		 * Uncomment/comment out test methods you want to have shown in console.
 		 */
-		
+		demoSearch();
+		//testAddMany();   //RUN CLEAR IF YOU WANT TO RUN THIS AGAIN OR DELETE DATA FILE CONTENTS
 		//testSearchInclusionExclusion();
 		//testRetrievalID();
 		//getID();
 		//testDelete();
 		//testRetrieval();
 		//testAddRecipe();
-		testSearch();
+		//testSearch();
 		//testAddIngredientsToFood();
 		//testRandomRecipe();
+	}
+	
+	public static void demoSearch()
+	{
+		FoodItemList f = new FoodItemList();
+		
+		Attributes a = new Attributes(true);  //allergy
+		a.changePos1();
+		a.changePos6();
+		
+		Attributes b = new Attributes(false);  //course
+		b.changePos1();
+		
+		
+
+		System.out.println("\n\nSEARCHING WITH NO FILTERS\n-----------------------------\n" + f.search(null, null, null, false, false));
+		System.out.println("\n\nSEARCHING RECIPES WITH NAME CONTAINING CHICKEN\n-----------------------------\n" + f.search("chicken", null, null, false, false));
+		System.out.println("\n\nSEARCHING RECIPES WITH NAME CONTAINING CHICKEN AND LUNCH COURSE\n-----------------------------\n" + f.search("chicken", null, b, false, false));
+		System.out.println("\n\nSEARCHING RECIPES WITH NAME CONTAINING CHICKEN AND NOT LUNCH COURSE\n-----------------------------\n" + f.search("chicken", null, b, false, true));
+		System.out.println("\n\nSEARCHING RECIPES WITH ALLERGENS OF EGGS AND/OR WHEAT\n-----------------------------\n" + f.search(null, a, null, false, false));
+		System.out.println("\n\nSEARCHING RECIPES WITH NAME CONTAINING PIE AND ALLERGENS OF EGGS AND/OR WHEAT\n-----------------------------\n" + f.search("pie", a, null, false, false));
+		System.out.println("\n\nSEARCHING RECIPES WITHOUT ALLERGENS OF EGGS AND/OR WHEAT\n-----------------------------\n" + f.search(null, a, null, true, false));
+		System.out.println("\n\nSEARCHING RECIPES WITH LUNCH COURSE\n-----------------------------\n" + f.search(null, null, b, false, false));
+
+		
+	}
+	/**
+	 * RUN A CLEAR OR DELETE DATA FILE CONTENTS BEFORE RUNNING AGAIN
+	 */
+	public static void testAddMany()
+	{
+		//true image         false text
+		FoodItemList f = new FoodItemList();
+		
+		FoodItem food1 = new FoodItem("Chicken nuggets");
+		food1.addText("INSTRUCTIONS...");
+		food1.courses.changePos1();
+		food1.courses.changePos2();
+		food1.allergens.changePos6();
+		
+		FoodItem food2 = new FoodItem("Chicken parmesan");
+		food2.addText("INSTRUCTIONS...");
+		food2.courses.changePos2();
+		food2.courses.changePos7();
+		food2.allergens.changePos6();
+		food2.allergens.changePos0();
+		food2.allergens.changePos1();
+		
+		FoodItem food3 = new FoodItem("Chicken Parm");
+		food3.addImage("IMAGE LOCATION/NAME...");
+		food3.courses.changePos2();
+		food3.courses.changePos7();
+		food3.allergens.changePos6();
+		food3.allergens.changePos0();
+		food3.allergens.changePos1();
+		
+		FoodItem food4 = new FoodItem("filet mignon");
+		food4.addText("IMAGE LOCATION/NAME...");
+		food4.courses.changePos2();
+		food4.courses.changePos7();
+		
+		FoodItem food5 = new FoodItem("Chilean sea bass");
+		food5.addImage("IMAGE LOCATION/NAME...");
+		food5.courses.changePos2();
+		food5.courses.changePos1();
+		food5.courses.changePos7();
+		food5.allergens.changePos2();
+		
+		FoodItem food6 = new FoodItem("Caesar Salad");
+		food6.addText("INSTRUCTIONS...");
+		food6.courses.changePos4();
+		food6.courses.changePos5();
+		food6.allergens.changePos6();
+		
+		FoodItem food7 = new FoodItem("Sweet Potato pie");
+		food7.addText("INSTRUCTIONS...");
+		food7.allergens.changePos1();
+		food7.allergens.changePos6();
+		food7.courses.changePos3();
+		
+		FoodItem food8 = new FoodItem("filet mignon");
+		food8.addText("IMAGE LOCATION/NAME 2...");
+		food8.courses.changePos2();
+		food8.courses.changePos7();
+		
+		f.addFood(food1);
+		f.addFood(food2);
+		f.addFood(food3);
+		f.addFood(food4);
+		f.addFood(food5);
+		f.addFood(food6);
+		f.addFood(food7);
+		f.addFood(food8);
+		
+		
 	}
 	
 	public static void testSearchInclusionExclusion()

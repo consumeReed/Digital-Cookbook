@@ -150,13 +150,13 @@ public class FoodItem implements Serializable{
 		else
 		{
 			int check = allergens.getAttributes() & a.getAttributes();
-			if(check!=0)
+			if(check==0)
 				found = true;
 		}
 		return found;
 	}
 	
-	public boolean inCourse(Attributes a)
+	public boolean hasCourses(Attributes a)
 	{
 		boolean found = false;
 		if(a == null || a.getAttributes() == 0)
@@ -166,7 +166,7 @@ public class FoodItem implements Serializable{
 		else
 		{
 			int check = courses.getAttributes() & a.getAttributes();
-			if(check!=0)
+			if(check==0)
 				found = true;
 		}
 		return found;
@@ -216,8 +216,12 @@ public class FoodItem implements Serializable{
 	 */
 	public String toString()
 	{
-		return "Name: " + name + "\n Text Instructions: " + textInstructions + "\n Ingredients: " + ingredients + "\nAllergens: " + allergens +
+		if(textInstructions != null)
+			return "Name: " + name + "\n Text Instructions: " + textInstructions + "\nAllergens: " + allergens +
 				"\nCourses: " + courses + "\nID: " + id;
+		else
+			return "Name: " + name + "\n Image Path: " + imageInstructions  + "\nAllergens: " + allergens +
+					"\nCourses: " + courses + "\nID: " + id;
 	}
 
 }
