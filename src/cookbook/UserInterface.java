@@ -31,7 +31,7 @@ public class UserInterface {
 	private JFrame initial_frame;
 	private JButton open_recipe_add, open_recipe_remove, recipe_search, search_bar_clear;
 	private JTextField recipe_search_bar;
-	private JTextArea recipe_search_output;
+	private JLabel recipe_search_output;
 	private JCheckBox exclude_course_filter, breakfast_filter, lunch_filter, dinner_filter, dessert_filter, appetizer_filter, snack_filter,
 	side_filter, main_filter, exclude_ingredient_filter, milk_filter, eggs_filter, fish_filter, crustacean_shellfish_filter, tree_nut_filter,
 	peanut_filter, wheat_filter, soya_filter;
@@ -142,7 +142,7 @@ public class UserInterface {
 		open_recipe_add.setFocusable(false);
 		open_recipe_remove = new JButton("Remove Recipe");
 		open_recipe_remove.setFocusable(false);
-		recipe_search_output = new JTextArea();
+		recipe_search_output = new JLabel();
 		
 		exclude_course_filter = new JCheckBox("Exclude Course");
 		exclude_course_filter.setFocusable(false);
@@ -190,11 +190,12 @@ public class UserInterface {
 		results_panel.setBorder(BorderFactory.createMatteBorder(20, 40, 60, 40, Color.DARK_GRAY));
 		recipe_search_bar.setPreferredSize(new Dimension(800, 20));
 		recipe_search_bar.setText("Search Recipe");
-		recipe_search_output.setPreferredSize(new Dimension(1702, 852));
+//		recipe_search_output.setPreferredSize(new Dimension(1702, 852));
 		recipe_search_output.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
-		recipe_search_output.setLineWrap(true);
-		recipe_search_output.setWrapStyleWord(true);
-		recipe_search_output.setEditable(false);
+//		recipe_search_output.setLineWrap(true);
+//		recipe_search_output.setWrapStyleWord(true);
+//		recipe_search_output.setEditable(false);
+		recipe_search_output.setBounds(700, 200, 200, 200);
 		
 		// Listeners
 		open_recipe_add.addActionListener(open_recipe_frame);
@@ -298,11 +299,29 @@ public class UserInterface {
 		list_ingredient_handler_panel = new JPanel();
 		save_panel = new JPanel();
 		add_recipe_frame = new JFrame("New Recipe");
+		
+		/**
+		 * Changes title bar colors (on add recipe frame)
+		 */
+		add_recipe_frame.setUndecorated(true);
+		add_recipe_frame.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
+		MetalLookAndFeel.setCurrentTheme(new MyDefaultMetalTheme());
+		try {
+			UIManager.setLookAndFeel(new MetalLookAndFeel());
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		SwingUtilities.updateComponentTreeUI(add_recipe_frame);
+		/**
+		 * End of title bar color changes
+		 */
+		
 		add_recipe_frame.setVisible(true);
 		add_recipe_frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		add_recipe_frame.pack();
 		add_recipe_frame.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-		add_recipe_frame.setLocation(20, 20);
+		add_recipe_frame.setLocation(0, 0);
+		
 		
 		// Sets layout for the add_recipe_frame
 		BorderLayout border = new BorderLayout();
@@ -325,6 +344,12 @@ public class UserInterface {
 		ingredient_handler_panel.add(add_ingredient_handler_panel);
 		ingredient_handler_panel.add(list_ingredient_handler_panel);
 		add_recipe_frame.add(save_panel, BorderLayout.SOUTH);
+		
+		ImageIcon gray_box = new ImageIcon("userdata//gray_box.png");
+		JLabel gb = new JLabel(gray_box);
+		gb.setBounds(200, 400, 1, 1);
+		gb.setVisible(true);
+		results_panel.add(gb);
 		
 		// Component initializations
 		choose_text_add = new JButton("Text");
@@ -355,7 +380,6 @@ public class UserInterface {
 		ingredient_handler_panel.setBorder(BorderFactory.createEmptyBorder(200, 0, 310, 25));
 		
 		save_new_recipe_button.setPreferredSize(new Dimension(add_recipe_frame.getX(), 30));
-		
 		
 		// Listeners
 		
@@ -458,9 +482,6 @@ public class UserInterface {
 			public void focusLost(FocusEvent e) {
 				if (recipe_search_bar.getText().trim().equals("")) {
 					recipe_search_bar.setText("Search Recipe");
-				}
-				else {
-					
 				}
 			}
 		};
