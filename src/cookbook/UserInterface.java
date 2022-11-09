@@ -256,7 +256,7 @@ public class UserInterface {
 		recipe_search.setForeground(Color.WHITE);
 		search_bar_clear.setBackground(Color.DARK_GRAY);
 		search_bar_clear.setForeground(Color.WHITE);
-		recipe_search_output.setForeground(Color.BLACK);
+		recipe_search_output.setForeground(Color.WHITE);
 		recipe_search_output.setBackground(Color.LIGHT_GRAY);
 		recipe_search_output.setFont(new Font("Serif", Font.PLAIN, 24));
 		
