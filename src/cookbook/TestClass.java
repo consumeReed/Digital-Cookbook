@@ -9,7 +9,7 @@ public class TestClass {
 		/*
 		 * Uncomment/comment out test methods you want to have shown in console.
 		 */
-		demoSearch();
+		demo();
 		//testAddMany();   //RUN CLEAR IF YOU WANT TO RUN THIS AGAIN OR DELETE DATA FILE CONTENTS
 		//testSearchInclusionExclusion();
 		//testRetrievalID();
@@ -22,7 +22,7 @@ public class TestClass {
 		//testRandomRecipe();
 	}
 	
-	public static void demoSearch()
+	public static void demo()
 	{
 		FoodItemList f = new FoodItemList();
 		
@@ -34,7 +34,7 @@ public class TestClass {
 		b.changePos1();
 		
 		
-
+		System.out.println(f.getById(2));
 		System.out.println("\n\nSEARCHING WITH NO FILTERS\n-----------------------------\n" + f.search(null, null, null, false, false));
 		System.out.println("\n\nSEARCHING RECIPES WITH NAME CONTAINING CHICKEN\n-----------------------------\n" + f.search("chicken", null, null, false, false));
 		System.out.println("\n\nSEARCHING RECIPES WITH NAME CONTAINING CHICKEN AND LUNCH COURSE\n-----------------------------\n" + f.search("chicken", null, b, false, false));
@@ -43,7 +43,11 @@ public class TestClass {
 		System.out.println("\n\nSEARCHING RECIPES WITH NAME CONTAINING PIE AND ALLERGENS OF EGGS AND/OR WHEAT\n-----------------------------\n" + f.search("pie", a, null, false, false));
 		System.out.println("\n\nSEARCHING RECIPES WITHOUT ALLERGENS OF EGGS AND/OR WHEAT\n-----------------------------\n" + f.search(null, a, null, true, false));
 		System.out.println("\n\nSEARCHING RECIPES WITH LUNCH COURSE\n-----------------------------\n" + f.search(null, null, b, false, false));
-
+		System.out.println("\n\nORIGINAL RECIPE\n-----------------------------\n"+ f.getById(2));
+		f.getById(2).addImage("IMAGE LOCATION/NAME");
+		f.getById(2).allergens.changePos0();
+		//f.updateFile();
+		System.out.println("\n\nMODIFIED RECIPE\n-----------------------------\n"+ f.getById(2));
 		
 	}
 	/**
