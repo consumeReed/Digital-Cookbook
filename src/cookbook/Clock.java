@@ -86,9 +86,9 @@ public class Clock extends TimerTask
 		Clock.start();
 	}
 	
-	public void reset()
+	public static void reset()
 	{
-		timer.restart();
+		Clock.reset();
 	}
 
 	@Override
