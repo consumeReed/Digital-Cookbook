@@ -298,11 +298,29 @@ public class UserInterface {
 		list_ingredient_handler_panel = new JPanel();
 		save_panel = new JPanel();
 		add_recipe_frame = new JFrame("New Recipe");
+		
+		/**
+		 * Changes title bar colors (on add recipe frame)
+		 */
+		add_recipe_frame.setUndecorated(true);
+		add_recipe_frame.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
+		MetalLookAndFeel.setCurrentTheme(new MyDefaultMetalTheme());
+		try {
+			UIManager.setLookAndFeel(new MetalLookAndFeel());
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		SwingUtilities.updateComponentTreeUI(add_recipe_frame);
+		/**
+		 * End of title bar color changes
+		 */
+		
 		add_recipe_frame.setVisible(true);
 		add_recipe_frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		add_recipe_frame.pack();
 		add_recipe_frame.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-		add_recipe_frame.setLocation(20, 20);
+		add_recipe_frame.setLocation(0, 0);
+		
 		
 		// Sets layout for the add_recipe_frame
 		BorderLayout border = new BorderLayout();
