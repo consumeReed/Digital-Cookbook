@@ -1,5 +1,6 @@
 package cookbook;
 
+import java.util.*;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -8,18 +9,16 @@ import java.util.TimerTask;
  * Timer and Date 
  */
 
-public class Clock
+public class Clock extends TimerTask
 {
+	private boolean isRunning = false;
+	static int timePassed = 0;							// counter
 	
-	int timePassed = 0;
-	
-	Timer timer = new Timer();
-	
-	TimerTask task = new TimerTask() 
+	static Timer timer = new Timer();
+
+	static TimerTask task = new TimerTask() 
 	{
-		public void run() 
-		{
-		// time passed
+		public void run() {
 		timePassed++;
 		System.out.println("Time started: " + timePassed);
 		}
@@ -27,80 +26,75 @@ public class Clock
 	
 	public static void main(String[] args) 
 	{
+		TimerTask Clock = new Clock();
+		timer.schedule(Clock, 1000, 1000);
 		Clock clock = new Clock();
 		clock.start();
 	}
 	
-	public void start() 
+	/**
+	 * Start timer and set timer
+	 */
+	public static void start() 
 	{
 		System.out.println(new Date ());
-		timer.scheduleAtFixedRate(task, 1000, 1000);
+
+		Scanner sc = new Scanner(System.in);			// user input
+		System.out.print("Set your time: ");
+		int input = sc.nextInt();
+		
+		try {
+			timer.scheduleAtFixedRate(task, 1000, 1000);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		completeTask();
-		//System.out.println("Timer finished: " + new Date());
 	}
 	
-	private void completeTask()
+	private static void completeTask()
 	{
 		try
 		{
-			// assume it takes 20 seconds 
-			Thread.sleep(20000);
+			// assume it takes 
+			Thread.sleep(10000);
 		}
 		catch(InterruptedException ex)
 		{
 			ex.printStackTrace();
 		}
-		//cancel after sometime
-		try
-		{
-			Thread.sleep(120000);
-		}
-			catch(InterruptedException ex)
-		{
-				ex.printStackTrace();
-		}
+		timer.cancel();
+		
+		System.out.print("Time's up");
 	}
 	
-	/**public void start()
+	/**
+	 * Pause timer
+	 */
+	public void pause()
 	{
-		{
-			System.out.println("Time started: " + new Date());
-			completeTask();
-			System.out.println("Timer finished: " + new Date());
-		}
+		if(!isRunning)
+			return;
+		task.cancel();
+		isRunning = false;
+	}
+	
+	/**
+	 * Resume timer
+	 */
+	public void resume()
+	{
+		Clock.start();
+	}
+	
+	public void reset()
+	{
+		timer.restart();
 	}
 
-	private void completeTask()
-	{
-		try
-		{
-			// assume it takes 20 seconds 
-			Thread.sleep(20000);
-		}
-		catch(InterruptedException ex)
-		{
-			ex.printStackTrace();
-		}
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
 	}
 	
-	public static void main(String args[])
-	{
-		TimerTask timerTask = new Clock();
-		//
-		Timer timer = new Timer(true);
-		timer.scheduleAtFixedRate(timerTask, 0, 10*1000);
-		System.out.println("TimerTask started");
-		
-		//cancel after sometime
-		try
-		{
-			Thread.sleep(120000);
-		}
-		catch(InterruptedException ex)
-		{
-			ex.printStackTrace();
-		}
-
-		
-	} **/
 }
