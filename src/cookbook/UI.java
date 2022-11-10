@@ -22,16 +22,18 @@ public class UI {
 
 	private JPanel search_panel;
 	private JFrame initial_frame;
-	private JButton open_recipe_add, open_recipe_remove, recipe_search, search_bar_clear;
+	private JButton open_recipe_add, open_recipe_remove, recipe_search, search_bar_clear, next_page, prev_page;
 	private JTextField recipe_search_bar;
-	private JLabel recipe_search_output;
+	private JLabel recipe_search_output, page_number;
 	private JCheckBox exclude_course_filter, breakfast_filter, lunch_filter, dinner_filter, dessert_filter, appetizer_filter, snack_filter,
 	side_filter, main_filter, exclude_ingredient_filter, milk_filter, eggs_filter, fish_filter, crustacean_shellfish_filter, tree_nut_filter,
 	peanut_filter, wheat_filter, soya_filter;
 	
-	private ActionListener open_recipe_frame, search_recipe_book, clear_search_bar, filter_search;
+	private ActionListener open_recipe_frame, search_recipe_book, clear_search_bar, filter_search, next_page_l, prev_page_1;
 	private KeyListener enter_for_search;
 	private FocusListener text_prompt;
+	
+	private int page = 1;
 	
 	public static void main(String[] args)
 	{
@@ -47,7 +49,7 @@ public class UI {
 	{
 		initial_frame = new JFrame("Digital Cookbook");
 		initial_frame.setTitle("Digital Cookbook");
-		initial_frame.setSize(900, 900);
+		initial_frame.setSize(900, 930);
 		initial_frame.setLocationRelativeTo(null);
 		initial_frame.setResizable(false);
 		
@@ -84,6 +86,18 @@ public class UI {
 		 search_bar_clear.setBounds(750, 40, 50, 20);
 		 search_bar_clear.setFocusable(false);
 		 
+		 next_page = new JButton(new ImageIcon("userdata\\right_arrow.png"));
+		 next_page.setBounds(574, 140, 80 ,80);
+		 next_page.setFocusable(false);
+		 
+		 prev_page = new JButton(new ImageIcon("userdata\\left_arrow.png"));
+		 prev_page.setBounds(247, 140, 80, 80);
+		 prev_page.setFocusable(false);
+		 
+		 page_number = new JLabel();
+		 page_number.setText("Page " + page);
+		 page_number.setBounds(430, 140, 80, 80);
+		 
 		 open_recipe_add = new JButton("Add Recipe");
 		 open_recipe_add.setFocusable(false);
 		 
@@ -95,6 +109,7 @@ public class UI {
 		 recipe_search_bar.addKeyListener(enter_for_search);
 		 recipe_search_bar.addFocusListener(text_prompt);
 		 search_bar_clear.addActionListener(clear_search_bar);	
+		 
 			
 		 //Adding course checkboxes
 		 exclude_course_filter = new JCheckBox("Exclude Course");
@@ -172,7 +187,56 @@ public class UI {
 		soya_filter.setFocusable(false);
 		soya_filter.setBounds(785, 120, 55, 20);
 		 
+		
+		
+		//IMAGES
+		
+		JLabel im1 = new JLabel(new ImageIcon("userdata\\gold_bar.png"));
+		im1.setBounds(0, 220, 900, 10);
+		im1.setVisible(true);
+		initial_frame.add(im1);
+		
+		JLabel im2 = new JLabel(new ImageIcon("userdata\\gray_bar.png"));
+		im2.setBounds(0, 305, 900, 5);
+		im2.setVisible(true);
+		initial_frame.add(im2);
+
+		JLabel im3 = new JLabel(new ImageIcon("userdata\\gray_bar.png"));
+		im3.setBounds(0, 390, 900, 5);
+		im3.setVisible(true);
+		initial_frame.add(im3);
+		
+		JLabel im4 = new JLabel(new ImageIcon("userdata\\gray_bar.png"));
+		im4.setBounds(0, 475, 900, 5);
+		im4.setVisible(true);
+		initial_frame.add(im4);
+		
+		JLabel im5 = new JLabel(new ImageIcon("userdata\\gray_bar.png"));
+		im5.setBounds(0, 560, 900, 5);
+		im5.setVisible(true);
+		initial_frame.add(im5);
+		
+		JLabel im6 = new JLabel(new ImageIcon("userdata\\gray_bar.png"));
+		im6.setBounds(0, 645, 900, 5);
+		im6.setVisible(true);
+		initial_frame.add(im6);
+		
+		JLabel im7 = new JLabel(new ImageIcon("userdata\\gray_bar.png"));
+		im7.setBounds(0, 730, 900, 5);
+		im7.setVisible(true);
+		initial_frame.add(im7);
+		
+		JLabel im8 = new JLabel(new ImageIcon("userdata\\gray_bar.png"));
+		im8.setBounds(0, 815, 900, 5);
+		im8.setVisible(true);
+		initial_frame.add(im8);
+		
 		 
+		
+		//Listeners
+		next_page.addActionListener(next_page_l);
+		prev_page.addActionListener(prev_page_1);
+		
 		//Colors
 		 exclude_course_filter.setBackground(Color.BLACK);
 			exclude_course_filter.setForeground(Color.WHITE);
@@ -222,6 +286,9 @@ public class UI {
 		 search_panel.add(recipe_search_bar);
 		 search_panel.add(open_recipe_add);
 		 search_panel.add(open_recipe_remove);
+		 search_panel.add(next_page);
+		 search_panel.add(prev_page);
+		 search_panel.add(page_number);
 		 
 		 search_panel.add(exclude_course_filter);
 		 search_panel.add(breakfast_filter);
@@ -281,6 +348,24 @@ public class UI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+			}
+		};
+		
+		next_page_l = new ActionListener() {								// When search_bar_clear is clicked, the text in recipe_search_bar and recipe_search_output will be cleared (set to "")
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				page++;
+				page_number.setText("Page "+page);
+			}
+		};
+		
+		prev_page_1 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				page--;
+				if(page < 1)
+					page = 1;
+				page_number.setText("Page "+page);
 			}
 		};
 		
