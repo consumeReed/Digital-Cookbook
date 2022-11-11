@@ -28,6 +28,8 @@ public class UI {
 	private JButton open_recipe_add, open_recipe_remove, recipe_search, search_bar_clear, next_page, prev_page;
 	private JTextField recipe_search_bar;
 	private JLabel recipe_search_output, page_number, item1, item2, item3, item4, item5, item6, item7, item8;
+	
+	private ArrayList<JLabel> labels;
 	private JCheckBox exclude_course_filter, breakfast_filter, lunch_filter, dinner_filter, dessert_filter, appetizer_filter, snack_filter,
 	side_filter, main_filter, exclude_ingredient_filter, milk_filter, eggs_filter, fish_filter, crustacean_shellfish_filter, tree_nut_filter,
 	peanut_filter, wheat_filter, soya_filter;
@@ -177,6 +179,18 @@ public class UI {
 		 
 		 item8 = new JLabel();
 		 item8.setBounds(100, 820, 200, 30);
+		 
+		 labels = new ArrayList<JLabel>();
+				 
+		 labels.add(item1);
+		 labels.add(item2);
+		 labels.add(item3);
+		 labels.add(item4);
+		 labels.add(item5);
+		 labels.add(item6);
+		 labels.add(item7);
+		 labels.add(item8);
+		 
 		 
    //Adding allergy checkboxes
 		exclude_ingredient_filter = new JCheckBox("Exclude Ingredient");
@@ -361,21 +375,29 @@ public class UI {
 	public void updatePage()
 	{
 		fl = f.search(null, null, null, false, false);
-		int min = page*8;
-		int max = min+8;
 		
-		if(fl.size()>min&&fl.size()>=max)
+		//setting up variables to check for number of items to display on page
+		int s = fl.size();
+		int offset = page*8;
+		int rem = s-offset;
+		int rep = 8;
+		if(rem<8)
+			rep = rem;
+		
+		//items that get displayed by updating
+		for(int i = 0; i < rep; i++)
 		{
-			item1.setText(fl.get(min).getName());
-			item2.setText(fl.get(min+1).getName());
-			item3.setText(fl.get(min+2).getName());
-			item4.setText(fl.get(min+3).getName());
-			item5.setText(fl.get(min+4).getName());
-			item6.setText(fl.get(min+5).getName());
-			item7.setText(fl.get(min+6).getName());
-			item8.setText(fl.get(min+7).getName());
-			
+			labels.get(i).setText(fl.get(i+offset).getName());
 		}
+		
+		//removing items that were displayed if necessary
+		for(int i = rep; i < 8; i++)
+		{
+			labels.get(i).setText("");
+		}
+		
+		
+		
 		
 	}
 	
@@ -418,7 +440,7 @@ public class UI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				page++;
-				if(page >= fl.size()/8)
+				if(page >= fl.size()/8+1)
 					page--;
 				int dummy = page+1;
 				page_number.setText("Page "+dummy);

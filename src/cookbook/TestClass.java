@@ -9,7 +9,9 @@ public class TestClass {
 		/*
 		 * Uncomment/comment out test methods you want to have shown in console.
 		 */
-		demo();
+		
+		testAddOne();
+		//demo();
 		//testAddMany();   //RUN CLEAR IF YOU WANT TO RUN THIS AGAIN OR DELETE DATA FILE CONTENTS
 		//testSearchInclusionExclusion();
 		//testRetrievalID();
@@ -20,6 +22,19 @@ public class TestClass {
 		//testSearch();
 		//testAddIngredientsToFood();
 		//testRandomRecipe();
+	}
+	
+	public static void testAddOne()
+	{
+		FoodItemList f = new FoodItemList();
+		
+		FoodItem food1 = new FoodItem("popopopopo");
+		food1.addText("INSTRUCTIONS...");
+		food1.courses.changePos1();
+		food1.courses.changePos2();
+		food1.allergens.changePos6();
+		
+		f.addFood(food1);
 	}
 	
 	public static void demo()
