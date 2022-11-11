@@ -20,11 +20,14 @@ import java.awt.geom.*;
 
 public class UI {
 
+	private FoodItemList f;
+	private ArrayList<FoodItem> fl;
+	
 	private JPanel search_panel;
 	private JFrame initial_frame;
 	private JButton open_recipe_add, open_recipe_remove, recipe_search, search_bar_clear, next_page, prev_page;
 	private JTextField recipe_search_bar;
-	private JLabel recipe_search_output, page_number;
+	private JLabel recipe_search_output, page_number, item1, item2, item3, item4, item5, item6, item7, item8;
 	private JCheckBox exclude_course_filter, breakfast_filter, lunch_filter, dinner_filter, dessert_filter, appetizer_filter, snack_filter,
 	side_filter, main_filter, exclude_ingredient_filter, milk_filter, eggs_filter, fish_filter, crustacean_shellfish_filter, tree_nut_filter,
 	peanut_filter, wheat_filter, soya_filter;
@@ -33,10 +36,11 @@ public class UI {
 	private KeyListener enter_for_search;
 	private FocusListener text_prompt;
 	
-	private int page = 1;
+	private int page = 0;
 	
 	public static void main(String[] args)
 	{
+		
 		UI u = new UI();
 	}
 	
@@ -47,6 +51,7 @@ public class UI {
 	
 	public void initialize()
 	{
+		f = new FoodItemList();
 		initial_frame = new JFrame("Digital Cookbook");
 		initial_frame.setTitle("Digital Cookbook");
 		initial_frame.setSize(900, 930);
@@ -95,7 +100,8 @@ public class UI {
 		 prev_page.setFocusable(false);
 		 
 		 page_number = new JLabel();
-		 page_number.setText("Page " + page);
+		 int dummy = page+1;
+		 page_number.setText("Page " + dummy);
 		 page_number.setBounds(430, 140, 80, 80);
 		 
 		 open_recipe_add = new JButton("Add Recipe");
@@ -148,7 +154,29 @@ public class UI {
 		 main_filter.setFocusable(false);
 		 main_filter.setBounds(745, 80, 55, 20);
 			
+		 item1 = new JLabel();
+		 item1.setBounds(100, 260, 200, 30);
 		 
+		 item2 = new JLabel();
+		 item2.setBounds(100, 340, 200, 30);
+		 
+		 item3 = new JLabel();
+		 item3.setBounds(100, 420, 200, 30);
+		 
+		 item4 = new JLabel();
+		 item4.setBounds(100, 500, 200, 30);
+		 
+		 item5 = new JLabel();
+		 item5.setBounds(100, 580, 200, 30);
+		 
+		 item6 = new JLabel();
+		 item6.setBounds(100, 660, 200, 30);
+		 
+		 item7 = new JLabel();
+		 item7.setBounds(100, 740, 200, 30);
+		 
+		 item8 = new JLabel();
+		 item8.setBounds(100, 820, 200, 30);
 		 
    //Adding allergy checkboxes
 		exclude_ingredient_filter = new JCheckBox("Exclude Ingredient");
@@ -290,6 +318,17 @@ public class UI {
 		 search_panel.add(prev_page);
 		 search_panel.add(page_number);
 		 
+		 search_panel.add(item1);
+		 search_panel.add(item2);
+		 search_panel.add(item3);
+		 search_panel.add(item4);
+		 search_panel.add(item5);
+		 search_panel.add(item6);
+		 search_panel.add(item7);
+		 search_panel.add(item8);
+		 
+		 
+		 
 		 search_panel.add(exclude_course_filter);
 		 search_panel.add(breakfast_filter);
 		 search_panel.add(lunch_filter);
@@ -313,7 +352,31 @@ public class UI {
 		 search_panel.add(recipe_search_output);
 		 
 		 initial_frame.add(search_panel);
+		 
+		 updatePage();
+		 
 		 initial_frame.setVisible(true);
+	}
+	
+	public void updatePage()
+	{
+		fl = f.search(null, null, null, false, false);
+		int min = page*8;
+		int max = min+8;
+		
+		if(fl.size()>min&&fl.size()>=max)
+		{
+			item1.setText(fl.get(min).getName());
+			item2.setText(fl.get(min+1).getName());
+			item3.setText(fl.get(min+2).getName());
+			item4.setText(fl.get(min+3).getName());
+			item5.setText(fl.get(min+4).getName());
+			item6.setText(fl.get(min+5).getName());
+			item7.setText(fl.get(min+6).getName());
+			item8.setText(fl.get(min+7).getName());
+			
+		}
+		
 	}
 	
 	public void setUpButtonListeners() {
@@ -355,7 +418,11 @@ public class UI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				page++;
-				page_number.setText("Page "+page);
+				if(page >= fl.size()/8)
+					page--;
+				int dummy = page+1;
+				page_number.setText("Page "+dummy);
+				updatePage();
 			}
 		};
 		
@@ -363,9 +430,11 @@ public class UI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				page--;
-				if(page < 1)
-					page = 1;
-				page_number.setText("Page "+page);
+				if(page < 0)
+					page = 0;
+				int dummy = page+1;
+				page_number.setText("Page "+dummy);
+				updatePage();
 			}
 		};
 		
