@@ -25,11 +25,13 @@ public class UI {
 	
 	private JPanel search_panel;
 	private JFrame initial_frame;
-	private JButton open_recipe_add, open_recipe_remove, recipe_search, search_bar_clear, next_page, prev_page;
+	private JButton open_recipe_add, open_recipe_remove, recipe_search, search_bar_clear, next_page, prev_page,
+	item1b, item2b, item3b, item4b, item5b, item6b, item7b, item8b;
 	private JTextField recipe_search_bar;
 	private JLabel recipe_search_output, page_number, item1, item2, item3, item4, item5, item6, item7, item8;
 	
 	private ArrayList<JLabel> labels;
+	private ArrayList<JButton> buttons;
 	private JCheckBox exclude_course_filter, breakfast_filter, lunch_filter, dinner_filter, dessert_filter, appetizer_filter, snack_filter,
 	side_filter, main_filter, exclude_ingredient_filter, milk_filter, eggs_filter, fish_filter, crustacean_shellfish_filter, tree_nut_filter,
 	peanut_filter, wheat_filter, soya_filter;
@@ -191,6 +193,41 @@ public class UI {
 		 labels.add(item7);
 		 labels.add(item8);
 		 
+
+		 item1b = new JButton();
+		 item1b.setBounds(500, 260, 200, 30);
+		 
+		 item2b = new JButton();
+		 item2b.setBounds(500, 340, 200, 30);
+		 
+		 item3b = new JButton();
+		 item3b.setBounds(500, 420, 200, 30);
+		 
+		 item4b = new JButton();
+		 item4b.setBounds(500, 500, 200, 30);
+		 
+		 item5b = new JButton();
+		 item5b.setBounds(500, 580, 200, 30);
+		 
+		 item6b = new JButton();
+		 item6b.setBounds(500, 660, 200, 30);
+		 
+		 item7b = new JButton();
+		 item7b.setBounds(500, 740, 200, 30);
+		 
+		 item8b = new JButton();
+		 item8b.setBounds(500, 820, 200, 30);
+		 
+		 buttons = new ArrayList<JButton>();
+		 
+		 buttons.add(item1b);
+		 buttons.add(item2b);
+		 buttons.add(item3b);
+		 buttons.add(item4b);
+		 buttons.add(item5b);
+		 buttons.add(item6b);
+		 buttons.add(item7b);
+		 buttons.add(item8b);
 		 
    //Adding allergy checkboxes
 		exclude_ingredient_filter = new JCheckBox("Exclude Ingredient");
@@ -341,7 +378,14 @@ public class UI {
 		 search_panel.add(item7);
 		 search_panel.add(item8);
 		 
-		 
+		 search_panel.add(item1b);
+		 search_panel.add(item2b);
+		 search_panel.add(item3b);
+		 search_panel.add(item4b);
+		 search_panel.add(item5b);
+		 search_panel.add(item6b);
+		 search_panel.add(item7b);
+		 search_panel.add(item8b);
 		 
 		 search_panel.add(exclude_course_filter);
 		 search_panel.add(breakfast_filter);
@@ -388,12 +432,14 @@ public class UI {
 		for(int i = 0; i < rep; i++)
 		{
 			labels.get(i).setText(fl.get(i+offset).getName());
+			buttons.get(i).setText("Add " + fl.get(i+offset).getName());
 		}
 		
 		//removing items that were displayed if necessary
 		for(int i = rep; i < 8; i++)
 		{
 			labels.get(i).setText("");
+			buttons.get(i).setText("");
 		}
 		
 		
