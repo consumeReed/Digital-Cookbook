@@ -32,9 +32,13 @@ public class UI {
 	
 	private ArrayList<JLabel> labels;
 	private ArrayList<JButton> buttons;
+	private ArrayList<JCheckBox> allergyBoxes, courseBoxes;
 	private JCheckBox exclude_course_filter, breakfast_filter, lunch_filter, dinner_filter, dessert_filter, appetizer_filter, snack_filter,
 	side_filter, main_filter, exclude_ingredient_filter, milk_filter, eggs_filter, fish_filter, crustacean_shellfish_filter, tree_nut_filter,
 	peanut_filter, wheat_filter, soya_filter;
+	
+	//private ActionListener exclude_course_l, breakfast_l, lunch_l, dinner_l, dessert_l, appetizer_l, snack_l, side_l, main_l,
+	//exclude_ingredient_l, milk_l, eggs_l, fish_l, crustacean_l, tree_nut_l, peanut_l, wheat_l, soya_l;
 	
 	private ActionListener open_recipe_frame, search_recipe_book, clear_search_bar, filter_search, next_page_l, prev_page_1;
 	private KeyListener enter_for_search;
@@ -157,7 +161,18 @@ public class UI {
 		 main_filter = new JCheckBox("Main");
 		 main_filter.setFocusable(false);
 		 main_filter.setBounds(745, 80, 55, 20);
-			
+		 
+		 courseBoxes = new ArrayList<JCheckBox>();
+		 courseBoxes.add(breakfast_filter);
+		 courseBoxes.add(lunch_filter);
+		 courseBoxes.add(dinner_filter);
+		 courseBoxes.add(dessert_filter);
+		 courseBoxes.add(appetizer_filter);
+		 courseBoxes.add(snack_filter);
+		 courseBoxes.add(side_filter);
+		 courseBoxes.add(main_filter);
+		 
+		 
 		 item1 = new JLabel();
 		 item1.setBounds(100, 260, 200, 30);
 		 
@@ -266,6 +281,15 @@ public class UI {
 		soya_filter.setFocusable(false);
 		soya_filter.setBounds(785, 120, 55, 20);
 		 
+		allergyBoxes = new ArrayList<JCheckBox>();
+		allergyBoxes.add(milk_filter);
+		allergyBoxes.add(eggs_filter);
+		allergyBoxes.add(fish_filter);
+		allergyBoxes.add(crustacean_shellfish_filter);
+		allergyBoxes.add(tree_nut_filter);
+		allergyBoxes.add(peanut_filter);
+		allergyBoxes.add(wheat_filter);
+		allergyBoxes.add(soya_filter);
 		
 		
 		//IMAGES
@@ -418,7 +442,45 @@ public class UI {
 	
 	public void updatePage()
 	{
-		fl = f.search(null, null, null, false, false);
+		Attributes allergy = new Attributes(true);
+		Attributes course = new Attributes(false);
+		
+			if(allergyBoxes.get(0).isSelected())
+				allergy.changePos0();
+			if(allergyBoxes.get(1).isSelected())
+				allergy.changePos1();
+			if(allergyBoxes.get(2).isSelected())
+				allergy.changePos2();
+			if(allergyBoxes.get(3).isSelected())
+				allergy.changePos3();
+			if(allergyBoxes.get(4).isSelected())
+				allergy.changePos4();
+			if(allergyBoxes.get(5).isSelected())
+				allergy.changePos5();
+			if(allergyBoxes.get(6).isSelected())
+				allergy.changePos6();
+			if(allergyBoxes.get(7).isSelected())
+				allergy.changePos7();
+
+			
+			if(courseBoxes.get(0).isSelected())
+				course.changePos0();
+			if(courseBoxes.get(1).isSelected())
+				course.changePos1();
+			if(courseBoxes.get(2).isSelected())
+				course.changePos2();
+			if(courseBoxes.get(3).isSelected())
+				course.changePos3();
+			if(courseBoxes.get(4).isSelected())
+				course.changePos4();
+			if(courseBoxes.get(5).isSelected())
+				course.changePos5();
+			if(courseBoxes.get(6).isSelected())
+				course.changePos6();
+			if(courseBoxes.get(7).isSelected())
+				course.changePos7();
+			
+		fl = f.search(recipe_search_bar.getText(), allergy, course, exclude_ingredient_filter.isSelected(), exclude_course_filter.isSelected());
 		
 		//setting up variables to check for number of items to display on page
 		int s = fl.size();
@@ -458,20 +520,26 @@ public class UI {
 		search_recipe_book = new ActionListener() {								// When recipe_search is clicked, the text will be printed onto recipe_search_output
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (recipe_search_bar.getText().equals("Search Recipe")) {
-					recipe_search_output.setText("x");
-				}
-				else {
-					recipe_search_output.setText(recipe_search_bar.getText());
-				}
+
+					updatePage();
+				
+
+				
 			}
 		};
 		
 		clear_search_bar = new ActionListener() {								// When search_bar_clear is clicked, the text in recipe_search_bar and recipe_search_output will be cleared (set to "")
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				recipe_search_bar.setText("Search Recipe");
-				recipe_search_output.setText("");
+				recipe_search_bar.setText("");
+				exclude_ingredient_filter.setSelected(false);
+				exclude_course_filter.setSelected(false);
+				for(int i = 0; i < 8; i++)
+				{
+					allergyBoxes.get(i).setSelected(false);
+					courseBoxes.get(i).setSelected(false);
+				}
+				updatePage();
 			}
 		};
 		
@@ -510,12 +578,7 @@ public class UI {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode()==KeyEvent.VK_ENTER) {
-					if(recipe_search_output.getText() == "") {
-						recipe_search_output.setText(recipe_search_bar.getText());
-					}
-					else {
-						recipe_search_output.setText(recipe_search_bar.getText());
-					}
+					updatePage();
 				}
 			}
 
