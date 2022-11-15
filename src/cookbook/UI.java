@@ -212,34 +212,42 @@ public class UI {
 		 item1b = new JButton();
 		 item1b.setBounds(500, 260, 200, 30);
 		 item1b.setFocusable(false);
+		 item1b.setVisible(true);
 		 
 		 item2b = new JButton();
 		 item2b.setBounds(500, 340, 200, 30);
 		 item2b.setFocusable(false);
+		 item2b.setVisible(true);
 		 
 		 item3b = new JButton();
 		 item3b.setBounds(500, 420, 200, 30);
 		 item3b.setFocusable(false);
+		 item3b.setVisible(true);
 		 
 		 item4b = new JButton();
 		 item4b.setBounds(500, 500, 200, 30);
 		 item4b.setFocusable(false);
+		 item4b.setVisible(true);
 		 
 		 item5b = new JButton();
 		 item5b.setBounds(500, 580, 200, 30);
 		 item5b.setFocusable(false);
+		 item5b.setVisible(true);
 		 
 		 item6b = new JButton();
 		 item6b.setBounds(500, 660, 200, 30);
 		 item6b.setFocusable(false);
+		 item6b.setVisible(true);
 		 
 		 item7b = new JButton();
 		 item7b.setBounds(500, 740, 200, 30);
 		 item7b.setFocusable(false);
+		 item7b.setVisible(true);
 		 
 		 item8b = new JButton();
 		 item8b.setBounds(500, 820, 200, 30);
 		 item8b.setFocusable(false);
+		 item8b.setVisible(true);
 		 
 		 buttons = new ArrayList<JButton>();
 		 
@@ -410,6 +418,7 @@ public class UI {
 		 search_panel.add(item7);
 		 search_panel.add(item8);
 		 
+		 
 		 search_panel.add(item1b);
 		 search_panel.add(item2b);
 		 search_panel.add(item3b);
@@ -418,6 +427,7 @@ public class UI {
 		 search_panel.add(item6b);
 		 search_panel.add(item7b);
 		 search_panel.add(item8b);
+		 
 		 
 		 search_panel.add(exclude_course_filter);
 		 search_panel.add(breakfast_filter);
@@ -444,9 +454,9 @@ public class UI {
 		 initial_frame.add(search_panel);
 		 
 		 updatePage();
-		 
 		 initial_frame.setVisible(true);
 	}
+	
 	
 	public void updatePage()
 	{
@@ -502,18 +512,20 @@ public class UI {
 		for(int i = 0; i < rep; i++)
 		{
 			labels.get(i).setText(fl.get(i+offset).getName());
-			buttons.get(i).setVisible(true);
 			buttons.get(i).setText("Remove " + fl.get(i+offset).getName());
+			search_panel.add(buttons.get(i));
+			initial_frame.revalidate();
+			initial_frame.repaint();
 		}
 		
 		//removing items that were displayed if necessary
 		for(int i = rep; i < 8; i++)
 		{
 			labels.get(i).setText("");
-			//buttons.get(i).setVisible(false);
-			buttons.get(i).setText("");
+			search_panel.remove(buttons.get(i));
+			initial_frame.revalidate();
+			initial_frame.repaint();
 		}
-		
 		
 		
 		
