@@ -176,28 +176,28 @@ public class UI {
 		 
 		 
 		 item1 = new JLabel();
-		 item1.setBounds(100, 260, 200, 30);
+		 item1.setBounds(100, 250, 200, 30);
 		 
 		 item2 = new JLabel();
-		 item2.setBounds(100, 340, 200, 30);
+		 item2.setBounds(100, 335, 200, 30);
 		 
 		 item3 = new JLabel();
 		 item3.setBounds(100, 420, 200, 30);
 		 
 		 item4 = new JLabel();
-		 item4.setBounds(100, 500, 200, 30);
+		 item4.setBounds(100, 505, 200, 30);
 		 
 		 item5 = new JLabel();
-		 item5.setBounds(100, 580, 200, 30);
+		 item5.setBounds(100, 590, 200, 30);
 		 
 		 item6 = new JLabel();
-		 item6.setBounds(100, 660, 200, 30);
+		 item6.setBounds(100, 675, 200, 30);
 		 
 		 item7 = new JLabel();
-		 item7.setBounds(100, 740, 200, 30);
+		 item7.setBounds(100, 760, 200, 30);
 		 
 		 item8 = new JLabel();
-		 item8.setBounds(100, 820, 200, 30);
+		 item8.setBounds(100, 845, 200, 30);
 		 
 		 labels = new ArrayList<JLabel>();
 				 
@@ -212,12 +212,12 @@ public class UI {
 		 
 
 		 item1b = new JButton();
-		 item1b.setBounds(500, 260, 200, 30);
+		 item1b.setBounds(500, 250, 200, 30);
 		 item1b.setFocusable(false);
 		 item1b.setVisible(true);
 		 
 		 item2b = new JButton();
-		 item2b.setBounds(500, 340, 200, 30);
+		 item2b.setBounds(500, 335, 200, 30);
 		 item2b.setFocusable(false);
 		 item2b.setVisible(true);
 		 
@@ -227,27 +227,27 @@ public class UI {
 		 item3b.setVisible(true);
 		 
 		 item4b = new JButton();
-		 item4b.setBounds(500, 500, 200, 30);
+		 item4b.setBounds(500, 505, 200, 30);
 		 item4b.setFocusable(false);
 		 item4b.setVisible(true);
 		 
 		 item5b = new JButton();
-		 item5b.setBounds(500, 580, 200, 30);
+		 item5b.setBounds(500, 590, 200, 30);
 		 item5b.setFocusable(false);
 		 item5b.setVisible(true);
 		 
 		 item6b = new JButton();
-		 item6b.setBounds(500, 660, 200, 30);
+		 item6b.setBounds(500, 675, 200, 30);
 		 item6b.setFocusable(false);
 		 item6b.setVisible(true);
 		 
 		 item7b = new JButton();
-		 item7b.setBounds(500, 740, 200, 30);
+		 item7b.setBounds(500, 760, 200, 30);
 		 item7b.setFocusable(false);
 		 item7b.setVisible(true);
 		 
 		 item8b = new JButton();
-		 item8b.setBounds(500, 820, 200, 30);
+		 item8b.setBounds(500, 845, 200, 30);
 		 item8b.setFocusable(false);
 		 item8b.setVisible(true);
 		 
@@ -264,12 +264,12 @@ public class UI {
 		 
 		 
 		 item1v = new JButton();
-		 item1v.setBounds(700, 260, 200, 30);
+		 item1v.setBounds(700, 250, 200, 30);
 		 item1v.setText("View");
 		 item1v.setFocusable(false);
 		 
 		 item2v = new JButton();
-		 item2v.setBounds(700, 340, 200, 30);
+		 item2v.setBounds(700, 335, 200, 30);
 		 item2v.setText("View");
 		 item2v.setFocusable(false);
 		 
@@ -279,27 +279,27 @@ public class UI {
 		 item3v.setFocusable(false);
 		 
 		 item4v = new JButton();
-		 item4v.setBounds(700, 500, 200, 30);
+		 item4v.setBounds(700, 505, 200, 30);
 		 item4v.setText("View");
 		 item4v.setFocusable(false);
 		 
 		 item5v = new JButton();
-		 item5v.setBounds(700, 580, 200, 30);
+		 item5v.setBounds(700, 590, 200, 30);
 		 item5v.setText("View");
 		 item5v.setFocusable(false);
 		 
 		 item6v = new JButton();
-		 item6v.setBounds(700, 660, 200, 30);
+		 item6v.setBounds(700, 675, 200, 30);
 		 item6v.setText("View");
 		 item6v.setFocusable(false);
 		 
 		 item7v = new JButton();
-		 item7v.setBounds(700, 740, 200, 30);
+		 item7v.setBounds(700, 760, 200, 30);
 		 item7v.setText("View");
 		 item7v.setFocusable(false);
 		 
 		 item8v = new JButton();
-		 item8v.setBounds(700, 820, 200, 30);
+		 item8v.setBounds(700, 845, 200, 30);
 		 item8v.setText("View");
 		 item8v.setFocusable(false);
 		 
