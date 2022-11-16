@@ -145,7 +145,7 @@ public class FoodItem implements Serializable{
 		boolean found = false;
 		if(a == null || a.getAttributes() == 0)
 		{
-			System.err.println("Input Incorrect");
+			//System.err.println("Input Incorrect");
 		}
 		else
 		{
@@ -161,7 +161,7 @@ public class FoodItem implements Serializable{
 		boolean found = false;
 		if(a == null || a.getAttributes() == 0)
 		{
-			System.err.println("Input Incorrect");
+			//System.err.println("Input Incorrect");
 		}
 		else
 		{
