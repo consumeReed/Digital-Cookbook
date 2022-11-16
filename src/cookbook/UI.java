@@ -37,8 +37,7 @@ public class UI {
 	side_filter, main_filter, exclude_ingredient_filter, milk_filter, eggs_filter, fish_filter, crustacean_shellfish_filter, tree_nut_filter,
 	peanut_filter, wheat_filter, soya_filter;
 	
-	//private ActionListener exclude_course_l, breakfast_l, lunch_l, dinner_l, dessert_l, appetizer_l, snack_l, side_l, main_l,
-	//exclude_ingredient_l, milk_l, eggs_l, fish_l, crustacean_l, tree_nut_l, peanut_l, wheat_l, soya_l;
+	private ActionListener rm1, rm2, rm3, rm4, rm5, rm6, rm7, rm8;
 	
 	private ActionListener open_recipe_frame, search_recipe_book, clear_search_bar, filter_search, next_page_l, prev_page_1;
 	private KeyListener enter_for_search;
@@ -356,6 +355,15 @@ public class UI {
 		next_page.addActionListener(next_page_l);
 		prev_page.addActionListener(prev_page_1);
 		
+		item1b.addActionListener(rm1);
+		item2b.addActionListener(rm2);
+		item3b.addActionListener(rm3);
+		item4b.addActionListener(rm4);
+		item5b.addActionListener(rm5);
+		item6b.addActionListener(rm6);
+		item7b.addActionListener(rm7);
+		item8b.addActionListener(rm8);
+		
 		//Colors
 		 exclude_course_filter.setBackground(Color.BLACK);
 			exclude_course_filter.setForeground(Color.WHITE);
@@ -542,7 +550,9 @@ public class UI {
 		search_recipe_book = new ActionListener() {								// When recipe_search is clicked, the text will be printed onto recipe_search_output
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+					page  = 0;
+					int dummy = page+1;
+					page_number.setText("Page "+dummy);
 					updatePage();
 				
 
@@ -569,6 +579,82 @@ public class UI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+			}
+		};
+		
+		rm1 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = f.foodlist.get(offset).getId();
+				f.deleteFood(id);
+				updatePage();
+			}
+		};
+		
+		rm2 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = f.foodlist.get(offset+1).getId();
+				f.deleteFood(id);
+				updatePage();
+			}
+		};
+		
+		rm3 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = f.foodlist.get(offset+2).getId();
+				f.deleteFood(id);
+				updatePage();
+			}
+		};
+		rm4 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = f.foodlist.get(offset+3).getId();
+				f.deleteFood(id);
+				updatePage();
+			}
+		};
+		
+		rm5 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = f.foodlist.get(offset+4).getId();
+				f.deleteFood(id);
+				updatePage();
+			}
+		};
+		rm6 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = f.foodlist.get(offset+5).getId();
+				f.deleteFood(id);
+				updatePage();
+			}
+		};
+		rm7 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = f.foodlist.get(offset+6).getId();
+				f.deleteFood(id);
+				updatePage();
+			}
+		};
+		rm8 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = f.foodlist.get(offset+7).getId();
+				f.deleteFood(id);
+				updatePage();
 			}
 		};
 		
@@ -600,6 +686,9 @@ public class UI {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode()==KeyEvent.VK_ENTER) {
+					page = 0;
+					int dummy = page+1;
+					page_number.setText("Page "+dummy);
 					updatePage();
 				}
 			}
