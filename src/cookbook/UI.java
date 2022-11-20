@@ -31,6 +31,7 @@ public class UI {
 	private JTextField recipe_search_bar;
 	private JLabel recipe_search_output, page_number, item1, item2, item3, item4, item5, item6, item7, item8;
 	
+	private ViewRecipe vr;
 	private ArrayList<JLabel> labels;
 	private ArrayList<JButton> buttons, views;
 	private ArrayList<JCheckBox> allergyBoxes, courseBoxes;
@@ -39,7 +40,6 @@ public class UI {
 	peanut_filter, wheat_filter, soya_filter;
 	
 	private ActionListener rm1, rm2, rm3, rm4, rm5, rm6, rm7, rm8, v1, v2, v3, v4, v5, v6, v7, v8;
-	
 	private ActionListener open_recipe_frame, search_recipe_book, clear_search_bar, filter_search, next_page_l, prev_page_1;
 	private KeyListener enter_for_search;
 	private FocusListener text_prompt;
@@ -419,6 +419,15 @@ public class UI {
 		item7b.addActionListener(rm7);
 		item8b.addActionListener(rm8);
 		
+		item1v.addActionListener(v1);
+		item2v.addActionListener(v2);
+		item3v.addActionListener(v3);
+		item4v.addActionListener(v4);
+		item5v.addActionListener(v5);
+		item6v.addActionListener(v6);
+		item7v.addActionListener(v7);
+		item8v.addActionListener(v8);
+		
 		//Colors
 		 exclude_course_filter.setBackground(Color.BLACK);
 			exclude_course_filter.setForeground(Color.WHITE);
@@ -602,7 +611,6 @@ public class UI {
 		}
 		
 		
-		
 	}
 	
 	public void setUpButtonListeners() {
@@ -720,6 +728,79 @@ public class UI {
 				int offset = page*8;
 				int id = fl.get(offset+7).getId();
 				f.deleteFood(id);
+				updatePage();
+			}
+		};
+		
+		v1 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = fl.get(offset).getId();
+				vr = new ViewRecipe(id, f);
+				updatePage();
+			}
+		};
+		v2 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = fl.get(offset+1).getId();
+				vr = new ViewRecipe(id, f);
+				updatePage();
+			}
+		};
+		v3 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = fl.get(offset+2).getId();
+				vr = new ViewRecipe(id, f);
+				updatePage();
+			}
+		};
+		v4 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = fl.get(offset+3).getId();
+				vr = new ViewRecipe(id, f);
+				updatePage();
+			}
+		};
+		v5 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = fl.get(offset+4).getId();
+				vr = new ViewRecipe(id, f);
+				updatePage();
+			}
+		};
+		v6 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = fl.get(offset+5).getId();
+				vr = new ViewRecipe(id, f);
+				updatePage();
+			}
+		};
+		v7 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = fl.get(offset+6).getId();
+				vr = new ViewRecipe(id, f);
+				updatePage();
+			}
+		};
+		v8 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = fl.get(offset+7).getId();
+				vr = new ViewRecipe(id, f);
 				updatePage();
 			}
 		};
