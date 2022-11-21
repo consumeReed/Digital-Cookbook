@@ -27,19 +27,20 @@ public class UI {
 	private JFrame initial_frame;
 	private JButton open_recipe_add, open_recipe_remove, recipe_search, search_bar_clear, next_page, prev_page,
 	item1b, item2b, item3b, item4b, item5b, item6b, item7b, item8b, item1v, item2v, item3v, item4v, item5v, item6v,
-	item7v, item8v;
+	item7v, item8v, item1e, item2e, item3e, item4e, item5e, item6e, item7e, item8e;
 	private JTextField recipe_search_bar;
 	private JLabel recipe_search_output, page_number, item1, item2, item3, item4, item5, item6, item7, item8;
 	
 	private ViewRecipe vr;
 	private ArrayList<JLabel> labels;
-	private ArrayList<JButton> buttons, views;
+	private ArrayList<JButton> buttons, views, edits;
 	private ArrayList<JCheckBox> allergyBoxes, courseBoxes;
 	private JCheckBox exclude_course_filter, breakfast_filter, lunch_filter, dinner_filter, dessert_filter, appetizer_filter, snack_filter,
 	side_filter, main_filter, exclude_ingredient_filter, milk_filter, eggs_filter, fish_filter, crustacean_shellfish_filter, tree_nut_filter,
 	peanut_filter, wheat_filter, soya_filter;
 	
-	private ActionListener rm1, rm2, rm3, rm4, rm5, rm6, rm7, rm8, v1, v2, v3, v4, v5, v6, v7, v8;
+	private ActionListener rm1, rm2, rm3, rm4, rm5, rm6, rm7, rm8, v1, v2, v3, v4, v5, v6, v7, v8,
+	e1, e2, e3, e4, e5, e6, e7, e8;
 	private ActionListener open_recipe_frame, search_recipe_book, clear_search_bar, filter_search, next_page_l, prev_page_1;
 	private KeyListener enter_for_search;
 	private FocusListener text_prompt;
@@ -314,6 +315,68 @@ public class UI {
 		 views.add(item7v);
 		 views.add(item8v);
 		 
+		 
+		 item1e = new JButton();
+		 item1e.setBounds(300, 250, 200, 30);
+		 item1e.setText("Edit");
+		 item1e.setFocusable(false);
+		 item1e.setVisible(true);
+		 
+		 item2e = new JButton();
+		 item2e.setBounds(300, 335, 200, 30);
+		 item2e.setText("Edit");
+		 item2e.setFocusable(false);
+		 item2e.setVisible(true);
+		 
+		 item3e = new JButton();
+		 item3e.setBounds(300, 420, 200, 30);
+		 item3e.setText("Edit");
+		 item3e.setFocusable(false);
+		 item3e.setVisible(true);
+		 
+		 item4e = new JButton();
+		 item4e.setBounds(300, 505, 200, 30);
+		 item4e.setText("Edit");
+		 item4e.setFocusable(false);
+		 item4e.setVisible(true);
+		 
+		 item5e = new JButton();
+		 item5e.setBounds(300, 590, 200, 30);
+		 item5e.setText("Edit");
+		 item5e.setFocusable(false);
+		 item5e.setVisible(true);
+		 
+		 item6e = new JButton();
+		 item6e.setBounds(300, 675, 200, 30);
+		 item6e.setText("Edit");
+		 item6e.setFocusable(false);
+		 item6e.setVisible(true);
+		 
+		 item7e = new JButton();
+		 item7e.setBounds(300, 760, 200, 30);
+		 item7e.setText("Edit");
+		 item7e.setFocusable(false);
+		 item7e.setVisible(true);
+		 
+		 item8e = new JButton();
+		 item8e.setBounds(300, 845, 200, 30);
+		 item8e.setText("Edit");
+		 item8e.setFocusable(false);
+		 item8e.setVisible(true);
+		 
+		 edits = new ArrayList<JButton>();
+		 
+		 edits.add(item1e);
+		 edits.add(item2e);
+		 edits.add(item3e);
+		 edits.add(item4e);
+		 edits.add(item5e);
+		 edits.add(item6e);
+		 edits.add(item7e);
+		 edits.add(item8e);
+		 
+		 
+		 
    //Adding allergy checkboxes
 		exclude_ingredient_filter = new JCheckBox("Exclude Ingredient");
 		exclude_ingredient_filter.setFocusable(false);
@@ -428,6 +491,15 @@ public class UI {
 		item7v.addActionListener(v7);
 		item8v.addActionListener(v8);
 		
+		item1e.addActionListener(e1);
+		item2e.addActionListener(e2);
+		item3e.addActionListener(e3);
+		item4e.addActionListener(e4);
+		item5e.addActionListener(e5);
+		item6e.addActionListener(e6);
+		item7e.addActionListener(e7);
+		item8e.addActionListener(e8);
+		
 		//Colors
 		 exclude_course_filter.setBackground(Color.BLACK);
 			exclude_course_filter.setForeground(Color.WHITE);
@@ -508,6 +580,15 @@ public class UI {
 		 search_panel.add(item6v);
 		 search_panel.add(item7v);
 		 search_panel.add(item8v);
+		 
+		 search_panel.add(item1e);
+		 search_panel.add(item2e);
+		 search_panel.add(item3e);
+		 search_panel.add(item4e);
+		 search_panel.add(item5e);
+		 search_panel.add(item6e);
+		 search_panel.add(item7e);
+		 search_panel.add(item8e);
 		 
 		 search_panel.add(exclude_course_filter);
 		 search_panel.add(breakfast_filter);
@@ -596,6 +677,7 @@ public class UI {
 			buttons.get(i).setText("Remove"); //+ fl.get(i+offset).getName());
 			search_panel.add(buttons.get(i));
 			search_panel.add(views.get(i));
+			search_panel.add(edits.get(i));
 			initial_frame.revalidate();
 			initial_frame.repaint();
 		}
@@ -606,6 +688,7 @@ public class UI {
 			labels.get(i).setText("");
 			search_panel.remove(buttons.get(i));
 			search_panel.remove(views.get(i));
+			search_panel.remove(edits.get(i));
 			initial_frame.revalidate();
 			initial_frame.repaint();
 		}
@@ -617,7 +700,7 @@ public class UI {
 		open_recipe_frame = new ActionListener() {								// When open_recipe_add is clicked, a new window will be created for adding 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//add_recipe_frame_maker();
+				AddEditRecipe a = new AddEditRecipe();
 			}
 		};
 		
@@ -867,6 +950,77 @@ public class UI {
 			}
 		};
 		
+		e1 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = fl.get(offset).getId();
+				AddEditRecipe l = new AddEditRecipe(f, id);
+			}
+		};
+		
+		e2 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = fl.get(offset+1).getId();
+				AddEditRecipe l = new AddEditRecipe(f, id);
+			}
+		};
+		
+		e3 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = fl.get(offset+2).getId();
+				AddEditRecipe l = new AddEditRecipe(f, id);
+			}
+		};
+		
+		e4 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = fl.get(offset+3).getId();
+				AddEditRecipe l = new AddEditRecipe(f, id);
+			}
+		};
+		
+		e5 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = fl.get(offset+4).getId();
+				AddEditRecipe l = new AddEditRecipe(f, id);
+			}
+		};
+		
+		e6 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = fl.get(offset+5).getId();
+				AddEditRecipe l = new AddEditRecipe(f, id);
+			}
+		};
+		
+		e7 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = fl.get(offset+6).getId();
+				AddEditRecipe l = new AddEditRecipe(f, id);
+			}
+		};
+		
+		e8 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int offset = page*8;
+				int id = fl.get(offset+7).getId();
+				AddEditRecipe l = new AddEditRecipe(f, id);
+			}
+		};
 		
 		
 
