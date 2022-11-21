@@ -18,17 +18,24 @@ import javax.swing.plaf.metal.DefaultMetalTheme;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 
 import java.awt.geom.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
 public class AddEditRecipe {
 	
 	private JFrame initial_frame;
 	private JPanel main_panel;
-	private JTextField food_name, text_instructions;
+	private JTextField food_name;
+	private JTextArea text_instructions;
 	private JButton done, choose_image;
 	private JCheckBox breakfast_filter, lunch_filter, dinner_filter, dessert_filter, appetizer_filter, snack_filter,
 	side_filter, main_filter, milk_filter, eggs_filter, fish_filter, crustacean_shellfish_filter, tree_nut_filter,
 	peanut_filter, wheat_filter, soya_filter;
 	private ArrayList<JCheckBox> allergyBoxes, courseBoxes;
+	private ActionListener choose_image_l;
+	private JLabel img_name;
+	private String img;
 	
 	
 	public AddEditRecipe()
@@ -40,10 +47,11 @@ public class AddEditRecipe {
 		main_panel.add(food_name);
 	}
 	
-	public AddEditRecipe(FoodItemList list, int id)
+	public AddEditRecipe(int id)
 	{
 		initial_frame = new JFrame("Edit Recipe");
 		food_name = new JTextField();
+		FoodItemList list = new FoodItemList();
 		FoodItem tmpFood = list.getById(id);
 		food_name.setText(tmpFood.getName());
 		food_name.setBounds(100, 40, 500, 20);
@@ -52,7 +60,6 @@ public class AddEditRecipe {
 		for(int i = 0; i < 8; i++)
 		{
 			int tmp = (int) Math.pow(2, i);
-			System.out.println(tmp);
 			if((tmpFood.allergens.attr&tmp) == tmp)
 			{
 				allergyBoxes.get(i).setSelected(true);
@@ -62,6 +69,11 @@ public class AddEditRecipe {
 				courseBoxes.get(i).setSelected(true);
 			}
 		}
+		if(tmpFood.getImg() == null)
+			img_name.setText("");
+		if(tmpFood.getText() == null)
+			img_name.setText(tmpFood.getImg());
+			
 	}
 	
 	public void initialize()
@@ -83,6 +95,60 @@ public class AddEditRecipe {
 		 main_panel.setLayout(null);
 		 initial_frame.getContentPane().add(main_panel);
 		 checkboxes();
+		 
+		 
+		 img_name = new JLabel("No image selected");
+		 img_name.setBounds(40, 330, 200, 40);
+		 
+		 choose_image_l = new ActionListener() {								
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if(e.getSource()==choose_image) {
+						
+						JFileChooser fileChooser = new JFileChooser();
+						fileChooser.addChoosableFileFilter(new ImageFilter());
+			            fileChooser.setAcceptAllFileFilterUsed(false);
+						
+						fileChooser.setCurrentDirectory(new File(".")); //sets current directory
+						
+						int response = fileChooser.showOpenDialog(null); //select file to open
+						
+						if(response == JFileChooser.APPROVE_OPTION) {
+							File src = new File(fileChooser.getSelectedFile().getAbsolutePath());
+							System.out.println(src);
+							String tmp = "userdata\\" + src.getName();
+							File dest = new File(tmp);
+							try {
+								FileInputStream fileInputStream = new FileInputStream(src);
+								FileOutputStream fileOutputStream = new FileOutputStream(dest);
+								
+								int bufferSize;
+								byte[] buffer = new byte[512];
+								while((bufferSize = fileInputStream.read(buffer))>0)
+									fileOutputStream.write(buffer, 0, bufferSize);
+								fileInputStream.close();
+								fileOutputStream.close();
+								img_name.setText(src.getName());
+							} catch (Exception e1) {
+								e1.printStackTrace();
+							}
+				}
+					}}
+			};
+			
+			choose_image = new JButton("Choose Image");
+			choose_image.setBounds(40, 300, 150, 20);
+			choose_image.addActionListener(choose_image_l);
+			choose_image.setFocusable(false);
+			
+			text_instructions = new JTextArea();
+			text_instructions.setBounds(200, 150, 400, 500);
+			text_instructions.setLineWrap(true);
+			
+			main_panel.add(text_instructions);
+			main_panel.add(choose_image);
+			main_panel.add(img_name);
+		 
 		 initial_frame.add(main_panel);
 		 initial_frame.setVisible(true);
 	}

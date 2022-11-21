@@ -63,6 +63,16 @@ public class FoodItem implements Serializable{
 		textInstructions = null;
 	}
 	
+	public String getImg()
+	{
+		return imageInstructions;
+	}
+	
+	public String getText()
+	{
+		return textInstructions;
+	}
+	
 
 	public void parseIngredients(String input)
 	{

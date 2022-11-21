@@ -955,7 +955,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset).getId();
-				AddEditRecipe l = new AddEditRecipe(f, id);
+				AddEditRecipe l = new AddEditRecipe(id);
 			}
 		};
 		
@@ -964,7 +964,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset+1).getId();
-				AddEditRecipe l = new AddEditRecipe(f, id);
+				AddEditRecipe l = new AddEditRecipe(id);
 			}
 		};
 		
@@ -973,7 +973,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset+2).getId();
-				AddEditRecipe l = new AddEditRecipe(f, id);
+				AddEditRecipe l = new AddEditRecipe(id);
 			}
 		};
 		
@@ -982,7 +982,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset+3).getId();
-				AddEditRecipe l = new AddEditRecipe(f, id);
+				AddEditRecipe l = new AddEditRecipe(id);
 			}
 		};
 		
@@ -991,7 +991,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset+4).getId();
-				AddEditRecipe l = new AddEditRecipe(f, id);
+				AddEditRecipe l = new AddEditRecipe(id);
 			}
 		};
 		
@@ -1000,7 +1000,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset+5).getId();
-				AddEditRecipe l = new AddEditRecipe(f, id);
+				AddEditRecipe l = new AddEditRecipe(id);
 			}
 		};
 		
@@ -1009,7 +1009,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset+6).getId();
-				AddEditRecipe l = new AddEditRecipe(f, id);
+				AddEditRecipe l = new AddEditRecipe(id);
 			}
 		};
 		
@@ -1018,7 +1018,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset+7).getId();
-				AddEditRecipe l = new AddEditRecipe(f, id);
+				AddEditRecipe l = new AddEditRecipe(id);
 			}
 		};
 		
