@@ -2,6 +2,7 @@ package cookbook;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Window.Type;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -23,9 +24,22 @@ public class ViewRecipe {
 	private JTextArea notes;
 	
 	
-	public ViewRecipe(int id, FoodItemList f)
+	public ViewRecipe(int id, FoodItemList f, String type)
 	{
 		setUpButtonListeners();
+		
+		if(type.equals("Text"))
+		{
+			textInstruction(id, f, type);
+		}
+		if(type.equals("Image"))
+		{
+			imageInstruction(id, f, type);
+		}
+	}
+	
+	public void textInstruction(int id, FoodItemList f, String type)
+	{
 		Boolean can_edit = false;
 		
 		view_frame = new JFrame();
@@ -59,14 +73,18 @@ public class ViewRecipe {
 		ingredients.setText(f.getById(id).getIngredients());
 		ingredients.setBounds(30, 45, 840, 200);
 		
-//		culture = new JLabel();
-//		culture.setText(f.getById(id).getCulture());
-//		culture.setBounds(30, 250, 840, 30);
+		culture = new JLabel();
+		if(culture != null)
+		{
+			culture.setText(f.getById(id).getCulture());
+		}
+		culture.setBounds(30, 250, 840, 30);
 		
 		notes = new JTextArea();
 		notes.setText(f.getById(id).getNotes());
 		notes.setBounds(30, 290, 840, 300);
 		notes.setEditable(can_edit);
+		notes.setBackground(Color.DARK_GRAY);
 		
 //		allergy_filters = new JLabel();
 
@@ -81,19 +99,70 @@ public class ViewRecipe {
 //		view_panel.add(allergy_filters);
 //		view_panel.add(course_filters);
 		
-		editable(can_edit);
+		editable(can_edit, type);
 		view_frame.setVisible(true);
 	}
 	
-	public void editable(Boolean can_edit)
+	public void imageInstruction(int id, FoodItemList f, String type)
+	{
+		Boolean can_edit = false;
+		
+		view_frame = new JFrame();
+		view_frame.setTitle(f.getById(id).getName());
+		view_frame.setSize(900, 930);
+		view_frame.setLocationRelativeTo(null);
+		view_frame.setResizable(false);
+		
+		view_frame.setUndecorated(true);
+		view_frame.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
+		MetalLookAndFeel.setCurrentTheme(new MyDefaultMetalTheme());
+		try {
+			UIManager.setLookAndFeel(new MetalLookAndFeel());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		SwingUtilities.updateComponentTreeUI(view_frame);
+		
+		view_panel = new JPanel();
+		view_frame.getContentPane().add(view_panel);
+		
+		view_frame.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.BLACK));
+		view_panel.setLayout(null);
+		
+		name = new JLabel();
+		name.setText(f.getById(id).getName());
+		name.setFont(new Font("Serif", Font.BOLD, 24));
+		name.setBounds(30, 10, 840, 30);
+		
+		view_panel.add(name);
+		
+		editable(can_edit, type);
+		view_frame.setVisible(true);
+	}
+	
+	public void editable(Boolean can_edit, String type)
 	{		
 		if(can_edit)
 		{
-			
+			if(type.equals("Text"))
+			{
+				notes.setEditable(can_edit);
+			}
+			if(type.equals("Image"))
+			{
+				
+			}
 		}
 		else
 		{
-			
+			if(type.equals("Text"))
+			{
+				notes.setEditable(can_edit);
+			}
+			if(type.equals("Image"))
+			{
+				
+			}
 		}
 	}
 	

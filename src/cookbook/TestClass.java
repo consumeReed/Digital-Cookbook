@@ -22,6 +22,8 @@ public class TestClass {
 		//testSearch();
 		//testAddIngredientsToFood();
 		//testRandomRecipe();
+		//testRetrievalType();
+		testRetrievalCulture();
 	}
 	
 	public static void testAddOne()
@@ -78,6 +80,9 @@ public class TestClass {
 		food1.courses.changePos1();
 		food1.courses.changePos2();
 		food1.allergens.changePos6();
+		food1.addIngredient("Chicken");
+		food1.addIngredient("Nuggets");
+		food1.changeCulture("Barn Animal");
 		
 		FoodItem food2 = new FoodItem("Chicken parmesan");
 		food2.addText("INSTRUCTIONS...");
@@ -287,5 +292,22 @@ public class TestClass {
 		System.out.println(f.getRandom());
 	}
 	
-
+	public static void testRetrievalType()
+	{
+		FoodItem k = new FoodItem("Do slice", "Apple");
+		FoodItem l = new FoodItem("Banana");
+		
+		System.out.println(k.getType());
+		System.out.println(l.getType());
+		
+	}
+	
+	public static void testRetrievalCulture()
+	{
+		FoodItem k = new FoodItem("Do slice", "Apple");
+		k.changeCulture("Culture");
+		
+		System.out.println(k.getCulture());
+	}
+	
 }

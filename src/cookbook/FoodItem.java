@@ -109,6 +109,22 @@ public class FoodItem implements Serializable{
 		return notes;
 	}
 	
+	public String getType()
+	{
+		if(textInstructions == null)
+		{
+			return "Image";
+		}
+		else {
+			return "Text";
+		}
+	}
+	
+	public String getCulture()
+	{
+		return culture;
+	}
+	
 	/**
 	 * Change culture tag //// no null check in case they want to delete this way (removing text)
 	 *
