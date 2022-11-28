@@ -12,15 +12,18 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.metal.DefaultMetalTheme;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 
 import java.awt.geom.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class AddEditRecipe {
 	
@@ -34,7 +37,7 @@ public class AddEditRecipe {
 	peanut_filter, wheat_filter, soya_filter;
 	private ArrayList<JCheckBox> allergyBoxes, courseBoxes;
 	private ActionListener choose_image_l;
-	private JLabel img_name;
+	private JLabel img_name, img_prev, imp;
 	private String img;
 	
 	
@@ -100,6 +103,8 @@ public class AddEditRecipe {
 		 img_name = new JLabel("No image selected");
 		 img_name.setBounds(40, 330, 200, 40);
 		 
+		 img_prev = new JLabel("No Preview Available");
+		 
 		 choose_image_l = new ActionListener() {								
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -129,6 +134,18 @@ public class AddEditRecipe {
 								fileInputStream.close();
 								fileOutputStream.close();
 								img_name.setText(src.getName());
+								img_prev.setText("Image Preview");
+								
+								ImageIcon icon = new ImageIcon(tmp);
+								Image scaleImage = icon.getImage().getScaledInstance(150, 150,Image.SCALE_DEFAULT);
+								icon = new ImageIcon(scaleImage);
+								
+								JLabel label = new JLabel();
+								label.setBounds(40, 430, 150, 150);
+								label.setIcon(icon);
+								label.setVisible(true);
+								main_panel.add(label);
+								
 							} catch (Exception e1) {
 								e1.printStackTrace();
 							}
@@ -136,15 +153,28 @@ public class AddEditRecipe {
 					}}
 			};
 			
+			
+			
 			choose_image = new JButton("Choose Image");
 			choose_image.setBounds(40, 300, 150, 20);
+			choose_image.setBackground(Color.LIGHT_GRAY);
 			choose_image.addActionListener(choose_image_l);
 			choose_image.setFocusable(false);
 			
 			text_instructions = new JTextArea();
-			text_instructions.setBounds(200, 150, 400, 500);
+			text_instructions.setBounds(250, 150, 400, 480);
 			text_instructions.setLineWrap(true);
 			
+			done = new JButton("Save");
+			done.setBounds(300, 666, 100, 20);
+			done.setFocusable(false);
+			done.setBackground(Color.LIGHT_GRAY);
+			
+			
+			img_prev.setBounds(40, 600, 150, 20);
+			
+			main_panel.add(img_prev);
+			main_panel.add(done);
 			main_panel.add(text_instructions);
 			main_panel.add(choose_image);
 			main_panel.add(img_name);
