@@ -51,7 +51,7 @@ public class DeletePicture extends JFrame implements ActionListener{
 			}
 	}
 	
-	public static void Main(String[] args) {
+	public static void main(String[] args) {
 		//full method test.
 		new DeletePicture();
 	}
