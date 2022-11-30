@@ -27,7 +27,7 @@ public class UI {
 	private JFrame initial_frame;
 	private JButton open_recipe_add, open_recipe_remove, recipe_search, search_bar_clear, next_page, prev_page,
 	item1b, item2b, item3b, item4b, item5b, item6b, item7b, item8b, item1v, item2v, item3v, item4v, item5v, item6v,
-	item7v, item8v, item1e, item2e, item3e, item4e, item5e, item6e, item7e, item8e;
+	item7v, item8v, item1e, item2e, item3e, item4e, item5e, item6e, item7e, item8e, refresh;
 	private JTextField recipe_search_bar;
 	private JLabel recipe_search_output, page_number, item1, item2, item3, item4, item5, item6, item7, item8;
 	
@@ -40,7 +40,7 @@ public class UI {
 	peanut_filter, wheat_filter, soya_filter;
 	
 	private ActionListener rm1, rm2, rm3, rm4, rm5, rm6, rm7, rm8, v1, v2, v3, v4, v5, v6, v7, v8,
-	e1, e2, e3, e4, e5, e6, e7, e8;
+	e1, e2, e3, e4, e5, e6, e7, e8, refresh_l;
 	private ActionListener open_recipe_frame, search_recipe_book, clear_search_bar, filter_search, next_page_l, prev_page_1;
 	private KeyListener enter_for_search;
 	private FocusListener text_prompt;
@@ -375,7 +375,13 @@ public class UI {
 		 edits.add(item7e);
 		 edits.add(item8e);
 		 
+		 refresh = new JButton();
+		 refresh.setBounds(680, 155, 60, 60);
+		 refresh.setFocusable(false);
+		 Icon refresh_icon = new ImageIcon("userdata\\refresh.png");
+		 refresh.setIcon(refresh_icon);
 		 
+		 search_panel.add(refresh);
 		 
    //Adding allergy checkboxes
 		exclude_ingredient_filter = new JCheckBox("Exclude Ingredient");
@@ -732,6 +738,15 @@ public class UI {
 			}
 		};
 		
+		
+		refresh_l = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				updatePage();
+			}
+		};
+		
+		
 		filter_search = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -820,7 +835,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset).getId();
-				vr = new ViewRecipe(id, f, fl.get(id).getType());
+				vr = new ViewRecipe(id, f, f.getById(id).getType());
 				updatePage();
 			}
 		};
@@ -829,7 +844,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset+1).getId();
-				vr = new ViewRecipe(id, f, fl.get(id).getType());
+				vr = new ViewRecipe(id, f, f.getById(id).getType());
 				updatePage();
 			}
 		};
@@ -838,7 +853,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset+2).getId();
-				vr = new ViewRecipe(id, f, fl.get(id).getType());
+				vr = new ViewRecipe(id, f, f.getById(id).getType());
 				updatePage();
 			}
 		};
@@ -847,7 +862,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset+3).getId();
-				vr = new ViewRecipe(id, f, fl.get(id).getType());
+				vr = new ViewRecipe(id, f, f.getById(id).getType());
 				updatePage();
 			}
 		};
@@ -856,7 +871,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset+4).getId();
-				vr = new ViewRecipe(id, f, fl.get(id).getType());
+				vr = new ViewRecipe(id, f, f.getById(id).getType());
 				updatePage();
 			}
 		};
@@ -865,7 +880,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset+5).getId();
-				vr = new ViewRecipe(id, f, fl.get(id).getType());
+				vr = new ViewRecipe(id, f, f.getById(id).getType());
 				updatePage();
 			}
 		};
@@ -874,7 +889,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset+6).getId();
-				vr = new ViewRecipe(id, f, fl.get(id).getType());
+				vr = new ViewRecipe(id, f, f.getById(id).getType());
 				updatePage();
 			}
 		};
@@ -883,7 +898,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset+7).getId();
-				vr = new ViewRecipe(id, f, fl.get(id).getType());
+				vr = new ViewRecipe(id, f, f.getById(id).getType());
 				updatePage();
 			}
 		};
