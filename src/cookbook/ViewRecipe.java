@@ -1,12 +1,16 @@
 package cookbook;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Window.Type;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,7 +26,7 @@ public class ViewRecipe {
 	private JFrame view_frame;
 	private JPanel view_panel;
 	private JButton edit;
-	private JLabel allergy_filters, allergy_filters_header, course_filters, course_filters_header, ingredients_header, culture, name, notes_header, instructions_header;
+	private JLabel allergy_filters, img, allergy_filters_header, course_filters, course_filters_header, ingredients_header, culture, name, notes_header, instructions_header;
 	private JTextArea notes, ingredients, instructions;
 	private ActionListener edit_recipe;
 	
@@ -199,6 +203,44 @@ public class ViewRecipe {
 		name.setFont(new Font("Serif", Font.BOLD, 24));
 		name.setBounds(30, 10, 840, 30);
 		
+		ImageIcon icon = new ImageIcon("userdata//" + f.getImg());
+		Image scaled = icon.getImage().getScaledInstance(640, 350, Image.SCALE_DEFAULT);
+		icon = new ImageIcon(scaled);
+		
+		img = new JLabel();
+		img.setBounds(30, 50, 640, 350);
+		img.setIcon(icon);
+		
+		allergy_filters_header = new JLabel();
+		allergy_filters_header.setBounds(30, 420, 310, 15);
+		allergy_filters_header.setText("Allergens:");
+		
+		allergy_filters = new JLabel();
+		allergy_filters.setBounds(40, 450, 310, 20);
+		if(f.getAllergens() != "[]")
+		{
+			allergy_filters.setText(f.getAllergens());
+		}
+		else
+		{
+			allergy_filters.setText("N/A");
+		}
+			
+		course_filters_header = new JLabel();
+		course_filters_header.setBounds(30, 510, 310, 15);
+		course_filters_header.setText("Course: ");
+		
+		course_filters = new JLabel();
+		course_filters.setBounds(40, 540, 310, 20);
+		if(f.getCourses() != "[]")
+		{
+			course_filters.setText(f.getCourses());
+		}
+		else
+		{
+			course_filters.setText("N/A");
+		}
+		
 		edit = new JButton("Edit");
 		edit.setBounds(275, 650, 100, 30);
 		edit.setForeground(Color.YELLOW);
@@ -206,6 +248,11 @@ public class ViewRecipe {
 		edit.addActionListener(edit_recipe);
 		
 		view_panel.add(name);
+		view_panel.add(img);
+		view_panel.add(allergy_filters);
+		view_panel.add(allergy_filters_header);
+		view_panel.add(course_filters);
+		view_panel.add(course_filters_header);
 		view_panel.add(edit);
 		view_frame.setVisible(true);
 	}
