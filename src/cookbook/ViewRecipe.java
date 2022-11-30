@@ -84,6 +84,26 @@ public class ViewRecipe {
 		name.setFont(new Font("Serif", Font.BOLD, 24));
 		name.setBounds(30, 10, 640, 30);
 		
+		instructions_header = new JLabel("Instructions:");
+		instructions_header.setBounds(30, 70, 310, 15);
+		
+		instructions = new JTextArea();
+		instructions.setText(f.getText());
+		instructions.setBounds(30, 95, 280, 285);
+		instructions.setEditable(false);
+		instructions.setLineWrap(true);
+		
+		notes_header = new JLabel("Notes:");
+		notes_header.setBounds(330, 70, 310, 15);
+		
+		notes = new JTextArea();
+		notes.setText(f.getNotes());
+		notes.setBounds(330, 95, 340, 285);
+		notes.setEditable(false);
+		notes.setLineWrap(true);
+		notes.setBackground(Color.GRAY);
+		
+/*		
 		ingredients_header = new JLabel("Ingredients:");
 		ingredients_header.setBounds(30, 70, 310, 15);
 		
@@ -112,7 +132,7 @@ public class ViewRecipe {
 		notes.setEditable(false);
 		notes.setLineWrap(true);
 		notes.setBackground(Color.GRAY);
-		
+*/		
 		allergy_filters_header = new JLabel();
 		allergy_filters_header.setBounds(30, 420, 310, 15);
 		allergy_filters_header.setText("Allergens:");
@@ -157,8 +177,8 @@ public class ViewRecipe {
 		edit.addActionListener(edit_recipe);
 		
 		view_panel.add(name);
-		view_panel.add(ingredients_header);
-		view_panel.add(ingredients);
+//		view_panel.add(ingredients_header);
+//		view_panel.add(ingredients);
 		view_panel.add(instructions);
 		view_panel.add(instructions_header);
 		view_panel.add(notes_header);
