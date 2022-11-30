@@ -10,9 +10,10 @@ public class TestClass {
 		 * Uncomment/comment out test methods you want to have shown in console.
 		 */
 		
-		testAddOne();
+		//testAddOne();
 		//demo();
 		//testAddMany();   //RUN CLEAR IF YOU WANT TO RUN THIS AGAIN OR DELETE DATA FILE CONTENTS
+		testAddMany2();
 		//testSearchInclusionExclusion();
 		//testRetrievalID();
 		//getID();
@@ -128,6 +129,72 @@ public class TestClass {
 		food8.addText("IMAGE LOCATION/NAME 2...");
 		food8.courses.changePos2();
 		food8.courses.changePos7();
+		
+		f.addFood(food1);
+		f.addFood(food2);
+		f.addFood(food3);
+		f.addFood(food4);
+		f.addFood(food5);
+		f.addFood(food6);
+		f.addFood(food7);
+		f.addFood(food8);
+		
+		
+	}
+	
+	public static void testAddMany2()
+	{
+		//true image         false text
+		FoodItemList f = new FoodItemList();
+		
+		FoodItem food1 = new FoodItem("spaghetti and meatballs");
+		food1.addText("INSTRUCTIONS...");
+		food1.courses.changePos1();
+		food1.courses.changePos2();
+		food1.courses.changePos7();
+		food1.allergens.changePos1();
+		food1.allergens.changePos6();
+		
+		FoodItem food2 = new FoodItem("smiley hashbrowns");
+		food2.addText("INSTRUCTIONS...");
+		food2.courses.changePos6();
+		
+		FoodItem food3 = new FoodItem("pancakes");
+		food3.addImage("IMAGE LOCATION/NAME...");
+		food3.courses.changePos0();
+		food3.courses.changePos7();
+		food3.allergens.changePos0();
+		food3.allergens.changePos6();
+		
+		FoodItem food4 = new FoodItem("grilled cheese");
+		food4.addText("IMAGE LOCATION/NAME...");
+		food4.courses.changePos1();
+		food4.courses.changePos2();
+		food4.allergens.changePos0();
+		food4.allergens.changePos6();
+		food4.allergens.changePos1();
+		
+		FoodItem food5 = new FoodItem("peanut butter and jelly");
+		food5.addImage("IMAGE LOCATION/NAME...");
+		food5.courses.changePos1();
+		food5.allergens.changePos5();
+		food5.allergens.changePos6();
+		
+		FoodItem food6 = new FoodItem("2003 honda civic");
+		food6.addText("INSTRUCTIONS...");
+		food6.courses.changePos0();
+		
+		FoodItem food7 = new FoodItem("salsbury steak");
+		food7.addText("INSTRUCTIONS...");
+		food7.allergens.changePos2();
+		food7.allergens.changePos7();
+		food7.courses.changePos0();
+		
+		FoodItem food8 = new FoodItem("chocolate milkshake");
+		food8.addText("IMAGE LOCATION/NAME 2...");
+		food8.courses.changePos3();
+		food8.allergens.changePos4();
+		food8.allergens.changePos0();
 		
 		f.addFood(food1);
 		f.addFood(food2);
