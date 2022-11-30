@@ -22,8 +22,8 @@ public class ViewRecipe {
 	private JFrame view_frame;
 	private JPanel view_panel;
 	private JButton close, save_and_close, edit;
-	private JLabel allergy_filters, allergy_filters_header, course_filters, course_filters_header, ingredients, ingredients_header, culture, name, notes_header;
-	private JTextArea notes;
+	private JLabel allergy_filters, allergy_filters_header, course_filters, course_filters_header, ingredients_header, culture, name, notes_header;
+	private JTextArea notes, ingredients;
 	private ActionListener edit_recipe;
 	
 	private int id;
@@ -78,9 +78,12 @@ public class ViewRecipe {
 		ingredients_header = new JLabel("Ingredients:");
 		ingredients_header.setBounds(30, 70, 310, 15);
 		
-		ingredients = new JLabel();
+		ingredients = new JTextArea();
 		ingredients.setText(f.getById(id).getIngredients());
-		ingredients.setBounds(30, 85, 310, 285);
+		ingredients.setBounds(30, 95, 280, 285);
+		ingredients.setBackground(Color.DARK_GRAY);
+		ingredients.setEditable(false);
+		ingredients.setLineWrap(true);
 		
 		notes_header = new JLabel("Notes:");
 		notes_header.setBounds(330, 70, 310, 15);
@@ -98,21 +101,35 @@ public class ViewRecipe {
 		
 		allergy_filters = new JLabel();
 		allergy_filters.setBounds(40, 450, 630, 20);
-		allergy_filters.setText("Filler Text");
-		
+		if(f.getById(id).getAllergens() != "[]")
+		{
+			allergy_filters.setText(f.getById(id).getAllergens());
+		}
+		else
+		{
+			allergy_filters.setText("N/A");
+		}
+			
 		course_filters_header = new JLabel();
 		course_filters_header.setBounds(30, 510, 640, 15);
 		course_filters_header.setText("Course: ");
 		
 		course_filters = new JLabel();
 		course_filters.setBounds(40, 540, 630, 20);
-		course_filters.setText("Filler Text");
+		if(f.getById(id).getCourses() != "[]")
+		{
+			course_filters.setText(f.getById(id).getCourses());
+		}
+		else
+		{
+			course_filters.setText("N/A");
+		}
 		
 		culture = new JLabel();
 		culture.setBounds(30, 600, 640, 30);
 		if(f.getById(id).getCulture() != null)
 		{
-			culture.setText("Culture: " + f.getById(id).getCulture());
+			culture.setText("Culture:   " + f.getById(id).getCulture());
 		}
 		
 		edit = new JButton("Edit");

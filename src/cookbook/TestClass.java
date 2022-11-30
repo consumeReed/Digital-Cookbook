@@ -10,9 +10,9 @@ public class TestClass {
 		 * Uncomment/comment out test methods you want to have shown in console.
 		 */
 		
-		//testAddOne();
+		testAddOne();
 		//demo();
-		testAddMany();   //RUN CLEAR IF YOU WANT TO RUN THIS AGAIN OR DELETE DATA FILE CONTENTS
+		//testAddMany();   //RUN CLEAR IF YOU WANT TO RUN THIS AGAIN OR DELETE DATA FILE CONTENTS
 		//testSearchInclusionExclusion();
 		//testRetrievalID();
 		//getID();
@@ -77,8 +77,8 @@ public class TestClass {
 		
 		FoodItem food1 = new FoodItem("Chicken nuggets");
 		food1.addText("INSTRUCTIONS...");
-		food1.courses.changePos1();
-		food1.courses.changePos2();
+		//food1.courses.changePos1();
+		//food1.courses.changePos2();
 		food1.allergens.changePos6();
 		food1.addIngredient("Chicken");
 		food1.addIngredient("Nuggets");

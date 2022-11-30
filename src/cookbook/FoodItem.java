@@ -130,6 +130,16 @@ public class FoodItem implements Serializable{
 		}
 	}
 	
+	public String getAllergens()
+	{
+		return allergens.toString();
+	}
+	
+	public String getCourses()
+	{
+		return courses.toString();
+	}
+	
 	public String getCulture()
 	{
 		return culture;
