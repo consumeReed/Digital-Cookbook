@@ -21,30 +21,35 @@ public class ViewRecipe {
 	
 	private JFrame view_frame;
 	private JPanel view_panel;
-	private JButton close, save_and_close, edit;
-	private JLabel allergy_filters, allergy_filters_header, course_filters, course_filters_header, ingredients_header, culture, name, notes_header;
-	private JTextArea notes, ingredients;
+	private JButton edit;
+	private JLabel allergy_filters, allergy_filters_header, course_filters, course_filters_header, ingredients_header, culture, name, notes_header, instructions_header;
+	private JTextArea notes, ingredients, instructions;
 	private ActionListener edit_recipe;
 	
 	private int id;
 	
-	public ViewRecipe(int id, FoodItemList f, String type)
+	
+	public ViewRecipe(int id)
 	{
 		setUpButtonListeners();
 		
+		FoodItemList list = new FoodItemList();
+		FoodItem tmpFood = list.getById(id);
+		
 		this.id = id;
+		String type = tmpFood.getType();
 		
 		if(type.equals("Text"))
 		{
-			textInstruction(id, f, type);
+			textInstruction(id, tmpFood);
 		}
 		if(type.equals("Image"))
 		{
-			imageInstruction(id, f, type);
+			imageInstruction(id, tmpFood);
 		}
 	}
 	
-	public void textInstruction(int id, FoodItemList f, String type)
+	public void textInstruction(int id, FoodItem f)
 	{
 		
 		view_frame = new JFrame();
@@ -71,7 +76,7 @@ public class ViewRecipe {
 		
 		
 		name = new JLabel();
-		name.setText(f.getById(id).getName());
+		name.setText(f.getName());
 		name.setFont(new Font("Serif", Font.BOLD, 24));
 		name.setBounds(30, 10, 640, 30);
 		
@@ -79,31 +84,40 @@ public class ViewRecipe {
 		ingredients_header.setBounds(30, 70, 310, 15);
 		
 		ingredients = new JTextArea();
-		ingredients.setText(f.getById(id).getIngredients());
+		ingredients.setText(f.getIngredients());
 		ingredients.setBounds(30, 95, 280, 285);
 		ingredients.setBackground(Color.DARK_GRAY);
 		ingredients.setEditable(false);
 		ingredients.setLineWrap(true);
 		
+		instructions_header = new JLabel("Instructions:");
+		instructions_header.setBounds(330, 70, 310, 15);
+		
+		instructions = new JTextArea();
+		instructions.setText(f.getText());
+		instructions.setBounds(330, 95, 340, 285);
+		instructions.setEditable(false);
+		instructions.setLineWrap(true);
+		
 		notes_header = new JLabel("Notes:");
-		notes_header.setBounds(330, 70, 310, 15);
+		notes_header.setBounds(330, 420, 310, 15);
 		
 		notes = new JTextArea();
-		notes.setText(f.getById(id).getNotes());
-		notes.setBounds(330, 95, 340, 285);
-		notes.setBackground(Color.GRAY);
+		notes.setText(f.getNotes());
+		notes.setBounds(330, 445, 340, 185);
 		notes.setEditable(false);
 		notes.setLineWrap(true);
+		notes.setBackground(Color.GRAY);
 		
 		allergy_filters_header = new JLabel();
-		allergy_filters_header.setBounds(30, 420, 640, 15);
+		allergy_filters_header.setBounds(30, 420, 310, 15);
 		allergy_filters_header.setText("Allergens:");
 		
 		allergy_filters = new JLabel();
-		allergy_filters.setBounds(40, 450, 630, 20);
-		if(f.getById(id).getAllergens() != "[]")
+		allergy_filters.setBounds(40, 450, 310, 20);
+		if(f.getAllergens() != "[]")
 		{
-			allergy_filters.setText(f.getById(id).getAllergens());
+			allergy_filters.setText(f.getAllergens());
 		}
 		else
 		{
@@ -111,14 +125,14 @@ public class ViewRecipe {
 		}
 			
 		course_filters_header = new JLabel();
-		course_filters_header.setBounds(30, 510, 640, 15);
+		course_filters_header.setBounds(30, 510, 310, 15);
 		course_filters_header.setText("Course: ");
 		
 		course_filters = new JLabel();
-		course_filters.setBounds(40, 540, 630, 20);
-		if(f.getById(id).getCourses() != "[]")
+		course_filters.setBounds(40, 540, 310, 20);
+		if(f.getCourses() != "[]")
 		{
-			course_filters.setText(f.getById(id).getCourses());
+			course_filters.setText(f.getCourses());
 		}
 		else
 		{
@@ -126,10 +140,10 @@ public class ViewRecipe {
 		}
 		
 		culture = new JLabel();
-		culture.setBounds(30, 600, 640, 30);
-		if(f.getById(id).getCulture() != null)
+		culture.setBounds(30, 600, 310, 30);
+		if(f.getCulture() != null)
 		{
-			culture.setText("Culture:   " + f.getById(id).getCulture());
+			culture.setText("Culture:   " + f.getCulture());
 		}
 		
 		edit = new JButton("Edit");
@@ -141,6 +155,8 @@ public class ViewRecipe {
 		view_panel.add(name);
 		view_panel.add(ingredients_header);
 		view_panel.add(ingredients);
+		view_panel.add(instructions);
+		view_panel.add(instructions_header);
 		view_panel.add(notes_header);
 		view_panel.add(notes);
 		view_panel.add(culture);
@@ -153,11 +169,11 @@ public class ViewRecipe {
 		view_frame.setVisible(true);
 	}
 	
-	public void imageInstruction(int id, FoodItemList f, String type)
+	public void imageInstruction(int id, FoodItem f)
 	{
 		
 		view_frame = new JFrame();
-		view_frame.setTitle(f.getById(id).getName());
+		view_frame.setTitle(f.getName());
 		view_frame.setSize(700, 730);
 		view_frame.setLocationRelativeTo(null);
 		view_frame.setResizable(false);
@@ -179,7 +195,7 @@ public class ViewRecipe {
 		view_panel.setLayout(null);
 		
 		name = new JLabel();
-		name.setText(f.getById(id).getName());
+		name.setText(f.getName());
 		name.setFont(new Font("Serif", Font.BOLD, 24));
 		name.setBounds(30, 10, 840, 30);
 		

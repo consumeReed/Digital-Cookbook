@@ -835,7 +835,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset).getId();
-				vr = new ViewRecipe(id, f, f.getById(id).getType());
+				vr = new ViewRecipe(id);
 				updatePage();
 			}
 		};
@@ -844,7 +844,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset+1).getId();
-				vr = new ViewRecipe(id, f, f.getById(id).getType());
+				vr = new ViewRecipe(id);
 				updatePage();
 			}
 		};
@@ -853,7 +853,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset+2).getId();
-				vr = new ViewRecipe(id, f, f.getById(id).getType());
+				vr = new ViewRecipe(id);
 				updatePage();
 			}
 		};
@@ -862,7 +862,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset+3).getId();
-				vr = new ViewRecipe(id, f, f.getById(id).getType());
+				vr = new ViewRecipe(id);
 				updatePage();
 			}
 		};
@@ -871,7 +871,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset+4).getId();
-				vr = new ViewRecipe(id, f, f.getById(id).getType());
+				vr = new ViewRecipe(id);
 				updatePage();
 			}
 		};
@@ -880,7 +880,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset+5).getId();
-				vr = new ViewRecipe(id, f, f.getById(id).getType());
+				vr = new ViewRecipe(id);
 				updatePage();
 			}
 		};
@@ -889,7 +889,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset+6).getId();
-				vr = new ViewRecipe(id, f, f.getById(id).getType());
+				vr = new ViewRecipe(id);
 				updatePage();
 			}
 		};
@@ -898,7 +898,7 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				int offset = page*8;
 				int id = fl.get(offset+7).getId();
-				vr = new ViewRecipe(id, f, f.getById(id).getType());
+				vr = new ViewRecipe(id);
 				updatePage();
 			}
 		};
