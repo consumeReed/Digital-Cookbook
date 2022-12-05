@@ -36,9 +36,11 @@ public class AddEditRecipe {
 	side_filter, main_filter, milk_filter, eggs_filter, fish_filter, crustacean_shellfish_filter, tree_nut_filter,
 	peanut_filter, wheat_filter, soya_filter;
 	private ArrayList<JCheckBox> allergyBoxes, courseBoxes;
-	private ActionListener choose_image_l;
+	private ActionListener choose_image_l, save_l, add_l;
 	private JLabel img_name, img_prev, imp;
 	private String img;
+	private int id;
+	FoodItemList list;
 	
 	
 	public AddEditRecipe()
@@ -47,18 +49,23 @@ public class AddEditRecipe {
 		 food_name = new JTextField();
 		 food_name.setBounds(100, 40, 500, 20);
 		initialize();
+		setUpButtonListeners();
+		done.setText("Add");
+		done.addActionListener(add_l);
 		main_panel.add(food_name);
 	}
 	
 	public AddEditRecipe(int id)
 	{
+		this.id = id;
 		initial_frame = new JFrame("Edit Recipe");
 		food_name = new JTextField();
-		FoodItemList list = new FoodItemList();
+		list = new FoodItemList();
 		FoodItem tmpFood = list.getById(id);
 		food_name.setText(tmpFood.getName());
 		food_name.setBounds(100, 40, 500, 20);
 		initialize();
+		setUpButtonListeners();
 		main_panel.add(food_name);
 		for(int i = 0; i < 8; i++)
 		{
@@ -72,11 +79,28 @@ public class AddEditRecipe {
 				courseBoxes.get(i).setSelected(true);
 			}
 		}
+		System.out.println(tmpFood.getType());
+		if(tmpFood.getText() != null)
+			text_instructions.setText(tmpFood.getText());
 		if(tmpFood.getImg() == null)
 			img_name.setText("");
 		if(tmpFood.getText() == null)
+		{
 			img_name.setText(tmpFood.getImg());
-			
+		
+
+			ImageIcon icon = new ImageIcon("userdata\\" + tmpFood.getImg());
+			//System.out.println(tmpFood.getType());
+			Image scaleImage = icon.getImage().getScaledInstance(150, 150,Image.SCALE_DEFAULT);
+			icon = new ImageIcon(scaleImage);
+		
+			JLabel label2 = new JLabel();
+			label2.setBounds(40, 430, 150, 150);
+			label2.setIcon(icon);
+			label2.setVisible(true);
+			main_panel.add(label2);
+		}
+		done.addActionListener(save_l);
 	}
 	
 	public void initialize()
@@ -120,7 +144,7 @@ public class AddEditRecipe {
 						
 						if(response == JFileChooser.APPROVE_OPTION) {
 							File src = new File(fileChooser.getSelectedFile().getAbsolutePath());
-							System.out.println(src);
+							//System.out.println(src);
 							String tmp = "userdata\\" + src.getName();
 							File dest = new File(tmp);
 							try {
@@ -333,5 +357,75 @@ public class AddEditRecipe {
 		 main_panel.add(peanut_filter);
 		 main_panel.add(wheat_filter);
 		 main_panel.add(soya_filter);
+	}
+	
+	public void setUpButtonListeners() {
+		add_l = new ActionListener() {								
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				FoodItemList l = new FoodItemList();
+				FoodItem foo = new FoodItem(food_name.getText());
+				
+				Attributes a = new Attributes(true);
+				Attributes c = new Attributes(false);
+				
+				for(int i = 0; i < 8; i++)
+				{
+					int tmp = (int) Math.pow(2, i);
+					if(courseBoxes.get(i).isSelected())
+						c.attr = c.attr + tmp;
+				}
+				
+				for(int i = 0; i < 8; i++)
+				{
+					int tmp = (int) Math.pow(2, i);
+					if(allergyBoxes.get(i).isSelected())
+						a.attr = a.attr + tmp;
+				}
+				foo.allergens.attr = a.attr;
+				foo.courses.attr = c.attr;
+				
+				foo.addText(text_instructions.getText());
+				
+				if(text_instructions.getText().equals(""))
+					foo.addImage(img_name.getText());
+				
+				l.addFood(foo);
+				initial_frame.dispose();
+			}
+		};
+		
+		save_l = new ActionListener() {								
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Attributes a = new Attributes(true);
+				Attributes c = new Attributes(false);
+
+				for(int i = 0; i < 8; i++)
+				{
+					int tmp = (int) Math.pow(2, i);
+					if(courseBoxes.get(i).isSelected())
+						c.attr = c.attr + tmp;
+				}
+				
+				for(int i = 0; i < 8; i++)
+				{
+					int tmp = (int) Math.pow(2, i);
+					if(allergyBoxes.get(i).isSelected())
+						a.attr = a.attr + tmp;
+				}
+				
+				list.getById(id).setAllergens(a);
+				list.getById(id).setCourses(c);
+				
+				list.getById(id).addText(text_instructions.getText());
+					
+				if(text_instructions.getText().equals(""))
+					list.getById(id).addImage(img_name.getText());
+				
+				list.updateFile();
+				initial_frame.dispose();
+			}
+		};
 	}
 }

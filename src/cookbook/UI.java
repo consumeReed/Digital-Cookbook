@@ -380,6 +380,7 @@ public class UI {
 		 refresh.setFocusable(false);
 		 Icon refresh_icon = new ImageIcon("userdata\\refresh.png");
 		 refresh.setIcon(refresh_icon);
+		 refresh.addActionListener(refresh_l);
 		 
 		 search_panel.add(refresh);
 		 
@@ -666,6 +667,7 @@ public class UI {
 			if(courseBoxes.get(7).isSelected())
 				course.changePos7();
 			
+			f = new FoodItemList();
 		fl = f.search(recipe_search_bar.getText(), allergy, course, exclude_ingredient_filter.isSelected(), exclude_course_filter.isSelected());
 		
 		//setting up variables to check for number of items to display on page

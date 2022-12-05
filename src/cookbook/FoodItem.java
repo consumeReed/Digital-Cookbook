@@ -51,6 +51,16 @@ public class FoodItem implements Serializable{
 		courses = new Attributes(false);
 	}
 	
+	public void setAllergens(Attributes a)
+	{
+		allergens = a;
+	}
+	
+	public void setCourses(Attributes c)
+	{
+		courses = c;
+	}
+	
 	public void addText(String textInstructions)
 	{
 		this.textInstructions = textInstructions;

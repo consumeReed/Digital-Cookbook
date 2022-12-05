@@ -12,7 +12,7 @@ public class TestClass {
 		
 		//testAddOne();
 		//demo();
-		//testAddMany();   //RUN CLEAR IF YOU WANT TO RUN THIS AGAIN OR DELETE DATA FILE CONTENTS
+		testAddMany();   //RUN CLEAR IF YOU WANT TO RUN THIS AGAIN OR DELETE DATA FILE CONTENTS
 		testAddMany2();
 		//testSearchInclusionExclusion();
 		//testRetrievalID();
