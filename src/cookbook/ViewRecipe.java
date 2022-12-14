@@ -2,13 +2,22 @@ package cookbook;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Window.Type;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -25,11 +34,11 @@ public class ViewRecipe {
 	
 	private JFrame view_frame;
 	private JPanel view_panel;
-	private JButton edit;
-	private JLabel allergy_filters, img, allergy_filters_header, course_filters, course_filters_header, ingredients_header, culture, name, notes_header, instructions_header;
+	private JButton edit, img;
+	private JLabel allergy_filters, allergy_filters_header, course_filters, course_filters_header, ingredients_header, culture, name, notes_header, instructions_header;
 	private JTextArea notes, ingredients, instructions;
-	private ActionListener edit_recipe;
-	
+	private ActionListener edit_recipe, open_image;
+	private FoodItem food;
 	private int id;
 	
 	
@@ -40,6 +49,7 @@ public class ViewRecipe {
 		FoodItemList list = new FoodItemList();
 		FoodItem tmpFood = list.getById(id);
 		
+		this.food = tmpFood;
 		this.id = id;
 		String type = tmpFood.getType();
 		
@@ -227,9 +237,10 @@ public class ViewRecipe {
 		Image scaled = icon.getImage().getScaledInstance(640, 350, Image.SCALE_DEFAULT);
 		icon = new ImageIcon(scaled);
 		
-		img = new JLabel();
+		img = new JButton();
 		img.setBounds(30, 50, 640, 350);
 		img.setIcon(icon);
+		img.addActionListener(open_image);
 		
 		allergy_filters_header = new JLabel();
 		allergy_filters_header.setBounds(30, 420, 310, 15);
@@ -280,13 +291,33 @@ public class ViewRecipe {
 	
 	private void setUpButtonListeners()
 	{
-		edit_recipe = new ActionListener(){
+		edit_recipe = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				view_frame.dispose();
 				AddEditRecipe aer = new AddEditRecipe(id);
 			}
 			
+		};
+		
+		open_image = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String from_local = "userdata//" + food.getImg();
+				File file = new File(from_local);
+				
+				Desktop d = Desktop.getDesktop();
+				
+				try {
+					d.open(file);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				
+				
+				// Path path = Paths.get(from_local).toAbsolutePath();
+				// System.out.print(path);
+			}
 		};
 	}
 	
