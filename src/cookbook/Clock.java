@@ -27,7 +27,6 @@ public class Clock extends TimerTask
 	public static void main(String[] args) 
 	{
 		TimerTask Clock = new Clock();
-		timer.schedule(Clock, 1000, 1000);
 		Clock clock = new Clock();
 		clock.start();
 	}
@@ -45,27 +44,16 @@ public class Clock extends TimerTask
 		
 		try {
 			timer.scheduleAtFixedRate(task, 1000, 1000);
+			Thread.sleep(10000);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		completeTask();
-	}
-	
-	private static void completeTask()
-	{
-		try
-		{
-			// assume it takes 
-			Thread.sleep(10000);
-		}
-		catch(InterruptedException ex)
-		{
-			ex.printStackTrace();
 		}
 		timer.cancel();
 		
 		System.out.print("Time's up");
 	}
+	
 	
 	/**
 	 * Pause timer
