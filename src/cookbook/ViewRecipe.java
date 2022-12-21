@@ -25,6 +25,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JRootPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -40,6 +41,7 @@ public class ViewRecipe {
 	private ActionListener edit_recipe, open_image;
 	private FoodItem food;
 	private int id;
+	private JScrollPane scroll;
 	
 	
 	public ViewRecipe(int id)
@@ -102,6 +104,9 @@ public class ViewRecipe {
 		instructions.setBounds(30, 95, 280, 285);
 		instructions.setEditable(false);
 		instructions.setLineWrap(true);
+		scroll = new JScrollPane(instructions);
+		scroll.setBounds(30, 95, 280, 285);
+		scroll.setVisible(true);
 		
 		notes_header = new JLabel("Notes:");
 		notes_header.setBounds(330, 70, 310, 15);
@@ -189,7 +194,9 @@ public class ViewRecipe {
 		view_panel.add(name);
 //		view_panel.add(ingredients_header);
 //		view_panel.add(ingredients);
-		view_panel.add(instructions);
+		
+		//view_panel.add(instructions);
+		view_panel.add(scroll);
 		view_panel.add(instructions_header);
 		view_panel.add(notes_header);
 		view_panel.add(notes);

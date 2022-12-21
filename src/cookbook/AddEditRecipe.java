@@ -40,6 +40,7 @@ public class AddEditRecipe {
 	private JLabel img_name, img_prev, imp;
 	private String img;
 	private int id;
+	private JScrollPane scroll;
 	FoodItemList list;
 	
 	
@@ -188,6 +189,9 @@ public class AddEditRecipe {
 			text_instructions = new JTextArea();
 			text_instructions.setBounds(250, 150, 400, 480);
 			text_instructions.setLineWrap(true);
+			scroll = new JScrollPane(text_instructions);
+			scroll.setBounds(250, 150, 400, 480);
+			scroll.setVisible(true);
 			
 			done = new JButton("Save");
 			done.setBounds(300, 666, 100, 20);
@@ -199,7 +203,8 @@ public class AddEditRecipe {
 			
 			main_panel.add(img_prev);
 			main_panel.add(done);
-			main_panel.add(text_instructions);
+			//main_panel.add(text_instructions);
+			main_panel.add(scroll);
 			main_panel.add(choose_image);
 			main_panel.add(img_name);
 		 
