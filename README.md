@@ -10,10 +10,10 @@ The Digital-Cookbook is a tool to upload, store, and search through your recipes
 * Java
 
 
-## Getting Started
+## Getting Started and Requirements
 
-* Download or clone this repository
-* Open with Java Editor
+* Requires Java Runetime Version of 61.0 or newer
+* Download zip from latest release, run App
 
 
 ## Usage
